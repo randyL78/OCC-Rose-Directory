@@ -72,8 +72,8 @@ function App() {
                 aria-label="breadcrumb"
                 separator={<NavigateNextIcon fontSize="small" />}
               >
-                <Link color="inherit" to="/">Home</Link>
-                <Link color="inherit" to="/cramoisi-superieur">Cromoisi Superieur</Link>
+                <Link underline="hover" color="inherit" href="/">Home</Link>
+                <Link underline="hover" color="inherit" href="/cramoisi-superieur">Cromoisi Superieur</Link>
               </Breadcrumbs>
             </Box>
           </Paper>
