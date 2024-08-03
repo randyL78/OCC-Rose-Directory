@@ -12,6 +12,9 @@ import {
   Typography
 } from "@mui/material";
 import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import DescriptionCard from "./components/cards/DescriptionCard.tsx";
+import CareCard from "./components/cards/CareCard.tsx";
+import HistoryCard from "./components/cards/HistoryCard.tsx";
 
 const theme = createTheme({})
 
@@ -79,56 +82,33 @@ function App() {
           </Paper>
           <Stack spacing={4}>
             <Typography variant="h1">Cromoisi Superieur</Typography>
-            <Card
-              elevation={3}
-              sx={{
-                backgroundColor: '#fff',
-                p: 1,
-              }}
-            >
-              <CardHeader title='Description' />
-              <Typography>
-                Cherry-red to crimson flowers with occasional white streaks
-                bloom in small clusters suffused with a raspberry fragrance. The
-                very double blooms have an average diameter of 2.25” and are
-                cupped-to-flat with a reflexed bloom form. Blooms in flushes
-                throughout the season. Grows 30” to 6’ tall by 3-4’ wide.
-                Cramoisi is vigorous, drought and heat tolerant, and is an
-                excellent cut flower. Prefers full sun and loamy, well-draining
-                soil. Found rose Bengal, China, before 1818. At Old City
-                Cemetery it is in Section EE, the Confederate Section.
-              </Typography>
-            </Card>
-            <Card
-              elevation={3}
-              sx={{
-                backgroundColor: '#fff',
-                p: 1,
-              }}
-            >
-              <CardHeader title='Care Instructions' />
+            <DescriptionCard>
+              Cherry-red to crimson flowers with occasional white streaks
+              bloom in small clusters suffused with a raspberry fragrance. The
+              very double blooms have an average diameter of 2.25” and are
+              cupped-to-flat with a reflexed bloom form. Blooms in flushes
+              throughout the season. Grows 30” to 6’ tall by 3-4’ wide.
+              Cramoisi is vigorous, drought and heat tolerant, and is an
+              excellent cut flower. Prefers full sun and loamy, well-draining
+              soil. Found rose Bengal, China, before 1818. At Old City
+              Cemetery it is in Section EE, the Confederate Section.
+            </DescriptionCard>
+            <CareCard>
               <Typography>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget risus ante. Praesent a gravida elit, sed consequat ligula. Donec non mauris quis leo lacinia suscipit sit amet vel quam. Praesent neque nisi, pharetra id accumsan et, mollis et nibh. Donec erat turpis, posuere a volutpat eget, facilisis pellentesque elit. Praesent posuere dictum purus a congue. Suspendisse in libero sit amet dolor efficitur volutpat et eget nulla. In enim ipsum, blandit ultricies lacinia vel, vehicula a lorem. Aenean rhoncus urna ut faucibus bibendum.
               </Typography>
               <Typography>
                 Quisque at diam eget leo varius lacinia convallis eu nibh. Quisque facilisis aliquam dictum. Ut tristique at diam eu ultricies. Phasellus placerat nisi commodo nunc mattis, at rutrum tellus accumsan. Vivamus euismod erat vitae lacinia vulputate. Vestibulum eleifend posuere ligula, quis egestas quam. Vivamus nec velit lectus.
               </Typography>
-            </Card>
-            <Card
-              elevation={3}
-              sx={{
-                backgroundColor: '#fff',
-                p: 1,
-              }}
-            >
-              <CardHeader title='History' />
+            </CareCard>
+            <HistoryCard>
               <Typography>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget risus ante. Praesent a gravida elit, sed consequat ligula. Donec non mauris quis leo lacinia suscipit sit amet vel quam. Praesent neque nisi, pharetra id accumsan et, mollis et nibh. Donec erat turpis, posuere a volutpat eget, facilisis pellentesque elit. Praesent posuere dictum purus a congue. Suspendisse in libero sit amet dolor efficitur volutpat et eget nulla. In enim ipsum, blandit ultricies lacinia vel, vehicula a lorem. Aenean rhoncus urna ut faucibus bibendum.
               </Typography>
               <Typography>
                 Quisque at diam eget leo varius lacinia convallis eu nibh. Quisque facilisis aliquam dictum. Ut tristique at diam eu ultricies. Phasellus placerat nisi commodo nunc mattis, at rutrum tellus accumsan. Vivamus euismod erat vitae lacinia vulputate. Vestibulum eleifend posuere ligula, quis egestas quam. Vivamus nec velit lectus.
               </Typography>
-            </Card>
+            </HistoryCard>
           </Stack>
         </Container>
       </Box>
