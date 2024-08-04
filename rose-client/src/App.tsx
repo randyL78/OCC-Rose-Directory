@@ -14,6 +14,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext'
 import DescriptionCard from "./components/cards/DescriptionCard.tsx";
 import CareCard from "./components/cards/CareCard.tsx";
 import HistoryCard from "./components/cards/HistoryCard.tsx";
+import PillIndicator from "./components/indicators/PillIndicator.tsx";
 
 const theme = createTheme()
 
@@ -158,63 +159,7 @@ function App() {
                       mb: 2,
                       width: '200px',
                     }}>
-                      <Box
-                        sx={{
-                          borderRadius: '12px 0 0 12px',
-                          borderRight: '2px solid #9ca',
-                          flex: 1,
-                          backgroundColor: '#95a',
-                          height: '20px'
-                      }}
-                      />
-                      <Box
-                        sx={{
-                          borderRight: '2px solid #9ca',
-                          flex: 1,
-                          backgroundColor: '#95a',
-                          height: '20px'
-                        }}
-                      />
-                      <Box
-                        sx={{
-                          borderRight: '2px solid #9ca',
-                          flex: 1,
-                          backgroundColor: '#95a',
-                          height: '20px'
-                        }}
-                      />
-                      <Box
-                        sx={{
-                          borderRight: '2px solid #9ca',
-                          flex: 1,
-                          backgroundColor: '#95a',
-                          height: '20px'
-                        }}
-                      />
-                      <Box
-                        sx={{
-                          borderRight: '2px solid #9ca',
-                          flex: 1,
-                          backgroundColor: 'white',
-                          height: '20px'
-                        }}
-                      />
-                      <Box
-                        sx={{
-                          borderRight: '2px solid #9ca',
-                          flex: 1,
-                          backgroundColor: 'white',
-                          height: '20px'
-                        }}
-                      />
-                      <Box
-                        sx={{
-                          borderRadius: '0 12px 12px 0',
-                          flex: 1,
-                          backgroundColor: 'white',
-                          height: '20px'
-                        }}
-                      />
+                      <PillIndicator totalBoxes={7} filledBoxes={5} filledColor='#95a' />
                     </Box>
                     <Typography fontWeight='bold' align='center'>
                       Sweet and fruity
