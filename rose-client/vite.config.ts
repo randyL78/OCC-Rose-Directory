@@ -6,6 +6,9 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   test: {
+    coverage: {
+      provider: "istanbul"
+    },
     environment: 'happy-dom',
     globals: true,
     setupFiles: './tests/setup.ts',
