@@ -30,7 +30,6 @@ stages:
     - export AWS_SECRET_ACCESS_KEY="${STS[1]}"
     - export AWS_SESSION_TOKEN="${STS[2]}"
 
-
 CLIENT__BUILD:
   <<: *client_setup
   stage: commit
