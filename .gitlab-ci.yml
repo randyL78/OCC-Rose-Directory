@@ -3,54 +3,66 @@ stages:
   - acceptance
   - deploy
 
-.assume_role: &assume_role
-  - >
-    STS=($(aws sts assume-role-with-web-identity
-    --role-arn ${AWS_ROLE_ARN}
-    --role-session-name "GitLabRunner-${CI_PROJECT_ID}-${CI_PIPELINE_ID}"
-    --web-identity-token $ID_TOKEN
-    --duration-seconds 3600
-    --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]'
-    --output text))
-  - export AWS_ACCESS_KEY_ID="${STS[0]}"
-  - export AWS_SECRET_ACCESS_KEY="${STS[1]}"
-  - export AWS_SESSION_TOKEN="${STS[2]}"
-
-CLIENT_BUILD:
+.client_setup: &client_setup
   image: node:20-alpine
+  before_script:
+    - cd-rose
+    - npm install
+
+.client_deploy_setup: &client_deploy_setup
+  image:
+    name: amazon/aws-cli:latest
+    entrypoint:
+      - '/usr/bin/env'
+  id_tokens:
+    ID_TOKEN:
+      aud: rose_directory_client_s3
+  before_script:
+    - >
+      STS=($(aws sts assume-role-with-web-identity
+      --role-arn ${AWS_ROLE_ARN}
+      --role-session-name "GitLabRunner-${CI_PROJECT_ID}-${CI_PIPELINE_ID}"
+      --web-identity-token $ID_TOKEN
+      --duration-seconds 3600
+      --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]'
+      --output text))
+    - export AWS_ACCESS_KEY_ID="${STS[0]}"
+    - export AWS_SECRET_ACCESS_KEY="${STS[1]}"
+    - export AWS_SESSION_TOKEN="${STS[2]}"
+
+
+CLIENT__BUILD:
+  <<: *client_setup
   stage: commit
   script:
-    - cd rose-client
-    - npm install
     - npm run build
   artifacts:
     paths:
       - rose-client/dist
 
-CLIENT_DEPLOY_STAGING:
-  image:
-    name: amazon/aws-cli:latest
-    entrypoint:
-      - '/usr/bin/env'
-  id_tokens:
-    ID_TOKEN:
-      aud: rose_directory_client_s3
+CLIENT__TEST:
+  <<: *client_setup
+  stage: commit
+  script:
+    - npm run test
+
+CLIENT__LINT:
+  <<: *client_setup
+  stage: commit
+  script:
+    - npm run lint
+
+CLIENT__DEPLOY_STAGING:
+  <<: *client_deploy_setup
   stage: acceptance
   script:
-    - *assume_role
     - aws s3 sync rose-client/dist s3://${S3_BUCKET}/staging/client
     - aws cloudfront create-invalidation --distribution-id ${STAGING_DISTRIBUTION_ID} --paths "/index.html"
 
-CLIENT_DEPLOY_PRODUCTION:
-  image:
-    name: amazon/aws-cli:latest
-    entrypoint:
-      - '/usr/bin/env'
-  id_tokens:
-    ID_TOKEN:
-      aud: rose_directory_client_s3
+CLIENT__DEPLOY_PRODUCTION:
+  <<: *client_deploy_setup
   stage: deploy
   when: manual
   script:
-    - *assume_role
     - aws s3 sync rose-client/dist s3://${S3_BUCKET}/production/client
+    - aws cloudfront create-invalidation --distribution-id ${PRODUCTION_DISTRIBUTION_ID} --paths "/index.html"
