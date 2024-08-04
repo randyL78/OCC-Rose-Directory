@@ -1,0 +1,13 @@
+stages:
+  - commit
+
+CLIENT_BUILD:
+  image: node:20-alpine
+  stage: commit
+  script:
+    - cd rose-client
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - rose-client/dist
