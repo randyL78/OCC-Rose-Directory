@@ -1,4 +1,4 @@
-import {Card as MUICard, CardHeader} from "@mui/material";
+import {Card as MUICard, CardContent, CardHeader} from "@mui/material";
 import {ReactNode} from "react";
 
 interface CardProps {
@@ -11,12 +11,13 @@ function Card({title, children}: CardProps) {
     <MUICard
       elevation={3}
       sx={{
-        backgroundColor: '#fff',
         p: 1,
       }}
     >
       <CardHeader title={title} />
-      {children}
+      <CardContent>
+        {children}
+      </CardContent>
     </MUICard>
   )
 }

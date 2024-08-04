@@ -1,10 +1,9 @@
 import './App.css'
 import {
   Box,
-  Breadcrumbs,
-  Card, CardHeader,
+  Breadcrumbs, Card, CardContent, CardHeader,
   Container,
-  createTheme,
+  createTheme, Grid,
   Link,
   Paper,
   Stack,
@@ -16,7 +15,14 @@ import DescriptionCard from "./components/cards/DescriptionCard.tsx";
 import CareCard from "./components/cards/CareCard.tsx";
 import HistoryCard from "./components/cards/HistoryCard.tsx";
 
-const theme = createTheme({})
+const theme = createTheme()
+
+theme.typography.h1 = {
+  [theme.breakpoints.up('md')]: {
+    fontSize: '6rem',
+    fontWeight: "100",
+  },
+}
 
 function App() {
 
@@ -81,7 +87,126 @@ function App() {
             </Box>
           </Paper>
           <Stack spacing={4}>
-            <Typography variant="h1">Cromoisi Superieur</Typography>
+            <Typography align="center" variant="h1">Cromoisi Superieur</Typography>
+            <Grid
+              container
+              columns={3}
+            >
+              <Grid
+                item
+                xs={3}
+                md={1}
+                sx={{pl: 2, pr: 2, pb: 2}}
+              >
+                <Card
+                  sx={{
+                    backgroundColor: '#9ca',
+                  }}
+                >
+                  <CardHeader title="Reblooms" align="center" />
+                </Card>
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                md={1}
+                sx={{pl: 2, pr: 2, pb: 2}}
+              >
+                <Card
+                  sx={{
+                    backgroundColor: '#9ca',
+                  }}
+                >
+                  <CardHeader title="Color" sx={{textAlign: 'center', pb: 0}} />
+                  <CardContent>
+                    <Paper elevation={6} sx={{width: '200px', margin: 'auto'}}>
+                      <Box sx={{
+                        backgroundColor: '#C8223C',
+                        height: '75px',
+                        margin: 'auto',
+                        width: '200px',
+                      }} >
+                        <Box sx={{
+                          borderStyle: 'solid',
+                          borderColor: 'transparent transparent #fc5C96 transparent',
+                          borderWidth: '0 0 75px 200px',
+                          height: '0',
+                          margin: 'auto',
+                          width: '0',
+                        }} />
+                      </Box>
+                    </Paper>
+                  </CardContent>
+                </Card>
+              </Grid>
+              <Grid
+                item
+                xs={3}
+                md={1}
+                sx={{pl: 2, pr: 2}}
+              >
+                <Card
+                  sx={{
+                    backgroundColor: '#9ca',
+                  }}
+                >
+                  <CardHeader title="Fragrance" sx={{textAlign: 'center', pb: 0}} />
+                  <CardContent>
+                    <Box sx={{
+                      display: 'flex',
+                      margin: 'auto',
+                      mb: 2,
+                      width: '200px',
+                    }}>
+                      <Box
+                        sx={{
+                          borderRadius: '12px 0 0 12px',
+                          borderRight: '2px solid #9ca',
+                          flex: 1,
+                          backgroundColor: '#95a',
+                          height: '20px'
+                      }}
+                      />
+                      <Box
+                        sx={{
+                          borderRight: '2px solid #9ca',
+                          flex: 1,
+                          backgroundColor: '#95a',
+                          height: '20px'
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          borderRight: '2px solid #9ca',
+                          flex: 1,
+                          backgroundColor: '#95a',
+                          height: '20px'
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          borderRight: '2px solid #9ca',
+                          flex: 1,
+                          backgroundColor: 'white',
+                          height: '20px'
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          borderRadius: '0 12px 12px 0',
+                          flex: 1,
+                          backgroundColor: 'white',
+                          height: '20px'
+                        }}
+                      />
+                    </Box>
+                    <Typography fontWeight='bold' align='center'>
+                      Sweet and fruity
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
             <DescriptionCard>
               Cherry-red to crimson flowers with occasional white streaks
               bloom in small clusters suffused with a raspberry fragrance. The
