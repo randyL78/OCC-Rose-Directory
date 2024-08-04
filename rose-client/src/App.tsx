@@ -82,7 +82,7 @@ function App() {
                 separator={<NavigateNextIcon fontSize="small" />}
               >
                 <Link underline="hover" color="inherit" href="/">Home</Link>
-                <Link underline="hover" color="inherit" href="/cramoisi-superieur">Cromoisi Superieur</Link>
+                <Link underline="hover" color="inherit" href="/">Cromoisi Superieur</Link>
               </Breadcrumbs>
             </Box>
           </Paper>
@@ -187,6 +187,22 @@ function App() {
                         sx={{
                           borderRight: '2px solid #9ca',
                           flex: 1,
+                          backgroundColor: '#95a',
+                          height: '20px'
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          borderRight: '2px solid #9ca',
+                          flex: 1,
+                          backgroundColor: 'white',
+                          height: '20px'
+                        }}
+                      />
+                      <Box
+                        sx={{
+                          borderRight: '2px solid #9ca',
+                          flex: 1,
                           backgroundColor: 'white',
                           height: '20px'
                         }}
@@ -208,31 +224,24 @@ function App() {
               </Grid>
             </Grid>
             <DescriptionCard>
-              Cherry-red to crimson flowers with occasional white streaks
-              bloom in small clusters suffused with a raspberry fragrance. The
-              very double blooms have an average diameter of 2.25” and are
-              cupped-to-flat with a reflexed bloom form. Blooms in flushes
-              throughout the season. Grows 30” to 6’ tall by 3-4’ wide.
-              Cramoisi is vigorous, drought and heat tolerant, and is an
-              excellent cut flower. Prefers full sun and loamy, well-draining
-              soil. Found rose Bengal, China, before 1818. At Old City
-              Cemetery it is in Section EE, the Confederate Section.
+              Cherry-red to crimson flowers with a cooler pink center and occasional white streaks in the petals.
+              Cramoisi blooms in small clusters that are suffused with a sweet, fruity fragrance. The very double blooms
+              have an average diameter of 2.25” and are cupped-to-flat with a reflexed form. It reblooms in flushes
+              throughout the season. Very vigorous grower, drought and heat tolerant, and is an excellent cut flower.
+              Grows 3-6’ tall by 3-4’ wide.
             </DescriptionCard>
             <CareCard>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget risus ante. Praesent a gravida elit, sed consequat ligula. Donec non mauris quis leo lacinia suscipit sit amet vel quam. Praesent neque nisi, pharetra id accumsan et, mollis et nibh. Donec erat turpis, posuere a volutpat eget, facilisis pellentesque elit. Praesent posuere dictum purus a congue. Suspendisse in libero sit amet dolor efficitur volutpat et eget nulla. In enim ipsum, blandit ultricies lacinia vel, vehicula a lorem. Aenean rhoncus urna ut faucibus bibendum.
-              </Typography>
-              <Typography>
-                Quisque at diam eget leo varius lacinia convallis eu nibh. Quisque facilisis aliquam dictum. Ut tristique at diam eu ultricies. Phasellus placerat nisi commodo nunc mattis, at rutrum tellus accumsan. Vivamus euismod erat vitae lacinia vulputate. Vestibulum eleifend posuere ligula, quis egestas quam. Vivamus nec velit lectus.
-              </Typography>
+              Plant in full sun (at least 6 hours a day for best performance) and loose, loamy soil. Feed a balanced
+              fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks till fall. Water
+              in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in summer when
+              the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help
+              keep the roots cool and conserve water. Prune annually in early spring by removing any dead, crossing,
+              or weak branches no larger than a pencil. Cut these off at the crown. Pruning helps to stimulate spring
+              growth, maintain a desired shape, and improve air circulation.
             </CareCard>
             <HistoryCard>
-              <Typography>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget risus ante. Praesent a gravida elit, sed consequat ligula. Donec non mauris quis leo lacinia suscipit sit amet vel quam. Praesent neque nisi, pharetra id accumsan et, mollis et nibh. Donec erat turpis, posuere a volutpat eget, facilisis pellentesque elit. Praesent posuere dictum purus a congue. Suspendisse in libero sit amet dolor efficitur volutpat et eget nulla. In enim ipsum, blandit ultricies lacinia vel, vehicula a lorem. Aenean rhoncus urna ut faucibus bibendum.
-              </Typography>
-              <Typography>
-                Quisque at diam eget leo varius lacinia convallis eu nibh. Quisque facilisis aliquam dictum. Ut tristique at diam eu ultricies. Phasellus placerat nisi commodo nunc mattis, at rutrum tellus accumsan. Vivamus euismod erat vitae lacinia vulputate. Vestibulum eleifend posuere ligula, quis egestas quam. Vivamus nec velit lectus.
-              </Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget risus ante. Praesent a gravida elit, sed consequat ligula. Donec non mauris quis leo lacinia suscipit sit amet vel quam. Praesent neque nisi, pharetra id accumsan et, mollis et nibh. Donec erat turpis, posuere a volutpat eget, facilisis pellentesque elit. Praesent posuere dictum purus a congue. Suspendisse in libero sit amet dolor efficitur volutpat et eget nulla. In enim ipsum, blandit ultricies lacinia vel, vehicula a lorem. Aenean rhoncus urna ut faucibus bibendum.
+              Quisque at diam eget leo varius lacinia convallis eu nibh. Quisque facilisis aliquam dictum. Ut tristique at diam eu ultricies. Phasellus placerat nisi commodo nunc mattis, at rutrum tellus accumsan. Vivamus euismod erat vitae lacinia vulputate. Vestibulum eleifend posuere ligula, quis egestas quam. Vivamus nec velit lectus.
             </HistoryCard>
           </Stack>
         </Container>
