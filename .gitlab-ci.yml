@@ -1,5 +1,6 @@
 stages:
   - commit
+  - acceptance
 
 .assume_role: &assume_role
   - >
