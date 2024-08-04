@@ -6,7 +6,7 @@ stages:
 .client_setup: &client_setup
   image: node:20-alpine
   before_script:
-    - cd-rose
+    - cd rose-client
     - npm install
 
 .client_deploy_setup: &client_deploy_setup
