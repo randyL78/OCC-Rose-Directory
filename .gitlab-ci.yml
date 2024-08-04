@@ -37,5 +37,5 @@ CLIENT_DEPLOY_STAGING:
   stage: acceptance
   script:
     - *assume_role
-    - aws s3 sync client-vite/dist s3://${S3_BUCKET}/staging/client
+    - aws s3 sync rose-client/dist s3://${S3_BUCKET}/staging/client
 
