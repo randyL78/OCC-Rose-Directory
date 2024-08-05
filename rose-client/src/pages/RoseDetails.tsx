@@ -20,6 +20,7 @@ import CareCard from "../components/cards/CareCard.tsx";
 import HistoryCard from "../components/cards/HistoryCard.tsx";
 import {useLoaderData} from "react-router-dom";
 import {roseLoaderData} from "../loaders/RoseDetailLoader.ts";
+import {routes} from "../constants/routes.ts";
 
 
 function RoseDetails() {
@@ -78,9 +79,9 @@ function RoseDetails() {
               aria-label="breadcrumb"
               separator={<NavigateNextIcon fontSize="small" />}
             >
-              <Link component={RouterLink} underline="hover" color="inherit" to="/">Home</Link>
-              <Link component={RouterLink} underline="hover" color="inherit" to="/roses">Home</Link>
-              <Link component={RouterLink} underline="hover" color="inherit" to={`/roses/${rose.slug}`}>{rose.name}</Link>
+              <Link component={RouterLink} underline="hover" color="inherit" to={routes.Home}>Home</Link>
+              <Link component={RouterLink} underline="hover" color="inherit" to={routes.RoseIndex}>Roses</Link>
+              <Link component={RouterLink} underline="hover" color="inherit" to={`${routes.RoseIndex}/${rose.slug}`}>{rose.name}</Link>
             </Breadcrumbs>
           </Box>
         </Paper>

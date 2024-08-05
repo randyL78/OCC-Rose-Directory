@@ -4,15 +4,22 @@ import RoseDetails from "./pages/RoseDetails.tsx";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {routes} from "./constants/routes.ts";
 import {roseDetailLoader} from "./loaders/RoseDetailLoader.ts";
+import {Link} from 'react-router-dom';
 
 const router = createBrowserRouter([
   {
     path: routes.Home,
-    element: <h1>Home</h1>,
+    element: <div>
+      <h1>Home</h1>
+      <Link to={routes.RoseIndex} >Roses</Link>
+    </div>,
   },
   {
     path: routes.RoseIndex,
-    element: <h1>Roses</h1>
+    element: <div>
+      <h1>Roses</h1>
+      <Link to={`${routes.RoseIndex}/cromoisi-superieur`} >Cromoisi Superieur</Link>
+    </div>,
   },
   {
     path: routes.RoseDetails,
