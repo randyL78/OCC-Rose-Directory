@@ -12,6 +12,8 @@ import {
   Typography
 } from "@mui/material";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { Link as RouterLink } from "react-router-dom"
+
 import PillIndicator from "../components/indicators/PillIndicator.tsx";
 import DescriptionCard from "../components/cards/DescriptionCard.tsx";
 import CareCard from "../components/cards/CareCard.tsx";
@@ -76,9 +78,9 @@ function RoseDetails() {
               aria-label="breadcrumb"
               separator={<NavigateNextIcon fontSize="small" />}
             >
-              <Link underline="hover" color="inherit" href="/">Home</Link>
-              <Link underline="hover" color="inherit" href="/roses">Roses</Link>
-              <Link underline="hover" color="inherit" href={`/roses/${rose.slug}`}>{rose.name}</Link>
+              <Link component={RouterLink} underline="hover" color="inherit" to="/">Home</Link>
+              <Link component={RouterLink} underline="hover" color="inherit" to="/roses">Home</Link>
+              <Link component={RouterLink} underline="hover" color="inherit" to={`/roses/${rose.slug}`}>{rose.name}</Link>
             </Breadcrumbs>
           </Box>
         </Paper>
