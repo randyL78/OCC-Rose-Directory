@@ -24,14 +24,13 @@ function RoseIndex() {
           pb: 1,
         }}
       >
-        <RoseBreadcrumbs color="#111" />
-        <Typography variant="h1">Roses</Typography>
+        <RoseBreadcrumbs />
+        <Typography variant="h1" color='#fff'>Roses</Typography>
         <Paper>
           { roses &&
             <List>
               {
                 roses.map((rose) => (
-                  // <ListItem to={`${routes.RoseIndex}/${rose.slug}`} >{rose.name}</ListItem>
                   <ListItem disablePadding>
                     <ListItemButton component={Link} to={`${routes.RoseIndex}/${rose.slug}`}>
                       <ListItemText primary={rose.name}/>

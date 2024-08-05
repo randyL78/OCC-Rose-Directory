@@ -42,7 +42,7 @@ function RoseDetails() {
         <HeroImage imageUrl={rose.imageUrl} breadcrumb={roseBreadcrumb}/>
 
         <Stack spacing={4}>
-          <Typography align="center" variant="h1">{rose.name}</Typography>
+          <Typography align="center" variant="h1" color="#fff">{rose.name}</Typography>
           <Grid
             container
             columns={3}
