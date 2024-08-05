@@ -17,17 +17,8 @@ import DescriptionCard from "../components/cards/DescriptionCard.tsx";
 import CareCard from "../components/cards/CareCard.tsx";
 import HistoryCard from "../components/cards/HistoryCard.tsx";
 import {useLoaderData} from "react-router-dom";
-import getRose from "../api/get-rose.ts";
-import {Rose} from "../interfaces/Rose.ts";
+import {roseLoaderData} from "../loaders/RoseDetailLoader.ts";
 
-interface roseLoaderData {
-  rose: Rose
-}
-
-export async function loader({params}: { params: { roseSlug: string}}): Promise<roseLoaderData> {
-  const rose = getRose(params.roseSlug)
-  return { rose }
-}
 
 function RoseDetails() {
   const { rose } = useLoaderData() as roseLoaderData

@@ -1,8 +1,9 @@
 import './App.css'
 
-import RoseDetails, { loader as roseLoader} from "./pages/RoseDetails.tsx";
+import RoseDetails from "./pages/RoseDetails.tsx";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {routes} from "./constants/routes.ts";
+import {roseDetailLoader} from "./loaders/RoseDetailLoader.ts";
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
     path: routes.RoseDetails,
     element: <RoseDetails />,
     //@ts-expect-error We know the data type being returned is rose data
-    loader: roseLoader,
+    loader: roseDetailLoader,
   }
 ])
 
