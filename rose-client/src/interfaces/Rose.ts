@@ -6,7 +6,7 @@ export interface Rose {
   imageUrl: string;
   history: string;
   careInstructions: string;
-  reblooms: true;
+  reblooms: boolean;
   fragranceIntensity: number;
   fragranceDescription: string;
   colorPrimary: string;

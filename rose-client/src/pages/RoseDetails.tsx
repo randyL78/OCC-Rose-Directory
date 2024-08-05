@@ -1,18 +1,13 @@
 import {
   Box,
-  Breadcrumbs,
   Card,
   CardContent,
   CardHeader,
   Container,
   Grid,
-  Link,
-  Paper,
   Stack,
   Typography
 } from "@mui/material";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { Link as RouterLink } from "react-router-dom"
 
 import PillIndicator from "../components/indicators/PillIndicator.tsx";
 import DescriptionCard from "../components/cards/DescriptionCard.tsx";
@@ -20,71 +15,32 @@ import CareCard from "../components/cards/CareCard.tsx";
 import HistoryCard from "../components/cards/HistoryCard.tsx";
 import {useLoaderData} from "react-router-dom";
 import {roseLoaderData} from "../loaders/RoseDetailLoader.ts";
-import {routes} from "../constants/routes.ts";
-
+import HeroImage from "../components/HeroImage.tsx";
+import RoseBreadcrumbs from "../components/RoseBreadcrumbs.tsx";
+import ColorIndicator from "../components/indicators/ColorIndicator.tsx";
+import RebloomsIndicator from "../components/indicators/RebloomsIndicator.tsx";
+import Backdrop from "../components/Backdrop.tsx";
 
 function RoseDetails() {
   const { rose } = useLoaderData() as roseLoaderData
+  const roseBreadcrumb = <RoseBreadcrumbs slug={rose.slug} name={rose.name} />
+
   return (
     <Box
       sx={{
         position: 'relative',
+        pb: 4,
       }}
     >
-      <Box
-        sx={{
-          zIndex: -1,
-          opacity: .3,
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          backgroundAttachment: 'fixed',
-          backgroundColor: '#bcbcbc',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundImage: `url(${rose.imageUrl})`,
-        }}
-      />
+      <Backdrop imageUrl={rose.imageUrl} />
       <Container
         sx={{
           pt: 1,
           pb: 1,
         }}
       >
-        <Paper
-          elevation={3}
-          sx={{
-            position: 'relative',
-            minHeight: '33vh',
-            backgroundColor: 'grey.800',
-            color: '#fff',
-            mb: 4,
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            backgroundImage: `url(${rose.imageUrl})`,
-          }}
-        >
-          <Box
-            sx={{
-              color: '#fff',
-              p: 1,
-            }}
-          >
-            <Breadcrumbs
-              color="#fff"
-              aria-label="breadcrumb"
-              separator={<NavigateNextIcon fontSize="small" />}
-            >
-              <Link component={RouterLink} underline="hover" color="inherit" to={routes.Home}>Home</Link>
-              <Link component={RouterLink} underline="hover" color="inherit" to={routes.RoseIndex}>Roses</Link>
-              <Link component={RouterLink} underline="hover" color="inherit" to={`${routes.RoseIndex}/${rose.slug}`}>{rose.name}</Link>
-            </Breadcrumbs>
-          </Box>
-        </Paper>
+        <HeroImage imageUrl={rose.imageUrl} breadcrumb={roseBreadcrumb}/>
+
         <Stack spacing={4}>
           <Typography align="center" variant="h1">{rose.name}</Typography>
           <Grid
@@ -102,7 +58,7 @@ function RoseDetails() {
                   backgroundColor: '#9ca',
                 }}
               >
-                <CardHeader title="Reblooms" align="center" />
+                <RebloomsIndicator reblooms={rose.reblooms} />
               </Card>
             </Grid>
             <Grid
@@ -118,26 +74,7 @@ function RoseDetails() {
               >
                 <CardHeader title="Color" sx={{textAlign: 'center', pb: 0}} />
                 <CardContent>
-                  <Paper elevation={6} sx={{width: '200px', margin: 'auto'}}>
-                    <Box sx={{
-                      backgroundColor: rose.colorPrimary,
-                      height: '75px',
-                      margin: 'auto',
-                      width: '200px',
-                    }} >{
-                      rose.colorSecondary && (
-                        <Box sx={{
-                          borderStyle: 'solid',
-                          borderColor: `transparent transparent ${rose.colorSecondary} transparent`,
-                          borderWidth: '0 0 75px 200px',
-                          height: '0',
-                          margin: 'auto',
-                          width: '0',
-                        }} />
-                      )
-                    }
-                    </Box>
-                  </Paper>
+                  <ColorIndicator colorPrimary={rose.colorPrimary} colorSecondary={rose.colorSecondary} />
                 </CardContent>
               </Card>
             </Grid>
@@ -145,14 +82,7 @@ function RoseDetails() {
               <Card sx={{backgroundColor: '#9ca'}}>
                 <CardHeader title="Fragrance" sx={{textAlign: 'center', pb: 0}} />
                 <CardContent>
-                  <Box sx={{
-                    display: 'flex',
-                    margin: 'auto',
-                    mb: 2,
-                    width: '200px',
-                  }}>
-                    <PillIndicator totalBoxes={7} filledBoxes={rose.fragranceIntensity} filledColor='#95a' />
-                  </Box>
+                  <PillIndicator totalBoxes={7} filledBoxes={rose.fragranceIntensity} filledColor='#95a' />
                   <Typography fontWeight='bold' align='center'>
                     {rose.fragranceDescription}
                   </Typography>

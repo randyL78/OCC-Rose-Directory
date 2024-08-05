@@ -50,7 +50,12 @@ function PillIndicator(
   } : PillIndicatorProps
 ) {
   return(
-    <>
+    <Box sx={{
+      display: 'flex',
+      margin: 'auto',
+      mb: 2,
+      width: '200px',
+    }}>
       {
         [...Array(totalBoxes)].map((_, i) => {
           const filled = i < filledBoxes
@@ -61,7 +66,7 @@ function PillIndicator(
           )
         })
       }
-    </>
+    </Box>
   )
 }
 
