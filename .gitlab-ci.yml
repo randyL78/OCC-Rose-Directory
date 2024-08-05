@@ -62,7 +62,7 @@ CLIENT__DEPLOY_PRODUCTION:
   <<: *client_deploy_setup
   stage: deploy
   rules:
-    - if: $CI_COMMIT_BRANCH == production
+    - if: $CI_COMMIT_BRANCH == "production"
   script:
     - aws s3 sync rose-client/dist s3://${S3_BUCKET}/production/client
     - aws cloudfront create-invalidation --distribution-id ${PRODUCTION_DISTRIBUTION_ID} --paths "/index.html"
