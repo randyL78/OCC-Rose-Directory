@@ -6,14 +6,15 @@ import {routes} from "../constants/routes.ts";
 interface RoseBreadcrumbsProps {
   slug?: string
   name?: string
+  color?: string
 }
 
-function RoseBreadcrumbs({slug, name}: RoseBreadcrumbsProps) {
+function RoseBreadcrumbs({slug, name, color = '#fff'}: RoseBreadcrumbsProps) {
   const showDetailLink = slug && name
 
   return (
     <Breadcrumbs
-      color="#fff"
+      color={color}
       aria-label="breadcrumb"
       separator={<NavigateNextIcon fontSize="small" />}
     >
