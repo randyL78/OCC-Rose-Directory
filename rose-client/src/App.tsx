@@ -6,6 +6,7 @@ import {routes} from "./constants/routes.ts";
 import {roseDetailLoader} from "./loaders/RoseDetailLoader.ts";
 import Home from "./pages/Home.tsx";
 import RoseIndex from "./pages/RoseIndex.tsx";
+import {roseIndexLoader} from "./loaders/RoseIndexLoader.ts";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
   {
     path: routes.RoseIndex,
     element: <RoseIndex />,
+    loader: roseIndexLoader,
   },
   {
     path: routes.RoseDetails,

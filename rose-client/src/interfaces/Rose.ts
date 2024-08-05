@@ -1,9 +1,7 @@
-export interface Rose {
-  id: number;
-  name: string;
-  slug: string;
+import {RoseIndexItem} from "./RoseIndexItem.ts";
+
+export interface Rose extends RoseIndexItem {
   description: string;
-  imageUrl: string;
   history: string;
   careInstructions: string;
   reblooms: boolean;
