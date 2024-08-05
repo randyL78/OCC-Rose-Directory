@@ -1,6 +1,6 @@
 # OCC Rose Directory
 
-![Build Status](https://gitlab.com/randydavidl78/occ-rose-directory/badges/main/pipeline.svg?ignore_skipped=true)
+[![pipeline status](https://gitlab.com/randydavidl78/occ-rose-directory/badges/main/pipeline.svg)](https://gitlab.com/randydavidl78/occ-rose-directory/-/commits/main)
 
 A resource on the roses sold by Old City Cemetery in Lynchburg, VA at their
 annual Rose Festival Sale. It will provide a detailed description, history,
