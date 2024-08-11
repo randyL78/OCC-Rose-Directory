@@ -59,12 +59,20 @@ CLIENT__LINT:
     - npm run lint
 
 CLIENT__DEPLOY_STAGING:
+  image:
+    name: amazon/aws-cli:latest
+    entrypoint:
+      - '/usr/bin/env'
   stage: acceptance
   script:
     - aws s3 sync rose-client/dist s3://${S3_BUCKET}/staging/client
     - aws cloudfront create-invalidation --distribution-id ${STAGING_DISTRIBUTION_ID} --paths "/index.html"
 
 CLIENT__DEPLOY_PRODUCTION:
+  image:
+    name: amazon/aws-cli:latest
+    entrypoint:
+      - '/usr/bin/env'
   stage: deploy
   rules:
     - if: $CI_COMMIT_BRANCH == "production"
