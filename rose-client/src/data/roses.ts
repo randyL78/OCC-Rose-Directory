@@ -80,4 +80,31 @@ export const roses: Rose[] = [
       'Bred by Dr. Walter Van Fleet, USA, 1910. At Old City Cemetery it is located on the west side of The Wall (section M) at the southern end and generally blooms in May.',
     colorPrimary: '#F1FAFA',
   },
+  {
+    id: 5,
+    imageUrl: 'https://www.trinityfarm.co.nz/uploads/1/3/2/2/13225380/s503340014952627149_p119_i1_w330.jpeg',
+    name: 'Aviateur Bleriot',
+    slug: 'aviateur-bleriot',
+    reblooms: 'Blooms Late Spring',
+    fragranceIntensity: 5,
+    fragranceDescription: 'Magnolia Scent',
+    description:
+      "Long lasting 2\" wide fully double (26-40 petals) flowers bloom in clusters of 3-9 blooms. The yellow " +
+      "(golden-yellow/lemon-yellow) flowers bloom against glossy, dark green, leathery foliage. Aviateur can easily be" +
+      " trained against a pergola, rose bower, or fence. Without support, the plant will act as a groundcover. A " +
+      "hybrid Wichurana that is a vigorous climber and grows 12-15' tall by 6' wide. Very resistant to disease.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) and loose, loamy, well-draining soil. Feed a " +
+      "balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks till fall. " +
+      "Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in summer when the " +
+      "soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help keep the roots " +
+      "cool and conserve water. This rose blooms on old wood, so it is best to prune annually soon after flowering ends. " +
+      "Remove any dead, crossing, or weak branches no larger than a pencil. Pruning helps to stimulate spring growth," +
+      " maintain a desired shape, and improve air circulation. ",
+    history:
+      'A "found" rose, it was bred by Frederic Fauque of France before 1909, and named for French aviator and inventor ' +
+      'Louis Bleriot. Bleriot was the first man to make an international aeroplane flight from Europe to the UK in a ' +
+      'small 24 H.P. monoplane. At Old City Cemetery it is located in the Cato Garden near the Pest House.',
+    colorPrimary: '#fffa79',
+  },
 ]
