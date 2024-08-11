@@ -78,6 +78,6 @@ export const roses: Rose[] = [
       "to stimulate spring growth, maintain a desired shape, and improve air circulation. ",
     history:
       'Bred by Dr. Walter Van Fleet, USA, 1910. At Old City Cemetery it is located on the west side of The Wall (section M) at the southern end and generally blooms in May.',
-    colorPrimary: '#E1EAEA',
+    colorPrimary: '#F1FAFA',
   },
 ]
