@@ -4,7 +4,7 @@ export interface Rose extends RoseIndexItem {
   description: string;
   history: string;
   careInstructions: string;
-  reblooms: boolean;
+  reblooms: string;
   fragranceIntensity: number;
   fragranceDescription: string;
   colorPrimary: string;

@@ -22,8 +22,8 @@ import {backdropImage} from "../constants/backdropImage";
         }}
       >
         <HeroImage imageUrl={backdropImage} />
-        <Typography variant="h1" color='#fff'>Home</Typography>
-        <Link underline='none' component={RouterLink} to={routes.RoseIndex} color='#fff'>Roses</Link>
+        <Typography variant="h1" color='#fff'>Old City Cemetery</Typography>
+        <Link underline='none' component={RouterLink} to={routes.RoseIndex} color='#fff'>Rose Directory</Link>
       </Container>
     </Box>
   )

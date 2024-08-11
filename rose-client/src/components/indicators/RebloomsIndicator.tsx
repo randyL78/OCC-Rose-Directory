@@ -1,14 +1,12 @@
 import {CardHeader} from "@mui/material";
 
 interface Props {
-  reblooms?: boolean
+  reblooms: string
 }
 
-function RebloomsIndicator({reblooms = true}: Props) {
-  const title = reblooms ? "Reblooms" : "Once Blooming";
-
+function RebloomsIndicator({reblooms}: Props) {
   return (
-    <CardHeader title={title} align="center" />
+    <CardHeader title={reblooms} align="center" />
   )
 }
 

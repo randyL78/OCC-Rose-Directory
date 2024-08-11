@@ -25,7 +25,7 @@ function RoseIndex() {
         }}
       >
         <RoseBreadcrumbs />
-        <Typography variant="h1" color='#fff'>Roses</Typography>
+        <Typography variant="h1" color='#fff'>Rose Directory</Typography>
         <Paper>
           { roses &&
             <List>
