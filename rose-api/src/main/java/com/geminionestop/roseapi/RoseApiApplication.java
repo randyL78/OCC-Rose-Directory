@@ -13,7 +13,7 @@ public class RoseApiApplication {
 
     @RequestMapping("/")
     ResponseEntity<Greeting> home() {
-        Greeting greeting = new Greeting("Hello from Rose Directory.");
+        Greeting greeting = new Greeting("Api for OCC Rose Directory app.");
 
         return ResponseEntity.ok(greeting);
     }
