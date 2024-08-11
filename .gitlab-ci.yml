@@ -3,21 +3,25 @@ stages:
   - acceptance
   - deploy
 
+variables:
+  TAG: $ECR_REPOSITORY/rose_api
+
 .client_setup: &client_setup
   image: node:20-alpine
   before_script:
     - cd rose-client
     - npm install
 
-.client_deploy_setup: &client_deploy_setup
+ASSUME_ROLE:
+  stage: commit
   image:
     name: amazon/aws-cli:latest
     entrypoint:
       - '/usr/bin/env'
   id_tokens:
     ID_TOKEN:
-      aud: rose_directory_client_s3
-  before_script:
+      aud: rose_directory
+  script:
     - >
       STS=($(aws sts assume-role-with-web-identity
       --role-arn ${AWS_ROLE_ARN}
@@ -26,9 +30,12 @@ stages:
       --duration-seconds 3600
       --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]'
       --output text))
-    - export AWS_ACCESS_KEY_ID="${STS[0]}"
-    - export AWS_SECRET_ACCESS_KEY="${STS[1]}"
-    - export AWS_SESSION_TOKEN="${STS[2]}"
+    - echo AWS_ACCESS_KEY_ID="${STS[0]}" >> build.env
+    - echo AWS_SECRET_ACCESS_KEY="${STS[1]}" >> build.env
+    - echo AWS_SESSION_TOKEN="${STS[2]}" >> build.env
+  artifacts:
+    reports:
+      dotenv: build.env
 
 CLIENT__BUILD:
   <<: *client_setup
@@ -52,17 +59,39 @@ CLIENT__LINT:
     - npm run lint
 
 CLIENT__DEPLOY_STAGING:
-  <<: *client_deploy_setup
   stage: acceptance
   script:
     - aws s3 sync rose-client/dist s3://${S3_BUCKET}/staging/client
     - aws cloudfront create-invalidation --distribution-id ${STAGING_DISTRIBUTION_ID} --paths "/index.html"
 
 CLIENT__DEPLOY_PRODUCTION:
-  <<: *client_deploy_setup
   stage: deploy
   rules:
     - if: $CI_COMMIT_BRANCH == "production"
   script:
     - aws s3 sync rose-client/dist s3://${S3_BUCKET}/production/client
     - aws cloudfront create-invalidation --distribution-id ${PRODUCTION_DISTRIBUTION_ID} --paths "/index.html"
+
+API_BUILD:
+  image: amazoncorretto:17
+  stage: commit
+  script:
+    - cd rose-api
+    - ./gradlew build
+  artifacts:
+    paths:
+      - rose-api/build/libs
+
+API_CONTAINER:
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  stage: deploy
+  before_script:
+    - apk add --no-cache aws-cli
+  script:
+    - aws ecr get-login-password | docker login $ECR_REPOSITORY -u AWS --password-stdin
+    - cd rose-api
+    - docker build -t $TAG .
+    - docker push $TAG
+
