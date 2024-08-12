@@ -107,4 +107,29 @@ export const roses: Rose[] = [
       'small 24 H.P. monoplane. At Old City Cemetery it is located in the Cato Garden near the Pest House.',
     colorPrimary: '#fffa79',
   },
+  {
+    id: 6,
+    imageUrl: 'https://i0.wp.com/palatineroses.com/wp-content/uploads/2021/03/dortmund-huge.jpg?fit=2048%2C1536&ssl=1',
+    name: 'Dortmund',
+    slug: 'dortmund',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 3,
+    description:
+      "Dortmund has bright, almost iridescent, cherry-red flowers with a white eye and ruffled 3 1/2\" single blooms." +
+      "  It has extra-dark, holly like foliage and beautiful orange hips in the fall making it a beauty in multiple" +
+      " seasons. Climbing to 10-12' tall by 7-8' wide, it can easily be trained against a pergola, trellis, or fence, " +
+      "but can also be cut back and trained as a shrub. Dortmund prefers full sun but is quite tolerant of shade as " +
+      "well. It is highly disease resistant.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) and loose, loamy, well-draining soil. Feed a " +
+      "balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks till fall. " +
+      "Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in summer when the " +
+      "soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help keep the roots " +
+      "cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil. Pruning helps to" +
+      " stimulate spring growth, maintain a desired shape, and improve air circulation. ",
+    history:
+      'Bred by Wilhelm J.H. Kordes II, Germany, 1955.  At Old City Cemetery it is located growing on the fence in ' +
+      'front of the Hearse House and Caretaker\'s Museum.',
+    colorPrimary: '#CD153A',
+  },
 ]

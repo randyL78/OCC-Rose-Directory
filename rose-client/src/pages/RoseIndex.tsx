@@ -31,7 +31,7 @@ function RoseIndex() {
             <List>
               {
                 roses.map((rose) => (
-                  <ListItem disablePadding>
+                  <ListItem key={rose.id} disablePadding>
                     <ListItemButton component={Link} to={`${routes.RoseIndex}/${rose.slug}`}>
                       <ListItemText primary={rose.name}/>
                     </ListItemButton>

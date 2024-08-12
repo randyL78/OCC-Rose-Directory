@@ -27,7 +27,7 @@ for that specific plant.
 - [X] Add basic home page
 - [X] Add basic rose list page
 - [X] Deploy hello-world version of API to ECS
-- [ ] Add static rose detail endpoint to API
+- [X] Add static rose detail endpoint to API
 - [ ] Add static rose list endpoint to API
 - [ ] Add an in-app data repository to API and connect resources to it
 - [ ] Convert in-app data to a file store to facilitate building out Admin functionality
