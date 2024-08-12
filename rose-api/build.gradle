@@ -4,6 +4,8 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.6'
 }
 
+apply plugin: 'jacoco'
+
 group = 'com.geminionestop'
 version = '0.0.1-SNAPSHOT'
 
@@ -28,9 +30,25 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.assertj:assertj-core'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                value = 'COVEREDRATIO'
+                minimum = 0.90
+            }
+        }
+    }
+}
+
+test.finalizedBy jacocoTestReport
+
+check.dependsOn jacocoTestCoverageVerification
