@@ -92,7 +92,7 @@ API_BUILD:
 
 API_TEST:
   image: amazoncorretto:17
-  stage: acceptance
+  stage: commit
   script:
     - cd rose-api
     - ./gradlew check
