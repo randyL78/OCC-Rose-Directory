@@ -132,4 +132,32 @@ export const roses: Rose[] = [
       'front of the Hearse House and Caretaker\'s Museum.',
     colorPrimary: '#CD153A',
   },
+  {
+    id: 7,
+    imageUrl: 'https://txmg.org/hendersonmg/files/2022/03/Peggy-Martin-Rose-2022-PS.png',
+    name: 'Peggy Martin',
+    slug: 'peggy-martin',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 3,
+    description:
+      "Large clusters of 2\" semi-double to double pink flowers grow on nearly thornless canes climbing 6-15' tall by" +
+      " 6-10' wide. Can easily be trained against a pergola, trellis, fence, or tie it back against a wall.  Peggy is " +
+      "extremely hardy, a vigorous grower, and highly disease resistant.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) and loose, loamy, well-draining soil. Feed a " +
+      "balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks till fall. " +
+      "Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in summer when the " +
+      "soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help keep the roots " +
+      "cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil. Pruning helps to" +
+      " stimulate spring growth, maintain a desired shape, and improve air circulation. ",
+    history:
+      'Also known as "The Hurricane Katrina Rose," it was discovered by gardener Peggy Martin, USA, 1989, after ' +
+      'Hurricane Katrina devastated her New Orleans home and gardens by covering all with 20 feet of water for ' +
+      'two weeks. Of the 450 roses in her gardens, this namesake rose was the only one to survive. From it has come ' +
+      'countless thousands of cuttings and new plants to be enjoyed by others. At Old City Cemetery, two are growing ' +
+      'together on the wall of the Mourning Museum and Offices. They continue to grow vigorously and put on a gorgeous ' +
+      'springtime display even after being cut back several times.',
+    colorPrimary: '#F89EB3',
+    colorSecondary: '#DB407D'
+  }
 ]
