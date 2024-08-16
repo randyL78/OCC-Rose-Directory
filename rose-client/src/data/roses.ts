@@ -188,5 +188,34 @@ export const roses: Rose[] = [
       'large, wrought iron fence enclosure located in the very first original acre given to the cemetery by the city ' +
       'founder, John Lynch, in 1806. ',
     colorPrimary: '#f7C3D9',
-  }
+  },
+  {
+    id: 9,
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/Ambassador.jpg',
+    name: 'Ambassador',
+    slug: 'ambassador',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 5,
+    fragranceDescription: 'Sweet',
+    description:
+      "Also called the Sweetheart Rose, Cecile Brunner has 2\" pale pink fully double flowers with darker carmine-pink" +
+      " centers that bloom heavily on vigorous canes. Large clusters of 7-8 flowers have a moderate, sweet fragrance." +
+      " This climber has a fairly full, upright growth habit to 18' tall by 9' wide and can easily be trained against " +
+      "a pergola, trellis, fence or building.  The first summer flush of blooms is the heaviest, with scattered repeat " +
+      "blooms throughout the season. It tolerates shade and poorer soils and is very disease resistant.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help" +
+      " keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil. " +
+      "Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation. Cecile is a " +
+      "vigorous grower and can use an occasional heavy-handed pruning, or it can be left alone to devour an unsightly " +
+      "garage or shed!",
+    history:
+      'Discovered/introduced 1894. Climbing Cecile Brunner\'s home at Old City Cemetery is in The Owen Family Plot, a ' +
+      'large, wrought iron fence enclosure located in the very first original acre given to the cemetery by the city ' +
+      'founder, John Lynch, in 1806. ',
+    colorPrimary: '#FF9E7B',
+  },
 ]
