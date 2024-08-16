@@ -1,5 +1,5 @@
 import {Link, useLoaderData} from "react-router-dom";
-import {Box, Container, List, ListItem, ListItemButton, ListItemText, Paper, Typography} from "@mui/material";
+import {Container, List, ListItem, ListItemButton, ListItemText, Paper, Typography} from "@mui/material";
 import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
 import RoseBreadcrumbs from "../components/RoseBreadcrumbs.tsx";
@@ -10,13 +10,7 @@ function RoseIndex() {
   const roses = useLoaderData() as RoseIndexItem[]
 
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        pb: 4,
-        minHeight: '100vh',
-      }}
-    >
+    <>
       <Backdrop imageUrl={backdropImage} />
       <Container
         sx={{
@@ -42,7 +36,7 @@ function RoseIndex() {
           }
         </Paper>
       </Container>
-    </Box>
+    </>
   )
 }
 

@@ -1,5 +1,4 @@
 import {
-  Box,
   Card,
   CardContent,
   CardHeader,
@@ -26,12 +25,7 @@ function RoseDetails() {
   const roseBreadcrumb = <RoseBreadcrumbs slug={rose.slug} name={rose.name} />
 
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        pb: 4,
-      }}
-    >
+    <>
       <Backdrop imageUrl={rose.imageUrl} />
       <Container
         sx={{
@@ -95,7 +89,7 @@ function RoseDetails() {
           <HistoryCard>{rose.history}</HistoryCard>
         </Stack>
       </Container>
-    </Box>
+    </>
   )
 }
 

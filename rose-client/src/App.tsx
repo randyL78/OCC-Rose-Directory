@@ -7,22 +7,29 @@ import {roseDetailLoader} from "./loaders/RoseDetailLoader.ts";
 import Home from "./pages/Home.tsx";
 import RoseIndex from "./pages/RoseIndex.tsx";
 import {roseIndexLoader} from "./loaders/RoseIndexLoader.ts";
+import Layout from "./components/Layout.tsx";
 
 const router = createBrowserRouter([
   {
-    path: routes.Home,
-    element: <Home />,
-  },
-  {
-    path: routes.RoseIndex,
-    element: <RoseIndex />,
-    loader: roseIndexLoader,
-  },
-  {
-    path: routes.RoseDetails,
-    element: <RoseDetails />,
-    //@ts-expect-error We know the data type being returned is rose data
-    loader: roseDetailLoader,
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: routes.Home,
+        element: <Home />,
+      },
+      {
+        path: routes.RoseIndex,
+        element: <RoseIndex />,
+        loader: roseIndexLoader,
+      },
+      {
+        path: routes.RoseDetails,
+        element: <RoseDetails />,
+        //@ts-expect-error We know the data type being returned is rose data
+        loader: roseDetailLoader,
+      },
+    ]
   }
 ])
 

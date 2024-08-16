@@ -22,7 +22,8 @@ function HeroImage({imageUrl, breadcrumb}: HeroImageProps) {
         backgroundPosition: 'center',
         backgroundImage: `url(${imageUrl})`,
       }}
-    >{ breadcrumb && (
+    >
+      { breadcrumb && (
       <Box data-testid="bread-container" sx={{ p: 1 }}>
         {breadcrumb}
       </Box>
