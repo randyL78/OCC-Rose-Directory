@@ -245,6 +245,6 @@ export const roses: Rose[] = [
     history:
       'Bred by William Paul and Son, UK, after 1906. At Old City Cemetery it is in Section \'S\' in the Henning Family' +
       ' wrought iron enclosure near the cemetery entrance.',
-    colorPrimary: '#eBf2d9',
+    colorPrimary: '#F5F08C',
   },
 ]
