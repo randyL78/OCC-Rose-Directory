@@ -218,4 +218,33 @@ export const roses: Rose[] = [
       'founder, John Lynch, in 1806. ',
     colorPrimary: '#FF9E7B',
   },
+  {
+    id: 10,
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/Mermaid.jpg',
+    name: 'Mermaid',
+    slug: 'mermaid',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 3,
+    fragranceDescription: 'Delicate, Sweet',
+    description:
+      "Award winning climbing Mermaid is a vigorous and exceptional grower. She will quickly climb and cover any fence," +
+      " trellis, tree or wall, and then dare you to cut her back. Very large and showy 5\" flowers are canary yellow " +
+      "with bright amber stamens and will bloom continuously throughout the season in show-stopping abundance. Grows " +
+      "15-20' tall and up to 20' wide. Mermaid is very hardy, disease resistant, and low maintenance. Great choice for " +
+      "covering large areas of the garden in a showy statement. This is a hybrid Bracteata that can tolerate more shade " +
+      "than most roses.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help " +
+      "keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil. " +
+      "Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation. Mermaid is a " +
+      "vigorous grower and can use an occasional heavy-handed pruning, or it can be left alone to devour an unsightly " +
+      "garage or shed!",
+    history:
+      'Bred by William Paul and Son, UK, after 1906. At Old City Cemetery it is in Section \'S\' in the Henning Family' +
+      ' wrought iron enclosure near the cemetery entrance.',
+    colorPrimary: '#eBf2d9',
+  },
 ]
