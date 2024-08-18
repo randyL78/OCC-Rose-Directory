@@ -1,11 +1,14 @@
 package com.geminionestop.roseapi.controllers;
 
 import com.geminionestop.roseapi.services.TableService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/v1/tables")
@@ -17,27 +20,27 @@ public class TableController {
     }
 
     @PostMapping()
-    public String createTableInDynamo() {
+    public ResponseEntity<?> createTableInDynamo() {
         System.out.println("Creating a new table");
 
         tableService.createRoseTable();
 
-        return "Created Tables";
+        return ResponseEntity.created(URI.create("")).body("Created Tables");
     }
 
     @GetMapping()
-    public String getDynamoTest() {
+    public ResponseEntity<?> getDynamoTest() {
         System.out.println("Listing your Amazon DynamoDB tables:\n");
 
         tableService.listAllTables();
 
-        return "Listing tables";
+        return ResponseEntity.ok("Listing tables");
     }
 
     @DeleteMapping()
-    public String deleteTable() {
+    public ResponseEntity<?> deleteTable() {
         tableService.deleteRoseTable();
 
-        return "Deleted table";
+        return ResponseEntity.noContent().build();
     }
 }

@@ -1,17 +1,16 @@
 package com.geminionestop.roseapi.services;
 
 import com.geminionestop.roseapi.models.Rose;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
-import software.amazon.awssdk.core.internal.waiters.ResponseOrException;
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbTable;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
-import software.amazon.awssdk.services.dynamodb.model.DescribeTableResponse;
 import software.amazon.awssdk.services.dynamodb.model.DynamoDbException;
 import software.amazon.awssdk.services.dynamodb.model.ListTablesRequest;
 import software.amazon.awssdk.services.dynamodb.model.ListTablesResponse;
-import software.amazon.awssdk.services.dynamodb.waiters.DynamoDbWaiter;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class TableService {
@@ -22,6 +21,7 @@ public class TableService {
     TableService(DynamoDbClient dbClient, DynamoDbTable<Rose> roseTable) {
         this.dbClient = dbClient;
         this.roseTable = roseTable;
+
     }
 
     public void listAllTables() {

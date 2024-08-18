@@ -23,6 +23,15 @@ public class RoseControllerTest {
     private RoseService roseService;
 
     @Test
+    void createRoseReturnsHttpCreated() {
+      RoseDetailDto roseDetail = getRoseDetail();
+
+      ResponseEntity<?> response = controller.createRose(roseDetail);
+
+      assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+    }
+
+    @Test
     void getRoseDetailsShouldReturnOkStatus() {
         RoseDetailDto roseDetail = getRoseDetail();
         when(roseService.getRoseDetails(roseDetail.slug())).thenReturn(roseDetail);
