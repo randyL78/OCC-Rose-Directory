@@ -282,7 +282,7 @@ export const roses: Rose[] = [
     fragranceIntensity: 7,
     fragranceDescription: 'Sweet',
     description:
-      "TAlso called the The Brides Rose, Madame Plantier has 3\" white or near-white very double flowers that bloom " +
+      "Also called the The Brides Rose, Madame Plantier has 3\" white or near-white very double flowers that bloom " +
       "heavily throughout spring. Clusters of abundantly petaled flowers bloom on nearly thornless canes of upright " +
       "growth and arching habit to 5-12' tall by 5-8' wide.  Providing it with a trellis or fence will encourage it to " +
       "grow as a climber. Otherwise it remains more bush like in size. Tolerates a half day of shade and is very " +
