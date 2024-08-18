@@ -1,11 +1,11 @@
-package com.geminionestop.roseapi.dto;
+package com.geminionestop.roseapi.dtos;
 
 import lombok.Builder;
 
 @Builder
 public record RoseDetailDto(
-        long id,
         String imageUrl,
+        String thumbnailUrl,
         String name,
         String slug,
         String reblooms,

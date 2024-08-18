@@ -1,7 +1,7 @@
 package com.geminionestop.roseapi.integration;
 
 import com.geminionestop.roseapi.RoseApiApplication;
-import com.geminionestop.roseapi.dto.RoseDetailDto;
+import com.geminionestop.roseapi.dtos.RoseDetailDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

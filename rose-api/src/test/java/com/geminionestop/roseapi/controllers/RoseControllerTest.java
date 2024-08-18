@@ -1,7 +1,7 @@
-package com.geminionestop.roseapi.controller;
+package com.geminionestop.roseapi.controllers;
 
-import com.geminionestop.roseapi.dto.RoseDetailDto;
-import com.geminionestop.roseapi.service.RoseService;
+import com.geminionestop.roseapi.dtos.RoseDetailDto;
+import com.geminionestop.roseapi.services.RoseService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -64,7 +64,6 @@ public class RoseControllerTest {
     private RoseDetailDto getRoseDetail() {
         return RoseDetailDto
                 .builder()
-                .id(123L)
                 .name("Test Rose")
                 .slug("test-slug")
                 .reblooms("Yep")
