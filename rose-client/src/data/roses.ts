@@ -247,4 +247,56 @@ export const roses: Rose[] = [
       ' wrought iron enclosure near the cemetery entrance.',
     colorPrimary: '#F5F08C',
   },
+  {
+    id: 11,
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/ClimbingPinkie.jpg',
+    name: 'Climbing Pinkie',
+    slug: 'climbing-pinkie',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 5,
+    fragranceDescription: 'Sweet',
+    description:
+      "This polyantha breed of rose has a versatile growth habit; it can be kept to a modest 5' shrub height or let it " +
+      "go as a climber to 10' tall by 8' wide. Once established, Climbing Pinkie is rarely out of bloom throughout the " +
+      "season and puts on a prolific display of sweetly fragranced, double (17-25 petals) flowers. A vigorous grower " +
+      "with nearly thornless canes, providing it with a trellis or fence will encourage it to grow as a climber. Without" +
+      " support, she will grow as a graceful, cascading shrub.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks till " +
+      "fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in summer " +
+      "when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help keep " +
+      "the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil. Pruning " +
+      "helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
+    history:
+      'Discovered by E.P. Dering, USA, 1952. At Old City Cemetery, Climbing Pinkie is located in Section S in the ' +
+      'Henning family wrought iron enclosure.',
+    colorPrimary: '#DE85A3',
+  },
+  {
+    id: 12,
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/MadamPlantierCropped.jpg',
+    name: 'Madame Plantier',
+    slug: 'madame-plantier',
+    reblooms: 'Spring Blooming',
+    fragranceIntensity: 7,
+    fragranceDescription: 'Sweet',
+    description:
+      "TAlso called the The Brides Rose, Madame Plantier has 3\" white or near-white very double flowers that bloom " +
+      "heavily throughout spring. Clusters of abundantly petaled flowers bloom on nearly thornless canes of upright " +
+      "growth and arching habit to 5-12' tall by 5-8' wide.  Providing it with a trellis or fence will encourage it to " +
+      "grow as a climber. Otherwise it remains more bush like in size. Tolerates a half day of shade and is very " +
+      "disease resistant. Its Alba-hybrid Noisette heritage gives it its outstanding fragrance.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help " +
+      "keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil. " +
+      "Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation. ",
+    history:
+      'Bred by Jacques Plantier, France, 1835. At Old City Cemetery, Madame Plantier is located in Section EE, the ' +
+      'Confederate area, and Section E, the Pest House area.',
+    colorPrimary: '#E7EBF2',
+  },
 ]
