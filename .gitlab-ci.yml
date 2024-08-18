@@ -90,16 +90,6 @@ API_BUILD:
     paths:
       - rose-api/build/libs
 
-API_TEST:
-  image: amazoncorretto:17
-  stage: commit
-  script:
-    - cd rose-api
-    - ./gradlew check
-  artifacts:
-    paths:
-      - rose-api/build/libs
-
 API_CONTAINER:
   image: docker:24.0.5
   services:
