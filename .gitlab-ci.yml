@@ -97,9 +97,10 @@ API_CONTAINER:
   stage: deploy
   before_script:
     - apk add --no-cache aws-cli
-  script:
     - aws ecr get-login-password | docker login $ECR_REPOSITORY -u AWS --password-stdin
     - cd rose-api
+    - echo "amazon.dynamodb.endpoint=dynamodb.us-east-1.amazonaws.com" > src/main/resources/application.properties
+  script:
     - docker build -t $TAG .
     - docker push $TAG
     - aws ecs update-service --cluster $CLUSTER --service $ECS_SERVICE --force-new-deployment
