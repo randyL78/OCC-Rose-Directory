@@ -299,4 +299,30 @@ export const roses: Rose[] = [
       'Confederate area, and Section E, the Pest House area.',
     colorPrimary: '#E7EBF2',
   },
+  {
+    id: 12,
+    imageUrl: 'https://www.wilsonbrosgardens.com/cdn-cgi/image/quality%3D85/assets/images/Rose-Petite-Scotch-Pink-3.jpg',
+    name: 'Petite Pink Scotch',
+    slug: 'petite-pink-scotch',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 3,
+    fragranceDescription: 'Delicate',
+    description:
+      "1\" blooms in shades of pink, double (17-25 petals) flowers cover this hybrid Wichurana bush in summer with " +
+      "occasional repeat blooms later in the season. A vigorous grower with heavily thorned and prickled branching, it " +
+      "makes an outstanding groundcover shrub for slopes or a superb and graceful low hedge. It grows 3-4' tall by 4-5' " +
+      "wide, is nearly evergreen, and has excellent disease resistance.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in summer " +
+      "when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help keep " +
+      "the roots cool and conserve water. Let this shrub grow in a loose free-form ball or shape it with hedge clippers " +
+      "for a more sculptured look.",
+    history:
+      'Discovered by Jackson M. Batchellor of North Carolina, 1949, growing in the garden of a 1750\'s plantation near ' +
+      'Wilmington, N.C. The area was originally settled by Scottish and English immigrants and it is thought that this ' +
+      'rose came with them. At Old City Cemetery several bushes grow on the west side of The Wall, in Sections L and M.',
+    colorPrimary: '#FEB7E1',
+  },
 ]
