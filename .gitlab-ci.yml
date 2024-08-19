@@ -84,7 +84,14 @@ API_BUILD:
   image: amazoncorretto:17
   stage: commit
   script:
-    - cd rose-api/src/main/resources
+    - ls
+    - cd rose-api
+    - ls
+    - cd src
+    - ls
+    - cd main
+    - ls
+    - cd resources
     - echo "amazon.dynamodb.endpoint=dynamodb.us-east-1.amazonaws.com" > application.properties
     - ./gradlew build -x test
   artifacts:
