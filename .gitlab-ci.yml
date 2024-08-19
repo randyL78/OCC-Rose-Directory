@@ -85,6 +85,7 @@ API_BUILD:
   stage: commit
   script:
     - cd rose-api
+    - echo "amazon.dynamodb.endpoint=dynamodb.us-east-1.amazonaws.com" > src/main/resources/application.properties
     - ./gradlew build -x test
   artifacts:
     paths:
@@ -99,7 +100,6 @@ API_CONTAINER:
     - apk add --no-cache aws-cli
     - aws ecr get-login-password | docker login $ECR_REPOSITORY -u AWS --password-stdin
     - cd rose-api
-    - echo "amazon.dynamodb.endpoint=dynamodb.us-east-1.amazonaws.com" > src/main/resources/application.properties
   script:
     - docker build -t $TAG .
     - docker push $TAG
