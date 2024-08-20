@@ -5,11 +5,12 @@ import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
 
 interface RoseListProps {
   roses: RoseIndexItem[];
+  value: number;
 }
 
-function RoseList({roses}: RoseListProps) {
+function RoseList({roses, value}: RoseListProps) {
   return (
-    <List>
+    <List id="simple-tab-panel-2" hidden={value !== 1}>
       {
         roses.map((rose) => (
           <ListItem key={rose.id} disablePadding>
