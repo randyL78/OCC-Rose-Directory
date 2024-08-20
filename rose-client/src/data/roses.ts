@@ -325,4 +325,79 @@ export const roses: Rose[] = [
       'rose came with them. At Old City Cemetery several bushes grow on the west side of The Wall, in Sections L and M.',
     colorPrimary: '#FEB7E1',
   },
+  {
+    id: 13,
+    imageUrl: 'https://baygardens.com/cdn/shop/products/hftfa1.jpg?v=1571439723',
+    name: 'The Fairy',
+    slug: 'the-fairy',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 3,
+    fragranceDescription: 'Delicate',
+    description:
+      "A very dainty little shrub with graceful, spreading, fan-like growth, bearing numerous clusters of light-pink " +
+      "1\" rosette blossoms from early summer until hard frost. For many, many months on end, this 3' tall by 4' wide " +
+      "hardy shrub turns out clouds of light pink flowers. The Fairy is easy to grow. It is vigorous, healthy, and very" +
+      " disease resistant. It tolerates shade well, although it will not flower as much.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in summer" +
+      " when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help keep " +
+      "the roots cool and conserve water.  Pruning is generally not necessary other than cutting out any dead branches.",
+    history:
+      'Bred by Ann and John Bentall, UK, 1932. At Old City Cemetery, several can be found in Section H, at the bottom ' +
+      'of the stone steps next to the Cemetery Center.',
+    colorPrimary: '#F4B2D0',
+  },
+  {
+    id: 14,
+    imageUrl: 'https://www.highcountryroses.com/wp/wp-content/uploads/John-F-Kennedy-2-1000p.jpg',
+    name: 'John F. Kennedy',
+    slug: 'john-f-kennedy',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 7,
+    fragranceDescription: 'Sweet',
+    description:
+      "Beautiful, exquisite and awe-inspiring, JFK will light up your garden. Slow-opening flowers of rich white start " +
+      "off with an unusual greenish tint in the bud stage. Flowers are very full, have perfect symmetry and have a " +
+      "strong sweet fragrance that makes them an excellent cut flower. Blooms throughout the season and holds up well " +
+      "in summer heat. This Hybrid Tea has flowers that are 5.5\" in diameter. Grows 4-6' tall by 3-4' wide. Needs " +
+      "no support. ",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
+    history:
+      'Bred by Eugene Boerner, United States, 1965. Named for John Fitzgerald Kennedy, 35th president of the United ' +
+      'States (1917-1963)',
+    colorPrimary: '#F1D396',
+  },
+  {
+    id: 15,
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Rosa_%27Veilchenblau%27_J1.jpg',
+    name: 'Veilchenblau',
+    slug: 'veilchenblau',
+    reblooms: 'Early Summer Bloom',
+    fragranceIntensity: 5,
+    fragranceDescription: 'Fruity, Green Apple',
+    description:
+      "The best-known violet rambler, Veilchenblau has small semi-double (9-12 petals) flowers 2\" in diameter that " +
+      "have a sweet, fruity fragrance. Blooms abundantly for three to four weeks in early summer in loose clusters of " +
+      "10-30 dark, purple-violet flowers with a white center that ages to mauve in hot conditions. Robust and nearly " +
+      "thornless, it grows 10-20' tall by 6-10' wide. Tolerates heat, half-shade, and poor soils. Hybrid multiflora.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help" +
+      " keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil. " +
+      "Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
+    history:
+      'Bred by Hermann Kiese, Germany, 1909. At Old City Cemetery, Veilchenblau is located on the west side of The Wall' +
+      ' just up from the Mourning Museum.',
+    colorPrimary: '#9B3895',
+  },
 ]
