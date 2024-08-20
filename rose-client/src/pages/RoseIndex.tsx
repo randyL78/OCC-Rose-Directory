@@ -1,10 +1,10 @@
-import {Link, useLoaderData} from "react-router-dom";
-import {Container, List, ListItem, ListItemButton, ListItemText, Paper, Typography} from "@mui/material";
+import {useLoaderData} from "react-router-dom";
+import {Container, Paper, Typography} from "@mui/material";
 import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
 import RoseBreadcrumbs from "../components/RoseBreadcrumbs.tsx";
 import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
-import {routes} from "../constants/routes.ts";
+import RoseList from "../components/RoseList.tsx";
 
 function RoseIndex() {
   const roses = useLoaderData() as RoseIndexItem[]
@@ -22,17 +22,7 @@ function RoseIndex() {
         <Typography variant="h1" color='#fff'>Rose Directory</Typography>
         <Paper>
           { roses &&
-            <List>
-              {
-                roses.map((rose) => (
-                  <ListItem key={rose.id} disablePadding>
-                    <ListItemButton component={Link} to={`${routes.RoseIndex}/${rose.slug}`}>
-                      <ListItemText primary={rose.name}/>
-                    </ListItemButton>
-                  </ListItem>
-                ))
-              }
-            </List>
+            <RoseList roses={roses} />
           }
         </Paper>
       </Container>
