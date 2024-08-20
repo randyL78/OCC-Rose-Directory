@@ -373,7 +373,7 @@ export const roses: Rose[] = [
     history:
       'Bred by Eugene Boerner, United States, 1965. Named for John Fitzgerald Kennedy, 35th president of the United ' +
       'States (1917-1963)',
-    colorPrimary: '#F1D396',
+    colorPrimary: '#FAF9DE',
   },
   {
     id: 15,
