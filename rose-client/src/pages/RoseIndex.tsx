@@ -34,12 +34,10 @@ function RoseIndex() {
               <Tab label="List" id="simple-tab-2" aria-controls="simple-tabpanel-2" />
             </Tabs>
           </Box>
-          { roses &&
-            <Box>
-              <RoseGallery value={value}/>
-              <RoseList roses={roses} value={value} />
-            </Box>
-          }
+          <Box position='relative'>
+            <RoseGallery value={value} roses={roses}/>
+            <RoseList roses={roses} value={value} />
+          </Box>
         </Paper>
       </Container>
     </>
