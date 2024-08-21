@@ -1,7 +1,7 @@
 import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
 import {Box, ImageList, ImageListItem, ImageListItemBar, useMediaQuery} from "@mui/material";
 import theme from "../styles/theme.ts";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {routes} from "../constants/routes.ts";
 
 interface RoseGalleryProps {
@@ -23,19 +23,23 @@ const imageSizeByIndex = [
 ]
 
 function RoseListItem({rose, index}: {rose: RoseIndexItem, index: number}) {
+  const navigate = useNavigate();
   const sizeIndex = index % imageSizeByIndex.length
   const imgRow = imageSizeByIndex[sizeIndex].row
   const imgCol = imageSizeByIndex[sizeIndex].col
+
+  const imageClickHandler = () => {
+    navigate(`${routes.RoseIndex}/${rose.slug}`)
+  }
+
   return (
-    <ImageListItem cols={imgCol} rows={imgRow} key={rose.id} >
+    <ImageListItem cols={imgCol} rows={imgRow} key={rose.id} onClick={imageClickHandler} sx={{ cursor: "pointer" }}>
         <img
           {...srcset(rose.imageUrl, 121, imgRow, imgCol)}
           alt={rose.name}
           loading="lazy"
         />
-      <Link to={`${routes.RoseIndex}/${rose.slug}`}>
         <ImageListItemBar title={rose.name} />
-      </Link>
     </ImageListItem>
   )
 }
