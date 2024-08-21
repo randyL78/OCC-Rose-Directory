@@ -300,7 +300,7 @@ export const roses: Rose[] = [
     colorPrimary: '#E7EBF2',
   },
   {
-    id: 12,
+    id: 13,
     imageUrl: 'https://www.wilsonbrosgardens.com/cdn-cgi/image/quality%3D85/assets/images/Rose-Petite-Scotch-Pink-3.jpg',
     name: 'Petite Pink Scotch',
     slug: 'petite-pink-scotch',
@@ -326,7 +326,7 @@ export const roses: Rose[] = [
     colorPrimary: '#FEB7E1',
   },
   {
-    id: 13,
+    id: 14,
     imageUrl: 'https://baygardens.com/cdn/shop/products/hftfa1.jpg?v=1571439723',
     name: 'The Fairy',
     slug: 'the-fairy',
@@ -350,7 +350,7 @@ export const roses: Rose[] = [
     colorPrimary: '#F4B2D0',
   },
   {
-    id: 14,
+    id: 15,
     imageUrl: 'https://www.highcountryroses.com/wp/wp-content/uploads/John-F-Kennedy-2-1000p.jpg',
     name: 'John F. Kennedy',
     slug: 'john-f-kennedy',
@@ -376,7 +376,7 @@ export const roses: Rose[] = [
     colorPrimary: '#FAF9DE',
   },
   {
-    id: 15,
+    id: 16,
     imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Rosa_%27Veilchenblau%27_J1.jpg',
     name: 'Veilchenblau',
     slug: 'veilchenblau',

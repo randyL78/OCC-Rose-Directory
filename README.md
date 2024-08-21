@@ -34,4 +34,10 @@ for that specific plant.
 - [ ] Add login page to client for Admins
 - [ ] Add login, logout, and authenticated endpoints to API
 - [ ] Convert file store to NoSql DB
+- [ ] Make Gallery Images route to Detail page
+- [ ] Have breadcrumbs go back to list or gallery based off of what was previously viewed
+- [ ] Shuffle feature for gallery
+- [ ] Generate QR codes
+- [ ] Add search and filter features to list
+- [ ] Tag system
 

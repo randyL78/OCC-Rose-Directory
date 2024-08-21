@@ -1,6 +1,8 @@
 import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
 import {Box, ImageList, ImageListItem, ImageListItemBar, useMediaQuery} from "@mui/material";
 import theme from "../styles/theme.ts";
+import {Link} from "react-router-dom";
+import {routes} from "../constants/routes.ts";
 
 interface RoseGalleryProps {
   roses: RoseIndexItem[];
@@ -18,7 +20,6 @@ const imageSizeByIndex = [
   {col: 1, row: 2},
   {col: 1, row: 2},
   {col: 2, row: 2},
-
 ]
 
 function RoseListItem({rose, index}: {rose: RoseIndexItem, index: number}) {
@@ -26,13 +27,15 @@ function RoseListItem({rose, index}: {rose: RoseIndexItem, index: number}) {
   const imgRow = imageSizeByIndex[sizeIndex].row
   const imgCol = imageSizeByIndex[sizeIndex].col
   return (
-    <ImageListItem cols={imgCol} rows={imgRow} key={rose.id}>
-      <img
-        {...srcset(rose.imageUrl, 121, imgRow, imgCol)}
-        alt={rose.name}
-        loading="lazy"
-      />
-      <ImageListItemBar title={rose.name} />
+    <ImageListItem cols={imgCol} rows={imgRow} key={rose.id} >
+        <img
+          {...srcset(rose.imageUrl, 121, imgRow, imgCol)}
+          alt={rose.name}
+          loading="lazy"
+        />
+      <Link to={`${routes.RoseIndex}/${rose.slug}`}>
+        <ImageListItemBar title={rose.name} />
+      </Link>
     </ImageListItem>
   )
 }
