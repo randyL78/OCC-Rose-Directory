@@ -5,15 +5,20 @@ import {backdropImage} from "../constants/backdropImage.ts";
 import RoseBreadcrumbs from "../components/RoseBreadcrumbs.tsx";
 import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
 import RoseList from "../components/RoseList.tsx";
-import {SyntheticEvent, useState} from "react";
+import {SyntheticEvent} from "react";
 import RoseGallery from "../components/RoseGallery.tsx";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "../store";
+import {updateTabIndex} from "../store/pagesSlice.ts";
 
 function RoseIndex() {
+  const roseIndexTab = useSelector((state: RootState) => state.pages.roseIndexTab);
+  const dispatch = useDispatch();
   const roses = useLoaderData() as RoseIndexItem[]
-  const [value, setValue] = useState<number>(0);
+
 
   const handleTabChange = (_event: SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    dispatch(updateTabIndex(newValue))
   }
 
   return (
@@ -29,14 +34,14 @@ function RoseIndex() {
         <Typography variant="h1" color='#fff'>Rose Directory</Typography>
         <Paper>
           <Box>
-            <Tabs value={value} onChange={handleTabChange}>
+            <Tabs value={roseIndexTab} onChange={handleTabChange}>
               <Tab label="Gallery" id="simple-tab-1" aria-controls="simple-tabpanel-1" />
               <Tab label="List" id="simple-tab-2" aria-controls="simple-tabpanel-2" />
             </Tabs>
           </Box>
           <Box position='relative'>
-            <RoseGallery value={value} roses={roses}/>
-            <RoseList roses={roses} value={value} />
+            <RoseGallery value={roseIndexTab} roses={roses}/>
+            <RoseList roses={roses} value={roseIndexTab} />
           </Box>
         </Paper>
       </Container>
