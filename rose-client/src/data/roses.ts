@@ -195,28 +195,24 @@ export const roses: Rose[] = [
     name: 'Ambassador',
     slug: 'ambassador',
     reblooms: 'Reblooms',
-    fragranceIntensity: 5,
-    fragranceDescription: 'Sweet',
+    fragranceIntensity: 1,
+    fragranceDescription: 'Mild',
     description:
-      "Also called the Sweetheart Rose, Cecile Brunner has 2\" pale pink fully double flowers with darker carmine-pink" +
-      " centers that bloom heavily on vigorous canes. Large clusters of 7-8 flowers have a moderate, sweet fragrance." +
-      " This climber has a fairly full, upright growth habit to 18' tall by 9' wide and can easily be trained against " +
-      "a pergola, trellis, fence or building.  The first summer flush of blooms is the heaviest, with scattered repeat " +
-      "blooms throughout the season. It tolerates shade and poorer soils and is very disease resistant.",
+      "Long stems produce stunning two-toned blooms of orange-to-peach with a blended golden peach inside. Flowers are " +
+      "very full (30-40 petals) with an average diameter of 4 inches. A repeat bloomer from late spring through early " +
+      "summer, it grows in a bushy form, 4' tall by 3' wide, with exceptional vigor. This hybrid Tea makes an excellent " +
+      "cut flower. Needs no support. ",
     careInstructions:
       "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
       "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
       "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
       "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help" +
       " keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil. " +
-      "Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation. Cecile is a " +
-      "vigorous grower and can use an occasional heavy-handed pruning, or it can be left alone to devour an unsightly " +
-      "garage or shed!",
+      "Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
     history:
-      'Discovered/introduced 1894. Climbing Cecile Brunner\'s home at Old City Cemetery is in The Owen Family Plot, a ' +
-      'large, wrought iron fence enclosure located in the very first original acre given to the cemetery by the city ' +
-      'founder, John Lynch, in 1806. ',
+      'Bred by Marie-Louise Paolino, France, before 1976. At Old City Cemetery it is located along the fence near the goat enclosure behind the Cemetery Center, in Section H.',
     colorPrimary: '#FF9E7B',
+    colorSecondary: '#FB9094',
   },
   {
     id: 10,
@@ -399,5 +395,31 @@ export const roses: Rose[] = [
       'Bred by Hermann Kiese, Germany, 1909. At Old City Cemetery, Veilchenblau is located on the west side of The Wall' +
       ' just up from the Mourning Museum.',
     colorPrimary: '#9B3895',
+  },
+  {
+    id: 17,
+    imageUrl: 'https://www.lesrosiersduberry.fr/wp-content/uploads/2016/04/leontine-gervais2.jpg',
+    name: 'Leontine Gervais',
+    slug: 'leontine-gervais',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 6,
+    fragranceDescription: 'Sweet, Musk',
+    description:
+      "Medium sized semi-double to double (15-40 petals) flowers 2-3\" in diameter have a strong, sweet, musky " +
+      "fragrance. The buds are round and copper red, but open to clusters of a peach-apricot blend in late spring with " +
+      "occasional later scattered blooms. This Hybrid Wichurana is a vigorous rambler growing to 10-25' tall by 10' " +
+      "wide. It is fairly shade tolerant, but blooms better in full sun.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks till " +
+      "fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in summer " +
+      "when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help keep " +
+      "the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil. Pruning " +
+      "helps to stimulate spring growth, maintain a desired shape, and improve air circulation. Remove spent flowers " +
+      "as they fade.",
+    history:
+      'Bred by Rene Barbier, France, 1903.  At Old City Cemetery, it is located on the west side of The Wall, ' +
+      'approaching the Chapel in Section M.',
+    colorPrimary: '#E0c2AA',
   },
 ]

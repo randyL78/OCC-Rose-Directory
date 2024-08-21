@@ -4,6 +4,7 @@ const initialState = {
   tabIndex: 0,
   searchExpanded: false,
   searchText: '',
+  pageIndex: 1,
 }
 
 const roseIndexSlice = createSlice({
@@ -17,11 +18,14 @@ const roseIndexSlice = createSlice({
     },
     updateSearchText: (state, action) => {
       state.searchText = action.payload
+    },
+    updatePageIndex: (state, action) => {
+      state.pageIndex = action.payload
     }
   },
   initialState
 })
 
-export const { updateTabIndex, toggleSearchExpanded, updateSearchText } = roseIndexSlice.actions;
+export const { updatePageIndex, updateTabIndex, toggleSearchExpanded, updateSearchText } = roseIndexSlice.actions;
 
 export default roseIndexSlice.reducer

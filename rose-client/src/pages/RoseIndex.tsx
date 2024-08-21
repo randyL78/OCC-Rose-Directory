@@ -1,31 +1,52 @@
 import {useLoaderData} from "react-router-dom";
-import {Box, Collapse, Container, Divider, Paper, Tab, Tabs, Typography} from "@mui/material";
+import {Box, Collapse, Container, Divider, Pagination, Paper, Tab, Tabs, Typography} from "@mui/material";
 import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
 import RoseBreadcrumbs from "../components/RoseBreadcrumbs.tsx";
 import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
 import RoseList from "../components/RoseList.tsx";
-import {SyntheticEvent, useEffect, useState} from "react";
+import {ChangeEvent, SyntheticEvent, useEffect, useState} from "react";
 import RoseGallery from "../components/RoseGallery.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store";
-import {toggleSearchExpanded, updateSearchText, updateTabIndex} from "../store/roseIndexSlice.ts";
+import {toggleSearchExpanded, updatePageIndex, updateSearchText, updateTabIndex} from "../store/roseIndexSlice.ts";
 import ExpandSearchButton from "../components/ExpandSearchButton.tsx";
 import SearchInput from "../components/SearchInput.tsx";
+
+const PAGE_SIZE = 15;
 
 function RoseIndex() {
   const tabIndex = useSelector((state: RootState) => state.roseIndex.tabIndex)
   const searchExpanded = useSelector((state: RootState) => state.roseIndex.searchExpanded)
   const searchText = useSelector((state: RootState) => state.roseIndex.searchText)
+  const pageIndex = useSelector((state: RootState) => state.roseIndex.pageIndex)
   const dispatch = useDispatch();
   const roses = useLoaderData() as RoseIndexItem[]
 
   const [filteredRoses, setFilteredRoses] = useState<RoseIndexItem[]>(roses)
+  const [numberOfPages, setNumberOfPages] = useState<number>(1)
 
   useEffect(() => {
     const value = searchExpanded ? searchText : ''
-    setFilteredRoses(    roses.filter((rose: RoseIndexItem) => rose.name.toLowerCase().includes(value.toLowerCase())))
-  }, [searchExpanded, searchText, roses]);
+    const filteredRoses = roses.filter((rose: RoseIndexItem) => rose.name.toLowerCase().includes(value.toLowerCase()))
+
+    const pagesLength = Math.ceil(filteredRoses.length / PAGE_SIZE)
+
+    setNumberOfPages(pagesLength)
+
+    const index = pageIndex > pagesLength ? pagesLength : pageIndex
+
+    const start = (index - 1) * PAGE_SIZE
+    const end = (index) * PAGE_SIZE
+
+    const pagedRoses = filteredRoses.slice(start, end)
+
+    setFilteredRoses(pagedRoses)
+
+    if(index != pageIndex) {
+      dispatch(updatePageIndex(index))
+    }
+  }, [searchExpanded, searchText, roses, pageIndex, dispatch]);
 
   const handleUpdateSearchText = (value: string) => {
     dispatch(updateSearchText(value))
@@ -37,6 +58,10 @@ function RoseIndex() {
 
   const handleExpandSearch = () => {
     dispatch(toggleSearchExpanded())
+  }
+
+  const handlePageChange = (_event: ChangeEvent<unknown>, value: number) => {
+    dispatch(updatePageIndex(value))
   }
 
   return (
@@ -67,6 +92,16 @@ function RoseIndex() {
           <Box position='relative'>
             <RoseGallery value={tabIndex} roses={filteredRoses}/>
             <RoseList roses={filteredRoses} value={tabIndex} />
+            <Box pb={2} px={2} display="flex" justifyContent="center">
+              <Pagination
+                page={pageIndex}
+                onChange={handlePageChange}
+                count={numberOfPages}
+                showFirstButton
+                showLastButton
+                variant="outlined"
+                color="primary" />
+            </Box>
           </Box>
         </Paper>
       </Container>
