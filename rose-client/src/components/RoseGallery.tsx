@@ -1,7 +1,7 @@
 import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
 import {Box, ImageList, ImageListItem, ImageListItemBar, useMediaQuery} from "@mui/material";
 import theme from "../styles/theme.ts";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {routes} from "../constants/routes.ts";
 
 interface RoseGalleryProps {
