@@ -1,9 +1,9 @@
 import {configureStore} from "@reduxjs/toolkit";
-import pagesSlice from "./pagesSlice";
+import RoseIndexSlice from "./roseIndexSlice.ts";
 
 const store = configureStore({
   reducer: {
-    pages: pagesSlice,
+    roseIndex: RoseIndexSlice,
   }
 })
 
