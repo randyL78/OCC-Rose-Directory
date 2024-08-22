@@ -34,7 +34,7 @@ function RoseIndex() {
 
     setNumberOfPages(pagesLength)
 
-    const index = pageIndex > pagesLength ? pagesLength : pageIndex
+    const index = (pageIndex > pagesLength || pageIndex === 0) ? pagesLength : pageIndex
 
     const start = (index - 1) * PAGE_SIZE
     const end = (index) * PAGE_SIZE
