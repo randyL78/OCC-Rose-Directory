@@ -449,4 +449,30 @@ export const roses: Rose[] = [
       'approaching the Chapel in Section M.',
     colorPrimary: '#E0c2AA',
   },
+  {
+    id: 18,
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/Albertine.jpg',
+    name: 'Albertine',
+    slug: 'albertine',
+    reblooms: 'Summer Blooming',
+    fragranceIntensity: 5,
+    fragranceDescription: 'Sweet',
+    description:
+      "A truly beautiful heritage rambler, this rose will delight as it clambers over a trellis, fence, or building. " +
+      "Flowers are a salmon and soft pink blend, fading to blush as it ages, with double cupped 3.5\" blooms of 26-40 " +
+      "petals. One of the best and healthiest roses, this Hybrid Wichurana is a vigorous grower to 7-20' tall by 10-15'" +
+      " wide.  Attractive, deep green glossy foliage. Makes an excellent cut flower.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning after flowering is finished helps to stimulate new growth, maintain a desired shape, and " +
+      "improve air circulation. Remove spent flowers as they fade.",
+    history:
+      'Bred by Barbier-Freres & Compagnie, France, before 1921.  At Old City Cemetery, it is located on the west ' +
+      'side of The Wall, in Section K.',
+    colorPrimary: '#F2CBC8',
+  },
 ]
