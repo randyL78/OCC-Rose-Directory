@@ -30,6 +30,33 @@ export const roses: Rose[] = [
     colorSecondary: '#fc5C96'
   },
   {
+    id: 2,
+    imageUrl: 'https://garden.org/pics/2014-04-04/Calif_Sue/6ca877.jpg',
+    name: 'Alberic Barbier',
+    slug: 'alberic-barbier',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 4,
+    fragranceDescription: 'Green Apple, Tea',
+    description:
+      "Creamy with a light yellow center that ages to white, medium sized semi-double (9-16 petals) flowers 2.5-3\" in " +
+      "diameter have a moderate, green apple-tea fragrance. The flowers are borne mostly solitary, in small clusters, " +
+      "with a globular, quartered bloom form. They bloom in a spring or summer flush with scattered later bloom. This " +
+      "Hybrid Wichurana is a vigorous rambler growing to 15-25' tall by 10-12' wide. Very disease resistant and also " +
+      "shade tolerant, but blooms better in full sun. Attractive, deep green holly-like foliage on nearly thornless " +
+      "canes.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning after flowering is finished helps to stimulate new growth, maintain a desired shape, and improve " +
+      "air circulation. Remove spent flowers as they fade.",
+    history:
+      'Bred by Barbier-Freres & Compagnie, France, 1900.  At Old City Cemetery, it is located on the west side of The Wall, in Section K, and also at the fence at Potter\'s Field and the Comfort House in Section DD.',
+    colorPrimary: '#f7e8ac',
+  },
+  {
     id: 3,
     imageUrl: 'https://antiqueroseemporium.com/cdn/shop/products/217_Le_Vesuve_2016_512x.jpg?v=1515791924',
     name: 'Le Vesuve',
