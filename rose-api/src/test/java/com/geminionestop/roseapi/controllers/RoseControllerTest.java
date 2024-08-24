@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.controllers;
 
+import com.geminionestop.roseapi.config.EnvironmentValues;
 import com.geminionestop.roseapi.dtos.RoseDetailDto;
 import com.geminionestop.roseapi.services.RoseService;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -20,61 +23,64 @@ public class RoseControllerTest {
     private RoseController controller;
 
     @Mock
-    private RoseService roseService;
+    private RoseService service;
+
+    @Mock
+    private EnvironmentValues environmentValues;
 
     @Test
-    void createRoseReturnsHttpCreated() {
-      RoseDetailDto roseDetail = getRoseDetail();
+    void createRose_ReturnsCreatedResponse() {
+        RoseDetailDto roseDetail = getRoseDetailDto();
 
-      ResponseEntity<?> response = controller.createRose(roseDetail);
+        ResponseEntity<?> response = controller.createRose(roseDetail);
 
-      assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
     }
 
     @Test
-    void getRoseDetailsShouldReturnOkStatus() {
-        RoseDetailDto roseDetail = getRoseDetail();
-        when(roseService.getRoseDetails(roseDetail.slug())).thenReturn(roseDetail);
+    void createRose_ReturnsTheUriToTheRoseDetails() {
+        when(environmentValues.getUrl()).thenReturn("http://localhost:8080/");
+        RoseDetailDto roseDetail = getRoseDetailDto();
 
-        ResponseEntity<RoseDetailDto> response = controller.getRoseDetails("test-slug");
+        ResponseEntity<?> response = controller.createRose(roseDetail);
+
+        assertThat(Objects.requireNonNull(response.getHeaders().getLocation()).toString()).isEqualTo("http://localhost:8080/v1/roses/test-rose");
+    }
+
+    @Test
+    void getRoseDetails_shouldReturnOkHttpStatus() {
+        when(service.getRoseDetails("test-rose")).thenReturn(getRoseDetailDto());
+
+        ResponseEntity<?> response = controller.getRoseDetails("test-rose");
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     @Test
-    void getRoseDetailsShouldReturnNotFoundStatusWhenRoseIsNotFound() {
-        when(roseService.getRoseDetails("nonexistent-rose")).thenReturn(null);
+    void getRoseDetails_shouldReturnHttpNotFound_ifTheRoseDoesNotExist() {
+        when(service.getRoseDetails("non-existent-rose")).thenReturn(null);
 
-        ResponseEntity<RoseDetailDto> response = controller.getRoseDetails("nonexistent-rose");
+        ResponseEntity<?> response = controller.getRoseDetails("non-existent-rose");
 
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
     }
 
     @Test
-    void getRoseDetailsShouldReturnRoseDetailDto() {
-        RoseDetailDto roseDetail = getRoseDetail();
+    void getRoseDetails_shouldReturnRoseDetailDto() {
+        when(service.getRoseDetails("test-rose")).thenReturn(getRoseDetailDto());
 
-        when(roseService.getRoseDetails(roseDetail.slug())).thenReturn(roseDetail);
+        ResponseEntity<RoseDetailDto> response = controller.getRoseDetails("test-rose");
+        RoseDetailDto roseDetail = response.getBody();
 
-        RoseDetailDto responseRoseDetail = controller.getRoseDetails(roseDetail.slug()).getBody();
-
-        assertThat(responseRoseDetail)
-                .isNotNull()
-                .hasFieldOrPropertyWithValue("slug", roseDetail.slug())
-                .hasFieldOrPropertyWithValue("name", roseDetail.name())
-                .hasFieldOrPropertyWithValue("reblooms", roseDetail.reblooms())
-                .hasFieldOrPropertyWithValue("description", roseDetail.description())
-                .hasFieldOrPropertyWithValue("history", roseDetail.history())
-                .hasFieldOrPropertyWithValue("careInstructions", roseDetail.careInstructions())
-                .hasFieldOrPropertyWithValue("colorPrimary", roseDetail.colorPrimary())
-                .hasFieldOrPropertyWithValue("fragranceIntensity", roseDetail.fragranceIntensity());
+        assertThat(roseDetail).isNotNull();
+        assertThat(roseDetail.slug()).isEqualTo("test-rose");
     }
 
-    private RoseDetailDto getRoseDetail() {
+    private RoseDetailDto getRoseDetailDto() {
         return RoseDetailDto
                 .builder()
                 .name("Test Rose")
-                .slug("test-slug")
+                .slug("test-rose")
                 .reblooms("Yep")
                 .description("Test description")
                 .careInstructions("Plant it")

@@ -1,9 +1,8 @@
 package com.geminionestop.roseapi.controllers;
 
+import com.geminionestop.roseapi.config.EnvironmentValues;
 import com.geminionestop.roseapi.dtos.RoseDetailDto;
 import com.geminionestop.roseapi.services.RoseService;
-import com.geminionestop.roseapi.services.TableService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,35 +13,32 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
-
 @RestController
 @RequestMapping("/v1/roses")
 public class RoseController {
-    private RoseService roseService;
+    private final RoseService roseService;
+    private final EnvironmentValues environmentValues;
 
-    RoseController(RoseService roseService, TableService tableService) {
+    public RoseController(RoseService roseService, EnvironmentValues environmentValues) {
         this.roseService = roseService;
+        this.environmentValues = environmentValues;
     }
 
     @GetMapping("/{slug}")
     public ResponseEntity<RoseDetailDto> getRoseDetails(@PathVariable String slug) {
-        RoseDetailDto roseDetail = roseService.getRoseDetails(slug);
+        RoseDetailDto roseDetailDto = roseService.getRoseDetails(slug);
 
-        if(roseDetail == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (roseDetailDto == null) {
+            return ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok(roseDetail);
+        return ResponseEntity.ok(roseDetailDto);
     }
 
     @PostMapping()
-    public ResponseEntity<?> createRose(@RequestBody RoseDetailDto roseDetails) {
-        System.out.println("Creating new rose");
-        roseService.createRose(roseDetails);
+    public ResponseEntity<RoseDetailDto> createRose(@RequestBody RoseDetailDto roseDetailDto) {
+        roseService.createRose(roseDetailDto);
 
-        return ResponseEntity.created(
-                URI.create("https://api-rosedirectory/v1/roses/" + roseDetails.slug()))
-                   .body(roseDetails);
+        return ResponseEntity.created(URI.create(environmentValues.getUrl() + "v1/roses/" + roseDetailDto.slug())).build();
     }
-
 }
