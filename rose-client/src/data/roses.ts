@@ -400,7 +400,7 @@ export const roses: Rose[] = [
   },
   {
     id: 16,
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Rosa_%27Veilchenblau%27_J1.jpg',
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/Veilchenblau.jpg',
     name: 'Veilchenblau',
     slug: 'veilchenblau',
     reblooms: 'Early Summer Bloom',
