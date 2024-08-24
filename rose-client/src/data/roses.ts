@@ -501,4 +501,32 @@ export const roses: Rose[] = [
       'Section J.',
     colorPrimary: '#AD128B',
   },
+  {
+    id: 20,
+    imageUrl: 'https://www.midwestgroundcovers.com/wp-content/uploads/2020/12/Rosa_Frau_Dagmar_Hastrup-2-1024x1024.jpg',
+    name: 'Fru Dagmar Hastrup',
+    slug: 'fru-dagmar-hastrup',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 7,
+    fragranceDescription: 'Sweet',
+    description:
+      "A renowned international rose that is THE best compact grower in the rugosa species. This dwarf, wonderfully " +
+      "hardy little shrub produces a profusion of shimmering pink flowers throughout the season. Flowers are single " +
+      "(4-8 petals) averaging 4\" in diameter in a cupped bloom form, and very fragrant.  A repeat bloomer from late " +
+      "spring through early summer, it grows in a bushy form, 4' tall by 4' wide, with exceptional vigor. Needs no " +
+      "support. Drought resistant and disease resistant. Produces large, red hips late in the summer and has colorful " +
+      "fall foliage. A good addition to any landscape that demands very little work.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation. " +
+      "Regular fertilizing and removing spent flowers stimulates production of the next flush of blooms quicker!",
+    history:
+      'Discovered by Knud Julianus Hastrup, Denmark, 1914.  At Old City Cemetery it is located in the Shrub Garden ' +
+      'across from the Chapel and Comfort House in Potter\'s Field under the aka name of Frau Dagmar Hartopp.',
+    colorPrimary: '#ECB1C7',
+  },
 ]
