@@ -31,7 +31,7 @@ export const roses: Rose[] = [
   },
   {
     id: 2,
-    imageUrl: 'https://garden.org/pics/2014-04-04/Calif_Sue/6ca877.jpg',
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/AlbericBarbier.jpg',
     name: 'Alberic Barbier',
     slug: 'alberic-barbier',
     reblooms: 'Reblooms',
