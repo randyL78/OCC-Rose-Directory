@@ -556,4 +556,31 @@ export const roses: Rose[] = [
     colorPrimary: '#F7C2E2',
     colorSecondary: '#EC66AB',
   },
+  {
+    id: 22,
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/BaltimoreBelle.jpg',
+    name: 'Baltimore Belle',
+    slug: 'baltimore-belle',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 5,
+    fragranceDescription: 'Sweet',
+    description:
+      "This rambler bears small clusters of highly perfumed, very double (17-25 petals), pale blush-pink flowers in " +
+      "profusion. Red-tinged buds in clusters of a dozen or more open to 2\" wide blossoms. It has a long blooming " +
+      "period in late spring with scattered later blooms. Vigorous, hardy, and disease resistant, it grows 8-13' " +
+      "tall by 6' wide. Suitable for fences, arbors, pillars, or trellis.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
+    history:
+      'Developed by Baltimore, Maryland rose-breeder Samuel Feast in 1843 and considered to be one of the best hybrid ' +
+      'forms of the North American Prairie Rose. At Old City Cemetery it can be found in Section S on the west side of ' +
+      'the front drive in a wrought iron fenced enclosure, and also on a fence between the Comfort House and the Chapel ' +
+      'towards the back of the buildings.',
+    colorPrimary: '#F7D2Ca',
+  },
 ]
