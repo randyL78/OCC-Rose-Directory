@@ -11,6 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,7 +31,40 @@ public class RoseControllerTest {
     private EnvironmentValues environmentValues;
 
     @Test
-    void createRose_ReturnsCreatedResponse() {
+    void getAllRoses_shouldReturnOkResponse() {
+        ResponseEntity<?> response = controller.getAllRoses();
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    void getAllRoses_shouldReturnListOfRoses() {
+        List<RoseDetailDto> storedRoses = new ArrayList<>();
+        storedRoses.add(getRoseDetailDto());
+        when(service.getAllRoses()).thenReturn(storedRoses);
+
+        List<RoseDetailDto> roses = controller.getAllRoses().getBody();
+
+        assertThat(roses)
+                .isNotNull()
+                .isNotEmpty()
+                .hasSize(1);
+    }
+
+    @Test
+    void getAllRoses_shouldReturnEmptyList_ifNoRosesAreStored() {
+        List<RoseDetailDto> storedRoses = new ArrayList<>();
+        when(service.getAllRoses()).thenReturn(storedRoses);
+
+        List<RoseDetailDto> roses = controller.getAllRoses().getBody();
+
+        assertThat(roses)
+                .isNotNull()
+                .isEmpty();
+    }
+
+    @Test
+    void createRose_shouldReturnCreatedResponse() {
         RoseDetailDto roseDetail = getRoseDetailDto();
 
         ResponseEntity<?> response = controller.createRose(roseDetail);
@@ -48,7 +83,7 @@ public class RoseControllerTest {
     }
 
     @Test
-    void getRoseDetails_shouldReturnOkHttpStatus() {
+    void getRoseDetails_shouldReturnOkResponse() {
         when(service.getRoseDetails("test-rose")).thenReturn(getRoseDetailDto());
 
         ResponseEntity<?> response = controller.getRoseDetails("test-rose");

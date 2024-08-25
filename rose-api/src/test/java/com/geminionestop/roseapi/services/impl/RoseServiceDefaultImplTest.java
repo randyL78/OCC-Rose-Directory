@@ -9,6 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -59,6 +62,32 @@ public class RoseServiceDefaultImplTest {
             .hasFieldOrPropertyWithValue("careInstructions", roseDetails.careInstructions())
             .hasFieldOrPropertyWithValue("colorPrimary", roseDetails.colorPrimary())
             .hasFieldOrPropertyWithValue("fragranceIntensity", roseDetails.fragranceIntensity());
+    }
+
+    @Test
+    void getAllRoses_shouldReturnAnEmptyList_whenThereAreNoRoses() {
+        List<RoseModel> roses = new ArrayList<>();
+        when(roseRepository.findAll()).thenReturn(roses);
+
+        List<RoseDetailDto> roseDetailList = roseService.getAllRoses();
+
+        assertThat(roseDetailList)
+                .isNotNull()
+                .isEmpty();
+    }
+
+    @Test
+    void getAllRoses_shouldReturnRoses() {
+        List<RoseModel> roses = new ArrayList<>();
+        roses.add(getRoseModel());
+        when(roseRepository.findAll()).thenReturn(roses);
+
+        List<RoseDetailDto> roseDetailList = roseService.getAllRoses();
+
+        assertThat(roseDetailList)
+                .isNotNull()
+                .isNotEmpty()
+                .hasSize(1);
     }
 
     private RoseDetailDto getRoseDetailDto() {

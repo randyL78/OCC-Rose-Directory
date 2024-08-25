@@ -6,6 +6,8 @@ import com.geminionestop.roseapi.repository.RoseRepository;
 import com.geminionestop.roseapi.services.RoseService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class RoseServiceDefaultImpl implements RoseService {
     private final RoseRepository repository;
@@ -31,5 +33,10 @@ public class RoseServiceDefaultImpl implements RoseService {
         repository.save(rose);
 
         return roseDetailDto;
+    }
+
+    @Override
+    public List<RoseDetailDto> getAllRoses() {
+        return repository.findAll().stream().map(RoseDetailDto.Mapper::toDto).toList();
     }
 }
