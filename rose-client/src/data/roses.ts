@@ -529,4 +529,31 @@ export const roses: Rose[] = [
       'across from the Chapel and Comfort House in Potter\'s Field under the aka name of Frau Dagmar Hartopp.',
     colorPrimary: '#ECB1C7',
   },
+  {
+    id: 21,
+    imageUrl: 'https://www.antiqueroseemporium.com/cdn/shop/files/Ballerina_-_4.jpg?v=1723596157&width=1800',
+    name: 'Ballerina',
+    slug: 'ballerina',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 4,
+    fragranceDescription: 'Sweet, Musk',
+    description:
+      "This wonderfully hardy little shrub is heavily blooming and produces huge clusters of dozens of small, 1-2\" " +
+      "single (5 petal) flowers with a white eye. The blooms have a mild, sweet, musk fragrance. It grows 3-6' tall by " +
+      "3-5' wide on nearly thornless, arching canes. A repeat bloomer from late spring through early summer, it grows " +
+      "in a bushy form with exceptional vigor and is shade tolerant. Needs no support. A good addition to any landscape " +
+      "that demands very little work. Attractive orange hips in fall.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation. " +
+      "This rose shrub may be hedge clipped for a more compact look. If grown as a climber, give it support.",
+    history:
+      'Bred by Ann and John Bentall, UK, 1937.  At Old City Cemetery it can be found in Section J.',
+    colorPrimary: '#F7C2E2',
+    colorSecondary: '#EC66AB',
+  },
 ]
