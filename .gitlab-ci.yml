@@ -85,7 +85,7 @@ API_BUILD:
   stage: commit
   script:
     - cd rose-api
-    - echo "spring.datasource.url=jdbc:h2:file:/data/rose;DB_CLOSE_DELAY=-1;AUTO_RECONNECT=TRUE;" > src/main/resources/application.properties
+    - echo "spring.datasource.url=jdbc:h2:mem:rose;DB_CLOSE_DELAY=-1;AUTO_RECONNECT=TRUE;" > src/main/resources/application.properties
     - echo "spring.jpa.database-platform=org.hibernate.dialect.H2Dialect" >> src/main/resources/application.properties
     - echo "spring.datasource.username=${DB_USER}" >> src/main/resources/application.properties
     - echo "spring.datasource.password=${DB_PASS}" >> src/main/resources/application.properties
