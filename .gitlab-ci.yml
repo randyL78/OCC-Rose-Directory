@@ -89,7 +89,7 @@ API_BUILD:
     - echo "spring.jpa.database-platform=org.hibernate.dialect.H2Dialect" >> src/main/resources/application.properties
     - echo "spring.datasource.username=${DB_USER}" >> src/main/resources/application.properties
     - echo "spring.datasource.password=${DB_PASS}" >> src/main/resources/application.properties
-    - ./gradlew build -x test
+    - ./gradlew build
   artifacts:
     paths:
       - rose-api/build/libs
@@ -103,6 +103,7 @@ API_CONTAINER:
     - apk add --no-cache aws-cli
     - aws ecr get-login-password | docker login $ECR_REPOSITORY -u AWS --password-stdin
     - cd rose-api
+  when: manual
   script:
     - docker build -t $TAG .
     - docker push $TAG
