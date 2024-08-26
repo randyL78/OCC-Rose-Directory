@@ -583,4 +583,32 @@ export const roses: Rose[] = [
       'towards the back of the buildings.',
     colorPrimary: '#F7D2Ca',
   },
+  {
+    id: 23,
+    imageUrl: 'https://i.ebayimg.com/images/g/RX4AAOSwZnJlz2Bu/s-l1600.webp',
+    name: 'New Dawn',
+    slug: 'new-dawn',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 4,
+    fragranceDescription: 'Sweet',
+    description:
+      "This climber bears fully double blooms (26-40 petals) of light pink flowers in profusion. Red-tinged buds are " +
+      "borne singly or in small clusters, and open to 3.5\" wide ruffled flowers. New Dawn blooms heavily throughout " +
+      "the season in flushes. Vigorous, hardy, and disease resistant, it can reach a height of 18-20' and a width of " +
+      "7-10' but can also be kept to a smaller size and shape with pruning. Highly versatile, it can be grown on " +
+      "fences, arbors, pillars, or trellis, or allowed to fountain on its own. Has attractive orange hips in fall.",
+    careInstructions:
+      "PPlant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will h" +
+      "elp keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil." +
+      " Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
+    history:
+      'Discovered by Somerset Rose Nursery in New Jersey in 1930 and was the first plant ever to be patented. At Old ' +
+      'City Cemetery, several New Dawn roses line the street between the entrance and exit gates. New Dawn was voted ' +
+      'the most popular rose in the world at the 11th World Convention of Rose Societies in 1997. It is also ' +
+      'recognized worldwide as one of the best of the repeating climbing roses.',
+    colorPrimary: '#F7D0D8',
+  },
 ]
