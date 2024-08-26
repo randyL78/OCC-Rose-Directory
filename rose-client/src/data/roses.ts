@@ -609,6 +609,6 @@ export const roses: Rose[] = [
       'City Cemetery, several New Dawn roses line the street between the entrance and exit gates. New Dawn was voted ' +
       'the most popular rose in the world at the 11th World Convention of Rose Societies in 1997. It is also ' +
       'recognized worldwide as one of the best of the repeating climbing roses.',
-    colorPrimary: '#F7D0D8',
+    colorPrimary: '#FAe0e8',
   },
 ]
