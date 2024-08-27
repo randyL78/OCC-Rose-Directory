@@ -638,7 +638,7 @@ export const roses: Rose[] = [
     colorPrimary: '#FDCF48',
   },
   {
-    id: 24,
+    id: 25,
     imageUrl: 'https://images-rosedirectory.geminionestop.com/Dog%20Rose.jpg',
     name: 'Dog Rose',
     slug: 'dog-rose',
