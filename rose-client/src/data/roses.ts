@@ -637,4 +637,35 @@ export const roses: Rose[] = [
       'Bred by David C.H. Austin, UK, 1983 and named for British rose horticulturist, Graham Stuart Thomas.',
     colorPrimary: '#FDCF48',
   },
+  {
+    id: 24,
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/Dog%20Rose.jpg',
+    name: 'Dog Rose',
+    slug: 'dog-rose',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 5,
+    fragranceDescription: 'Sweet',
+    description:
+      "FUN FACTS: Rosa Canina or \"Dog Rose\" is Native to Europe. The first recorded significance of the Dog Rose " +
+      "dates back hundreds of years ago to The Academy of Floral Games in France, 1323, which gifted a branch of the " +
+      "blooms to reward them for their literary excellence. The Dog Rose was the stylized rose of European heraldry. " +
+      "William Shakespeare wrote about the rose (eglantine) in \"A Mid-Summer Night's Dream\". The flower is one of " +
+      "the national symbols of Romania. ~  Clusters of single (5 petal) fragrant white flowers bloom in heavy flushes " +
+      "throughout the season. Tiny buds are deep pink before they open to nearly white 1\" wide flowers with a hint of " +
+      "pink at the centers. They produce abundant amounts of large, colorful orange hips in fall. Vigorous, shrubby " +
+      "and upright, growing to 8' tall by 4' wide. Very disease resistant, easy to grow, and shade tolerant, although " +
+      "it will bloom more abundantly in full sun. Tolerates poor soils. Can easily be kept to a shorter shrub height " +
+      "with pruning.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning after flowering is finished helps to stimulate new growth, maintain a desired shape, and " +
+      "improve air circulation. Remove spent flowers as they fade.",
+    history:
+      'At Old City Cemetery it is in Section EE, the Confederate Section.',
+    colorPrimary: '#FDFDEE',
+  },
 ]
