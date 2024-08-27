@@ -447,7 +447,8 @@ export const roses: Rose[] = [
     history:
       'Bred by Rene Barbier, France, 1903.  At Old City Cemetery, it is located on the west side of The Wall, ' +
       'approaching the Chapel in Section M.',
-    colorPrimary: '#E0c2AA',
+    colorPrimary: '#D0B29A',
+    colorSecondary: '#CD5149',
   },
   {
     id: 18,
