@@ -639,7 +639,7 @@ export const roses: Rose[] = [
   },
   {
     id: 25,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/Dog%20Rose.jpg',
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/DogRose.jpg',
     name: 'Dog Rose',
     slug: 'dog-rose',
     reblooms: 'Reblooms',
@@ -667,5 +667,56 @@ export const roses: Rose[] = [
     history:
       'At Old City Cemetery it is in Section EE, the Confederate Section.',
     colorPrimary: '#FDFDEE',
+  },
+  {
+    id: 26,
+    imageUrl: 'https://lens-roses.com/web/image/product.product/51144/image_1024/F%C3%A9licit%C3%A9%20et%20Perp%C3%A9tue%20%28Pot%204L%29?unique=0ca47b2',
+    name: 'Felicite et Perpetue',
+    slug: 'felicite-et-perpetue',
+    reblooms: 'Once Blooming',
+    fragranceIntensity: 7,
+    fragranceDescription: 'Musk',
+    description:
+      "Light red-pink buds open to white or near white blooms with an average diameter of 1.5”. The very full " +
+      "(41+ petals) pom-pom like flowers have a button-eye, are cupped to flat, and rosette in form. They are borne in " +
+      "large clusters against glossy, medium green foliage. Strong musk fragrance. Shade tolerant. Once blooming in " +
+      "late spring or early summer for a very long period, usually about 5 weeks. Growth habit is vigorous and " +
+      "rambling, 15-20’ tall by 10-12’ wide. Its supple branches allow you to easily overgrow a pergola or rose bower. " +
+      "Can be trained for pillar form or is breathtaking when trained over a trellis. Resist the urge to cut back this " +
+      "hardy, vigorous grower too heavily...it doesn’t like it!",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
+    history:
+      'Bred by Antoine A. Jacques, France, 1827 and named in honor of two Christian martyrs of the third century. At ' +
+      'Old City Cemetery it can be found in Section EE, the Confederate Section.',
+    colorPrimary: '#FFF9F7',
+  },
+  {
+    id: 27,
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/RadiantPerfume.jpg',
+    name: 'Radiant Perfume',
+    slug: 'radiant-perfume',
+    reblooms: 'Once Blooming',
+    fragranceIntensity: 7,
+    fragranceDescription: 'Sweet Citrus',
+    description:
+      "Beautiful, showy, deep golden yellow flowers have a strong, sweet citrus scent and bloom in mid-summer. Large, " +
+      "glossy, dark green foliage makes it an attractive shrub all season, growing to 5’ tall and spreading up to 4’ " +
+      "wide. Grandiflora class rose with pointed buds and double blooms of 25 petals. Good cut flower.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
+    history:
+      'Bred by Dr. Keith Zary, 2005.',
+    colorPrimary: '#FAD541',
   },
 ]
