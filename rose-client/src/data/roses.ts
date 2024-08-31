@@ -743,7 +743,7 @@ export const roses: Rose[] = [
       'Bred by Ann and John Bentall, UK, 1939. \'Buff Beauty\' has received the Royal Horticultural Society\'s Award ' +
       'of Garden Merit (1993), as well as the American Rose Society\'s Classic Shrub Rose Award. At Old City Cemetery, ' +
       'it can be found in Sections C and M.',
-    colorPrimary: '#F8A873',
+    colorPrimary: '#FDE3A3',
   },
   {
     id: 29,
