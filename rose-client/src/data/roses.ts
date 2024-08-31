@@ -218,12 +218,12 @@ export const roses: Rose[] = [
   },
   {
     id: 9,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/Ambassador.jpg',
+    imageUrl: 'https://images-rosedirectory.geminionestop.com/Ambassador_2.jpg',
     name: 'Ambassador',
     slug: 'ambassador',
     reblooms: 'Reblooms',
-    fragranceIntensity: 1,
-    fragranceDescription: 'Mild',
+    fragranceIntensity: 3,
+    fragranceDescription: 'Sweet',
     description:
       "Long stems produce stunning two-toned blooms of orange-to-peach with a blended golden peach inside. Flowers are " +
       "very full (30-40 petals) with an average diameter of 4 inches. A repeat bloomer from late spring through early " +
