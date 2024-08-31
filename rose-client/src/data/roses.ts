@@ -719,4 +719,57 @@ export const roses: Rose[] = [
       'Bred by Dr. Keith Zary, 2005.',
     colorPrimary: '#FAD541',
   },
+  {
+    id: 28,
+    imageUrl: 'https://www.davidaustinroses.co.uk/cdn/shop/products/3f361881fb25618a6348093b792df30c_3ee4d454-5a2a-4d7f-85ce-998826a3dd2d.jpg',
+    name: 'Buff Beauty',
+    slug: 'buff-beauty',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 4,
+    fragranceDescription: 'Musk, Tea Rose',
+    description:
+      "Blooms in shades of apricot to orange blend to honey buff with 3” diameter, very full (40-50 petals) flowers in " +
+      "small clusters. Flowers have a mild, sweet, musk fragrance and bloom in abundant flushes throughout the season. " +
+      "Grows 4-10’ tall by 4-8’ wide and can be used as a climber or kept at shrub height with pruning. Disease " +
+      "resistant. New shoots are dark red with bronze foliage that grows into thick, dark green leaves.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
+    history:
+      'Bred by Ann and John Bentall, UK, 1939. \'Buff Beauty\' has received the Royal Horticultural Society\'s Award ' +
+      'of Garden Merit (1993), as well as the American Rose Society\'s Classic Shrub Rose Award. At Old City Cemetery, ' +
+      'it can be found in Sections C and M.',
+    colorPrimary: '#F8A873',
+  },
+  {
+    id: 29,
+    imageUrl: 'https://eu.davidaustinroses.com/cdn/shop/products/8bb2fc5bbeac33626a22f2cca0ad8050_ba9d250a-468b-4e41-b805-28eece9e6850.jpg',
+    name: 'Champneys’ Pink Cluster',
+    slug: 'champneys-pink-cluster',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 5,
+    fragranceDescription: 'Sweet',
+    description:
+      "This old Southern antique rose has clusters of 2” light pink, cupped, double flowers (17-25 petals) that bloom " +
+      "throughout the growing season with one of the sweetest perfumes in the rose world. Vigorous, has attractive " +
+      "foliage. Grows up to 15’ tall by 8’ wide and is perfect on a fence, trellis, or pillar. Can be kept to shrub " +
+      "height with pruning.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation. ",
+    history:
+      'Only the Noisette Class of roses originated in America and this is the first rose of that class discovered in ' +
+      'Charleston, South Carolina in 1802, as a seedling on the rice plantation of John Champneys. Bred by John ' +
+      'Champneys, USA, and introduced in 1811. The first Noisette rose. At Old City Cemetery, it can be found in ' +
+      'the Cato Garden.',
+    colorPrimary: '#E8D1EC',
+  },
 ]
