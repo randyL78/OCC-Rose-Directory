@@ -772,4 +772,54 @@ export const roses: Rose[] = [
       'the Cato Garden.',
     colorPrimary: '#E8D1EC',
   },
+  {
+    id: 30,
+    imageUrl: 'https://rosariumlottum.com/wp-content/uploads/2021/10/Pink-Cloud2.jpg',
+    name: 'Parade',
+    slug: 'parade',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 3,
+    fragranceDescription: 'Sweet',
+    description:
+      "This large-flowered climber blooms a wonderfully vivid deep pink/cerise color. Flowers have a cupped bloom form, " +
+      "are very double (33 petals) and mildly fragrant. ‘Parade’ blooms in flushes throughout the season. It has " +
+      "vigorous growth to 7-15’ tall by 6-8’ wide with deep, glossy green leaves. Will tolerate shade but blooms best " +
+      "in full sun. Floribunda class.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil. Pruning helps to stimulate spring growth, maintain a desired shape, and improve air circulation.",
+    history:
+      'Bred by Eugene S. Boerner, USA, 1953. At Old City Cemetery it is in Section Z.',
+    colorPrimary: '#FF3F7B',
+  },
+  {
+    id: 31,
+    imageUrl: 'https://www.gardenia.net/wp-content/uploads/2023/05/rose-gardenia.webp',
+    name: 'Gardenia',
+    slug: 'gardenia',
+    reblooms: 'Late Spring Bloom',
+    fragranceIntensity: 6,
+    fragranceDescription: 'Gardenia Scent',
+    description:
+      "Named for its fragrance, Gardenia has a moderate to strong gardenia scent. This amazing rose is very hardy, " +
+      "very vigorous, drought resistant, shade tolerant, and disease resistant! Creamy 3-4” flowers with a " +
+      "light-yellow center age to white over several weeks. The blooms are semi-double (26-40 petals), cupped and " +
+      "quartered. They bloom heavily in a late spring flush for several weeks then with scattered later bloom. " +
+      "Grows 15-20’ tall by 12-15’ wide. Excellent for a trellis, pillar, pergola, or fence. Hybrid Wichurana-Tea, " +
+      "rambler. Tolerates poor soils.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil right after blooming. This rose blooms on last year’s wood so prune right after flowers have faded.",
+    history:
+      'Bred by Michael Henry Horvath, USA, 1898. At Old City Cemetery it is on The Wall in Section J.',
+    colorPrimary: '#FFED83',
+  },
 ]
