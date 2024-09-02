@@ -820,6 +820,59 @@ export const roses: Rose[] = [
       "pencil right after blooming. This rose blooms on last year’s wood so prune right after flowers have faded.",
     history:
       'Bred by Michael Henry Horvath, USA, 1898. At Old City Cemetery it is on The Wall in Section J.',
-    colorPrimary: '#FFED83',
+    colorPrimary: '#FFF9D3',
+  },
+  {
+    id: 32,
+    imageUrl: 'https://petalsfromthepast.com/wp-content/uploads/seven-sisters-rose.jpg',
+    name: 'Seven Sisters',
+    slug: 'seven-sisters',
+    reblooms: 'Summer Bloom',
+    fragranceIntensity: 7,
+    fragranceDescription: 'Fruity',
+    description:
+      "‘Seven Sisters’ is named for the variety of colors that can appear in each cluster of flowers, ranging from " +
+      "dark pink, carmine through purple, mauve, pink, and creamy white as the flowers fade. It is a vigorous climber " +
+      "that can cover a large area, growing 10-20’ tall by up to 10’ wide, and is somewhat shade tolerant. Large, " +
+      "double bloom form (17-25 petals) flowers bloom in abundant profusion once a year, usually May to July. It is " +
+      "breathtaking on an arbor or pergola. This Hybrid Multiflora is known for its vigorous growth and fragrance.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in " +
+      "summer when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will " +
+      "help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil " +
+      "right after blooming. This rose blooms on last year’s wood so prune right after flowers have faded.",
+    history:
+      'Bred by Unknown Breeder, Japan, before 1271. Introduced in the UK in 1809 by Charles Francis Greville. It is one ' +
+      'of the roses painted by French artist Pierre-Joseph Redouté (1759-1840) in his ‘Les Roses’ book. At Old City ' +
+      'Cemetery it is on The Wall in Section EE, the Confederate Section.',
+    colorPrimary: '#DDA8D7',
+  },
+  {
+    id: 33,
+    imageUrl: 'https://angelgardens.com/wp-content/uploads/2020/05/devoniensis.jpg',
+    name: 'Devoniensis',
+    slug: 'devoniensis',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 6,
+    fragranceDescription: 'Tea, Citrus',
+    description:
+      "Also known as the ‘Magnolia Rose’ or ‘Victoria Rose’, it blooms easily and profusely. Red tinged buds open to " +
+      "very large creamy-white blooms with a tinge of light yellow or light pink, or both! Cupped bloom form, full " +
+      "(26-40 petals) with curled inner petals. Brilliant dark green foliage covers the long canes which have few " +
+      "thorns. Blooms from spring until autumn. Grows 5-10’ tall by 4-6’ wide.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Roses prefer a good, deep watering at least once a week, and more often in summer " +
+      "when the soil dries quickly.  Applying a couple of inches of mulch around the base of the plant will help keep " +
+      "the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a pencil right " +
+      "after blooming.",
+    history:
+      'Discovered by S.J. Pavitt, UK, 1858. As the first Tea Rose to be bred in England it has not found a warm home ' +
+      'there, but it has been extraordinarily popular in the U.S. At Old City Cemetery it is on The Wall in Section EE, ' +
+      'the Confederate Section.',
+    colorPrimary: '#F0D5B8',
   },
 ]
