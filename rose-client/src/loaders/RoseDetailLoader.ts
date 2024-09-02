@@ -1,11 +1,11 @@
 import getRose from "../api/get-rose.ts";
-import {Rose} from "../interfaces/Rose.ts";
 
-export interface roseLoaderData {
-  rose: Rose
+interface loaderParams {
+  params: {
+    roseSlug: string;
+  }
 }
 
-export async function roseDetailLoader({params}: { params: { roseSlug: string}}): Promise<roseLoaderData> {
-  const rose = getRose(params.roseSlug)
-  return { rose }
+export async function roseDetailLoader({params}: loaderParams) {
+  return getRose(params.roseSlug)
 }

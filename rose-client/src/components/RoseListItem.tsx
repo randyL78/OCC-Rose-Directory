@@ -41,7 +41,7 @@ function RoseListItem({rose, index}: {rose: RoseIndexItem, index: number}) {
   }
 
   return (
-    <ImageListItem cols={imgCol} rows={imgRow} key={rose.id} onClick={imageClickHandler} sx={{ cursor: "pointer" }}>
+    <ImageListItem cols={imgCol} rows={imgRow} key={rose.slug} onClick={imageClickHandler} sx={{ cursor: "pointer" }}>
       <img
         {...srcset(rose.imageUrl, 121, imgRow, imgCol)}
         alt={rose.name}

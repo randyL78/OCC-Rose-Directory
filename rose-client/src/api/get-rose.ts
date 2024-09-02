@@ -1,7 +1,7 @@
 import {roses} from "../data/roses.ts";
-import {Rose} from "../interfaces/Rose.ts";
+import {RoseDetailItem} from "../interfaces/RoseDetailItem.ts";
 
-function getRose(roseSlug: string): Rose {
+function getRose(roseSlug: string): RoseDetailItem {
   return roses.filter(rose => rose.slug === roseSlug)[0];
 }
 

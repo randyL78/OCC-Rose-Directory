@@ -1,5 +1,4 @@
-export interface Rose {
-  id?: number;
+export interface RoseDetailItem {
   name: string;
   slug: string;
   imageUrl: string;
@@ -11,5 +10,4 @@ export interface Rose {
   fragranceDescription?: string;
   colorPrimary: string;
   colorSecondary?: string;
-  qrCodeUrl?: string;
 }

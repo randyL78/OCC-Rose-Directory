@@ -13,7 +13,7 @@ function RoseList({roses, value}: RoseListProps) {
     <List id="simple-tab-panel-2" hidden={value !== 1}>
       {
         roses.map((rose) => (
-          <ListItem key={rose.id} disablePadding>
+          <ListItem key={rose.slug} disablePadding>
             <ListItemButton component={Link} to={`${routes.RoseIndex}/${rose.slug}`}>
               <ListItemText primary={rose.name}/>
             </ListItemButton>

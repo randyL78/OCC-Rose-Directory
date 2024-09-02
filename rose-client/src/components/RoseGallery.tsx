@@ -15,7 +15,7 @@ function RoseGallery({value, roses}: RoseGalleryProps) {
     <Box hidden={value !== 0} p={1}>
       <ImageList variant="quilted" cols={medium ? 2 : 4} rowHeight={200}>
         {roses && roses.map((rose, index) => (
-          <RoseListItem key={rose.id} rose={rose} index={index}/>
+          <RoseListItem key={rose.slug} rose={rose} index={index}/>
         ))}
       </ImageList>
     </Box>

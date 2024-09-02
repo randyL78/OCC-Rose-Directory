@@ -13,15 +13,15 @@ import DescriptionCard from "../components/cards/DescriptionCard.tsx";
 import CareCard from "../components/cards/CareCard.tsx";
 import HistoryCard from "../components/cards/HistoryCard.tsx";
 import {useLoaderData} from "react-router-dom";
-import {roseLoaderData} from "../loaders/RoseDetailLoader.ts";
 import HeroImage from "../components/HeroImage.tsx";
 import RoseBreadcrumbs from "../components/RoseBreadcrumbs.tsx";
 import ColorIndicator from "../components/indicators/ColorIndicator.tsx";
 import RebloomsIndicator from "../components/indicators/RebloomsIndicator.tsx";
 import Backdrop from "../components/Backdrop.tsx";
+import {RoseDetailItem} from "../interfaces/RoseDetailItem.ts";
 
 function RoseDetails() {
-  const { rose } = useLoaderData() as roseLoaderData
+  const rose = useLoaderData() as RoseDetailItem
   const roseBreadcrumb = <RoseBreadcrumbs slug={rose.slug} name={rose.name} />
 
   return (

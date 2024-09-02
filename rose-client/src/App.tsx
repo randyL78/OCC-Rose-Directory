@@ -1,13 +1,14 @@
 import './App.css'
 
 import RoseDetails from "./pages/RoseDetails.tsx";
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, LoaderFunction, RouterProvider} from "react-router-dom";
 import {routes} from "./constants/routes.ts";
 import {roseDetailLoader} from "./loaders/RoseDetailLoader.ts";
 import Home from "./pages/Home.tsx";
 import RoseIndex from "./pages/RoseIndex.tsx";
 import {roseIndexLoader} from "./loaders/RoseIndexLoader.ts";
 import Layout from "./components/Layout.tsx";
+import {RoseDetailItem} from "./interfaces/RoseDetailItem.ts";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,7 @@ const router = createBrowserRouter([
       {
         path: routes.RoseDetails,
         element: <RoseDetails />,
-        //@ts-expect-error We know the data type being returned is rose data
-        loader: roseDetailLoader,
+        loader: roseDetailLoader as unknown as LoaderFunction<RoseDetailItem>,
       },
     ]
   }

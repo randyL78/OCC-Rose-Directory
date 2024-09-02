@@ -27,7 +27,8 @@ export const roses: Rose[] = [
       "A “found” rose of Bengal, China, before 1818; it was later bred by Pierre Coquereau of France in 1832.\n" +
       "At Old City Cemetery it is located in Section EE, the Confederate Section.",
     colorPrimary: '#C8223C',
-    colorSecondary: '#fc5C96'
+    colorSecondary: '#fc5C96',
+    qrCodeUrl: 'https://images-rosedirectory.geminionestop.com/qr-cromoisi-superieur.png'
   },
   {
     id: 2,
