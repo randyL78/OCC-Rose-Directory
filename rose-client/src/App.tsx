@@ -9,6 +9,8 @@ import RoseIndex from "./pages/RoseIndex.tsx";
 import {roseIndexLoader} from "./loaders/RoseIndexLoader.ts";
 import Layout from "./components/Layout.tsx";
 import {RoseDetailItem} from "./interfaces/RoseDetailItem.ts";
+import RoseAdminIndex from "./pages/RoseAdminIndex.tsx";
+import {roseAdminIndexLoader} from "./loaders/RoseAdminIndexLoader.ts";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,17 @@ const router = createBrowserRouter([
         path: routes.RoseDetails,
         element: <RoseDetails />,
         loader: roseDetailLoader as unknown as LoaderFunction<RoseDetailItem>,
+      },
+    ]
+  },
+  {
+    path: '/admin',
+    element: <Layout />,
+    children: [
+      {
+        path: routes.RoseAdmin,
+        element: <RoseAdminIndex />,
+        loader: roseAdminIndexLoader,
       },
     ]
   }

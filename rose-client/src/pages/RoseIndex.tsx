@@ -2,7 +2,7 @@ import {useLoaderData} from "react-router-dom";
 import {Box, Collapse, Container, Divider, Pagination, Paper, Tab, Tabs, Typography} from "@mui/material";
 import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
-import RoseBreadcrumbs from "../components/RoseBreadcrumbs.tsx";
+import RoseBreadcrumbs from "../components/breadcrumbs/RoseBreadcrumbs.tsx";
 import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
 import RoseList from "../components/RoseList.tsx";
 import {ChangeEvent, SyntheticEvent, useEffect, useState} from "react";

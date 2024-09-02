@@ -1,7 +1,7 @@
 import {Breadcrumbs, Link} from "@mui/material";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import {Link as RouterLink} from "react-router-dom";
-import {routes} from "../constants/routes.ts";
+import {routes} from "../../constants/routes.ts";
 
 interface RoseBreadcrumbsProps {
   slug?: string
@@ -9,7 +9,7 @@ interface RoseBreadcrumbsProps {
   color?: string
 }
 
-function RoseBreadcrumbs({slug, name, color = '#fff'}: RoseBreadcrumbsProps) {
+function AdminRoseBreadcrumbs({slug, name, color = '#fff'}: RoseBreadcrumbsProps) {
   const showDetailLink = slug && name
 
   return (
@@ -19,14 +19,14 @@ function RoseBreadcrumbs({slug, name, color = '#fff'}: RoseBreadcrumbsProps) {
       separator={<NavigateNextIcon fontSize="small" />}
     >
       <Link component={RouterLink} underline="hover" color="inherit" to={routes.Home}>Home</Link>
-      <Link component={RouterLink} underline="hover" color="inherit" to={routes.RoseIndex}>Rose Directory</Link>
+      <Link component={RouterLink} underline="hover" color="inherit" to={routes.RoseAdmin}>Rose Index</Link>
       {
         showDetailLink && (
-          <Link component={RouterLink} underline="hover" color="inherit" to={`${routes.RoseIndex}/${slug}`}>{name}</Link>
+          <Link component={RouterLink} underline="hover" color="inherit" to={`${routes.RoseAdmin}/${slug}`}>{name}</Link>
         )
       }
     </Breadcrumbs>
   )
 }
 
-export default RoseBreadcrumbs;
+export default AdminRoseBreadcrumbs;

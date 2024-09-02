@@ -14,7 +14,7 @@ import CareCard from "../components/cards/CareCard.tsx";
 import HistoryCard from "../components/cards/HistoryCard.tsx";
 import {useLoaderData} from "react-router-dom";
 import HeroImage from "../components/HeroImage.tsx";
-import RoseBreadcrumbs from "../components/RoseBreadcrumbs.tsx";
+import RoseBreadcrumbs from "../components/breadcrumbs/RoseBreadcrumbs.tsx";
 import ColorIndicator from "../components/indicators/ColorIndicator.tsx";
 import RebloomsIndicator from "../components/indicators/RebloomsIndicator.tsx";
 import Backdrop from "../components/Backdrop.tsx";

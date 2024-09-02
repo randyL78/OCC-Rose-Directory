@@ -56,6 +56,7 @@ export const roses: Rose[] = [
     history:
       'Bred by Barbier-Freres & Compagnie, France, 1900.  At Old City Cemetery, it is located on the west side of The Wall, in Section K, and also at the fence at Potter\'s Field and the Comfort House in Section DD.',
     colorPrimary: '#f7e8ac',
+    qrCodeUrl: 'https://images-rosedirectory.geminionestop.com/qr-alberic-barbier.png'
   },
   {
     id: 3,
@@ -849,6 +850,7 @@ export const roses: Rose[] = [
       'of the roses painted by French artist Pierre-Joseph Redouté (1759-1840) in his ‘Les Roses’ book. At Old City ' +
       'Cemetery it is on The Wall in Section EE, the Confederate Section.',
     colorPrimary: '#DDA8D7',
+    colorSecondary: '#E15699',
   },
   {
     id: 33,
