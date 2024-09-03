@@ -878,4 +878,33 @@ export const roses: Rose[] = [
       'the Confederate Section.',
     colorPrimary: '#F0D5B8',
   },
+  {
+    id: 34,
+    imageUrl: 'https://www.highcountryroses.com/wp/wp-content/uploads/austrian_copper_2_-_500p.jpg',
+    name: 'Austrian Copper',
+    slug: 'austrian-copper',
+    reblooms: 'Summer Bloom',
+    fragranceIntensity: 2,
+    fragranceDescription: 'Licorice',
+    description:
+      "A hardy spreading shrub rose with vivid, single (4-7 petals) orange-red flowers with a bright yellow reverse. " +
+      "Blooms during summer, May-July, covering the long canes with large blossoms. Vigorous growth spreads by sending " +
+      "up underground shoots, making it an excellent almost impenetrable hedge. Good as a foundation or perimeter " +
+      "plant. Grows in an arching, upright habit, 5-7’ tall and as wide. Very easy to grow and care for. Drought " +
+      "tolerant. Hardy, able to grow in harsh conditions. Pollinator plant. Beautiful, vibrant hips in autumn are " +
+      "enjoyed by birds. Highly deer resistant. The flowers occasionally revert to the yellow color of the parent.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Usually, roses prefer a good, deep watering at least once a week, and more " +
+      "often in summer when the soil dries quickly. Austrian Copper, once established, can go two weeks with only ½” " +
+      "of deep watering, thereby making it ‘drought tolerant’. Applying a couple of inches of mulch around the base " +
+      "of the plant will help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no " +
+      "larger than a pencil in winter or early spring. Extreme pruning will limit blossoms.",
+    history:
+      'Introduced by Unknown before 1590 as R. foetida bicolor. Introduced in Australia by C.H. Halstead, 1899, as ' +
+      '‘Austrian Copper’. It is one of the roses painted by French artist Pierre-Joseph Redouté (1759-1840) in his ' +
+      '‘Les Roses’ book. At Old City Cemetery it is in Section K.',
+    colorPrimary: '#db1a1a',
+  },
 ]
