@@ -353,8 +353,8 @@ export const roses: Rose[] = [
   {
     id: 14,
     imageUrl: 'https://baygardens.com/cdn/shop/products/hftfa1.jpg?v=1571439723',
-    name: 'The Fairy',
-    slug: 'the-fairy',
+    name: 'Fairy',
+    slug: 'fairy',
     reblooms: 'Reblooms',
     fragranceIntensity: 3,
     fragranceDescription: 'Delicate',
@@ -881,6 +881,7 @@ export const roses: Rose[] = [
   {
     id: 34,
     imageUrl: 'https://www.highcountryroses.com/wp/wp-content/uploads/austrian_copper_2_-_500p.jpg',
+    qrCodeUrl: 'https://images-rosedirectory.geminionestop.com/qr-austrian-copper.png',
     name: 'Austrian Copper',
     slug: 'austrian-copper',
     reblooms: 'Summer Bloom',
