@@ -28,11 +28,11 @@ export const roses: Rose[] = [
       "At Old City Cemetery it is located in Section EE, the Confederate Section.",
     colorPrimary: '#C8223C',
     colorSecondary: '#fc5C96',
-    qrCodeUrl: 'https://images-rosedirectory.geminionestop.com/qr-cromoisi-superieur.png'
+    qrCodeUrl: 'https://occroseimages.redeaglesoftware.com/qr-cromoisi-superieur.png'
   },
   {
     id: 2,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/AlbericBarbier.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/AlbericBarbier.jpg',
     name: 'Alberic Barbier',
     slug: 'alberic-barbier',
     reblooms: 'Reblooms',
@@ -56,7 +56,7 @@ export const roses: Rose[] = [
     history:
       'Bred by Barbier-Freres & Compagnie, France, 1900.  At Old City Cemetery, it is located on the west side of The Wall, in Section K, and also at the fence at Potter\'s Field and the Comfort House in Section DD.',
     colorPrimary: '#f7e8ac',
-    qrCodeUrl: 'https://images-rosedirectory.geminionestop.com/qr-alberic-barbier.png'
+    qrCodeUrl: 'https://occroseimages.redeaglesoftware.com/qr-alberic-barbier.png'
   },
   {
     id: 3,
@@ -220,7 +220,7 @@ export const roses: Rose[] = [
   },
   {
     id: 9,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/Ambassador_2.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/Ambassador_2.jpg',
     name: 'Ambassador',
     slug: 'ambassador',
     reblooms: 'Reblooms',
@@ -245,7 +245,7 @@ export const roses: Rose[] = [
   },
   {
     id: 10,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/Mermaid.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/Mermaid.jpg',
     name: 'Mermaid',
     slug: 'mermaid',
     reblooms: 'Reblooms',
@@ -274,7 +274,7 @@ export const roses: Rose[] = [
   },
   {
     id: 11,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/ClimbingPinkie.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/ClimbingPinkie.jpg',
     name: 'Climbing Pinkie',
     slug: 'climbing-pinkie',
     reblooms: 'Reblooms',
@@ -300,7 +300,7 @@ export const roses: Rose[] = [
   },
   {
     id: 12,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/MadamPlantierCropped.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/MadamPlantierCropped.jpg',
     name: 'Madame Plantier',
     slug: 'madame-plantier',
     reblooms: 'Spring Blooming',
@@ -402,7 +402,7 @@ export const roses: Rose[] = [
   },
   {
     id: 16,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/Veilchenblau.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/Veilchenblau.jpg',
     name: 'Veilchenblau',
     slug: 'veilchenblau',
     reblooms: 'Early Summer Bloom',
@@ -454,7 +454,7 @@ export const roses: Rose[] = [
   },
   {
     id: 18,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/Albertine.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/Albertine.jpg',
     name: 'Albertine',
     slug: 'albertine',
     reblooms: 'Summer Blooming',
@@ -480,7 +480,7 @@ export const roses: Rose[] = [
   },
   {
     id: 19,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/Russelliana.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/Russelliana.jpg',
     name: 'Russelliana',
     slug: 'russelliana',
     reblooms: 'Once Blooming',
@@ -561,7 +561,7 @@ export const roses: Rose[] = [
   },
   {
     id: 22,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/BaltimoreBelle.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/BaltimoreBelle.jpg',
     name: 'Baltimore Belle',
     slug: 'baltimore-belle',
     reblooms: 'Reblooms',
@@ -641,7 +641,7 @@ export const roses: Rose[] = [
   },
   {
     id: 25,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/DogRose.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/DogRose.jpg',
     name: 'Dog Rose',
     slug: 'dog-rose',
     reblooms: 'Reblooms',
@@ -700,7 +700,7 @@ export const roses: Rose[] = [
   },
   {
     id: 27,
-    imageUrl: 'https://images-rosedirectory.geminionestop.com/RadiantPerfume.jpg',
+    imageUrl: 'https://occroseimages.redeaglesoftware.com/RadiantPerfume.jpg',
     name: 'Radiant Perfume',
     slug: 'radiant-perfume',
     reblooms: 'Once Blooming',
@@ -881,7 +881,7 @@ export const roses: Rose[] = [
   {
     id: 34,
     imageUrl: 'https://www.highcountryroses.com/wp/wp-content/uploads/austrian_copper_2_-_500p.jpg',
-    qrCodeUrl: 'https://images-rosedirectory.geminionestop.com/qr-austrian-copper.png',
+    qrCodeUrl: 'https://occroseimages.redeaglesoftware.com/qr-austrian-copper.png',
     name: 'Austrian Copper',
     slug: 'austrian-copper',
     reblooms: 'Summer Bloom',
