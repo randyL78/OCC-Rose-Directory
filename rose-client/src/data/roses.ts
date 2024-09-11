@@ -908,4 +908,86 @@ export const roses: Rose[] = [
       '‘Les Roses’ book. At Old City Cemetery it is in Section K.',
     colorPrimary: '#db1a1a',
   },
+  {
+    id: 35,
+    imageUrl: 'https://lens-roses.com/web/image/product.image/2308/image_1024/',
+    name: 'Cardinal de Richelieu',
+    slug: 'cardinal-de-richelieu',
+    reblooms: 'Summer Bloom',
+    fragranceIntensity: 3,
+    description:
+      "This shrub rose has stunning mauve to dark purple blend flowers 2.5-3” in diameter with a green button eye in " +
+      "the center. They have a very full (up to 50 petals) bloom form and are once blooming in late spring or summer. " +
+      "Mild fragrance. Suckers on its own roots and is nearly thornless. Grows a bushy 3-6’ tall by 2-3’ wide with " +
+      "glossy medium green foliage. Because of its compact nature it works very well in courtyard and city gardens but " +
+      "is equally happy in a country garden border. Hybrid China/Gallica.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Usually, roses prefer a good, deep watering at least once a week, and more " +
+      "often in summer when the soil dries quickly. Applying a couple of inches of mulch around the base of the plant " +
+      "will help keep the roots cool and conserve water. Right after blooming ends, remove any dead, crossing, or weak " +
+      "branches no larger than a pencil.",
+    history:
+      'Bred by Louis-Joseph-Ghislain Parmentier, Belgium, before 1847. Armand Jean de Plessis, Duc -- and Cardinal -- ' +
+      'de Richelieu (1585-1642) was a French clergyman, noble and statesman who served as King Louis XIII’s chief ' +
+      'minister from 1624-1642. Cardinal Richelieu was responsible for the creation of the Jardin Royal des Plants ' +
+      'Medicinales (The Royal Garden of Medicinal Plants) in Paris. At Old City Cemetery it is in Section EE, the ' +
+      'Confederate Section.',
+    colorPrimary: '#A349A8',
+  },
+  {
+    id: 36,
+    imageUrl: 'https://www.gardenia.net/wp-content/uploads/2023/05/rose-Zephirine-Drouhin-780x520.webp',
+    name: 'Zephirine Drouhin',
+    slug: 'zephirine-drouhin',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 7,
+    fragranceDescription: 'Damask',
+    description:
+      "What's not to like about this outstanding rose? Stunning, deep rose-pink, double blooms (17-25 petal) repeat " +
+      "all season and are large (about 4\") and abundant. Zephirine is deeply fragrant and nearly thornless. Disease " +
+      "resistant foliage is dark red when young, maturing to semi-glossy medium green. A versatile, hardy, vigorous " +
+      "grower to 8-15’ tall by 4-8’ wide, it can be pruned to shrub height or trained as a climber. Can be used for " +
+      "cut flowers, garden, hedge, landscape, or pillar. This Bourbon class rose is the favorite of former Old City " +
+      "Cemetery Executive Director and rosarian, Bruce Christian.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Usually, roses prefer a good, deep watering at least once a week, and more " +
+      "often in summer when the soil dries quickly. Applying a couple of inches of mulch around the base of the plant " +
+      "will help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than " +
+      "a pencil in late fall or early spring. Remove spent flowers to encourage rebloom.",
+    history:
+      'Bred by Bizot, France, 1868 and introduced in Australia by Hazelwood Bros. Pty. Ltd. before 1921 as \'Zephirine Drouhin\'.' +
+      'At Old City Cemetery it is in Section EE, the Confederate Section, and Section DD, the fence at the Potter\'s ' +
+      'Field and Comfort House.',
+    colorPrimary: '#F69EC2',
+  },
+  {
+    id: 37,
+    imageUrl: 'https://i.pinimg.com/736x/30/c7/f5/30c7f5894c3646c558dbc14192435a02.jpg',
+    name: 'Sombreiul',
+    slug: 'sombreiul',
+    reblooms: 'Reblooms',
+    fragranceIntensity: 6,
+    fragranceDescription: 'Tea',
+    description:
+      "This large-flowered climbing tea rose is blessed with creamy white blooms that are very large, very full " +
+      "(60 petals) and have an old fashioned, flat, rosette bloom form. Sombreuil blooms in flushes throughout the " +
+      "season with 3\" flowers with an apricot flush in the center. Vigorous, growing 6-13’ tall by 5’ wide, and its " +
+      "dense growth habit makes it ideal for pillars. Great for trellises, arbors, or trained on a low fence or wall.  " +
+      "Shade tolerant, but as with all roses, full sun produces the most abundant blooms.",
+    careInstructions:
+      "Plant in full sun (at least 4-6 hours a day for best performance) in loose, loamy, and moist but well-draining " +
+      "soil. Feed a balanced fertilizer (Rose Tone or Plant Tone is excellent!) in spring and again every 4-6 weeks " +
+      "till fall. Water in thoroughly. Usually, roses prefer a good, deep watering at least once a week, and more " +
+      "often in summer when the soil dries quickly. Applying a couple of inches of mulch around the base of the plant " +
+      "will help keep the roots cool and conserve water. Remove any dead, crossing, or weak branches no larger than a " +
+      "pencil in late winter or early spring. Avoid major pruning for the first two years after planting to allow the " +
+      "canes to develop.",
+    history:
+      'Introduced by Robert, France, 1850.  At Old City Cemetery it is in Sections EE and M.',
+    colorPrimary: '#F1F1EC',
+  },
 ]
