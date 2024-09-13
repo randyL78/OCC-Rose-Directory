@@ -3,6 +3,7 @@ package com.geminionestop.roseapi.config;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
+import com.geminionestop.roseapi.auth.BasicAuthEntryPoint;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -50,13 +51,16 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(HttpMethod.POST, "v1/roses").authenticated()
+                        .requestMatchers(HttpMethod.POST, "v1/login").authenticated()
                         .anyRequest().permitAll()
                 )
                 .csrf((csrf) -> csrf
                         .ignoringRequestMatchers("v1/login")
                         .ignoringRequestMatchers("/v1/roses")
                 )
-                .httpBasic(Customizer.withDefaults())
+                .httpBasic(httpSecurityHttpBasicConfigurer -> {
+                    httpSecurityHttpBasicConfigurer.authenticationEntryPoint(new BasicAuthEntryPoint());
+                })
                 .oauth2ResourceServer((oath2) -> oath2.jwt(Customizer.withDefaults()))
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling((exceptions) -> exceptions
