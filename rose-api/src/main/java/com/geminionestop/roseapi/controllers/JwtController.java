@@ -24,7 +24,7 @@ public class JwtController {
     @PostMapping("/v1/login")
     public String login(Authentication authentication) {
         logger.info("user {} attempting to login", authentication.getName());
-
+        logger.info(authentication.getDetails().toString());
         Instant now = Instant.now();
         long expiry = 36000L;
         // @formatter:off
