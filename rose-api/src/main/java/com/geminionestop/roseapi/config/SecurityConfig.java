@@ -49,12 +49,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers(HttpMethod.GET, "/v1/roses").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/v1/roses/*").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/healthcheck").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/v1/healthcheck").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers(HttpMethod.POST, "v1/roses").authenticated()
+                        .anyRequest().permitAll()
                 )
                 .csrf((csrf) -> csrf
                         .ignoringRequestMatchers("v1/login")

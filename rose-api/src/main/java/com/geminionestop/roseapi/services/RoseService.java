@@ -1,6 +1,6 @@
 package com.geminionestop.roseapi.services;
 
-import com.geminionestop.roseapi.dtos.RoseDetailDto;
+import com.geminionestop.roseapi.dto.RoseDetailDto;
 
 import java.util.List;
 

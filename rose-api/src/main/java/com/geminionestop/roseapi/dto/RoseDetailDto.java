@@ -1,4 +1,4 @@
-package com.geminionestop.roseapi.dtos;
+package com.geminionestop.roseapi.dto;
 
 import com.geminionestop.roseapi.models.RoseModel;
 import lombok.Builder;

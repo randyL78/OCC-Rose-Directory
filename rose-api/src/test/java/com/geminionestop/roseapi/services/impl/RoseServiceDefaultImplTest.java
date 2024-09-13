@@ -1,6 +1,6 @@
 package com.geminionestop.roseapi.services.impl;
 
-import com.geminionestop.roseapi.dtos.RoseDetailDto;
+import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.models.RoseModel;
 import com.geminionestop.roseapi.repository.RoseRepository;
 import org.junit.jupiter.api.Test;

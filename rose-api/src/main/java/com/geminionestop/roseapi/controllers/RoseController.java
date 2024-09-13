@@ -1,7 +1,7 @@
 package com.geminionestop.roseapi.controllers;
 
 import com.geminionestop.roseapi.config.EnvironmentValues;
-import com.geminionestop.roseapi.dtos.RoseDetailDto;
+import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.services.RoseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +53,7 @@ public class RoseController {
     @PostMapping()
     public ResponseEntity<RoseDetailDto> createRose(@RequestBody RoseDetailDto roseDetailDto) {
         logger.info("Creating rose {}", roseDetailDto.name());
-        
+
         roseService.createRose(roseDetailDto);
 
         return ResponseEntity.created(URI.create(environmentValues.getUrl() + "v1/roses/" + roseDetailDto.slug())).build();

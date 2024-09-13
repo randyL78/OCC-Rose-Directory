@@ -1,7 +1,7 @@
 package com.geminionestop.roseapi.controllers;
 
 import com.geminionestop.roseapi.config.EnvironmentValues;
-import com.geminionestop.roseapi.dtos.RoseDetailDto;
+import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.services.RoseService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
