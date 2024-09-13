@@ -8,5 +8,5 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @ConfigurationProperties("environmentvalues")
 public class EnvironmentValues {
-    private String url = "http://api-rosedirectory/";
+    private String url = "https://api-rosedirectory/";
 }

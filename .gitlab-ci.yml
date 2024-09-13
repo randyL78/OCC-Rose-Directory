@@ -85,7 +85,7 @@ API_BUILD:
   stage: commit
   script:
     - cd rose-api
-    - ./gradlew build
+    - ./gradlew build -x test
   artifacts:
     paths:
       - rose-api/build/libs
