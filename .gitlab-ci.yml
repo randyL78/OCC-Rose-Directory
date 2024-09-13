@@ -100,6 +100,6 @@ API_CONTAINER:
     - aws ecr get-login-password | docker login $ECR_REPOSITORY -u AWS --password-stdin
     - cd rose-api
   script:
-    - docker build -t $TAG .
+    - docker build -platform linux/amd64,linux/arm64 -t $TAG .
     - docker push $TAG
 #    - aws ecs update-service --cluster $CLUSTER --service $ECS_SERVICE --force-new-deployment
