@@ -90,17 +90,17 @@ API_BUILD:
     paths:
       - rose-api/build/libs
 
-#API_CONTAINER:
-#  image: docker:24.0.5
-#  services:
-#    - docker:24.0.5-dind
-#  stage: deploy
-#  before_script:
-#    - apk add --no-cache aws-cli
-#    - aws ecr get-login-password | docker login $ECR_REPOSITORY -u AWS --password-stdin
-#    - cd rose-api
-#  when: manual
-#  script:
-#    - docker build -t $TAG .
-#    - docker push $TAG
+API_CONTAINER:
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  stage: deploy
+  before_script:
+    - apk add --no-cache aws-cli
+    - aws ecr get-login-password | docker login $ECR_REPOSITORY -u AWS --password-stdin
+    - cd rose-api
+  when: manual
+  script:
+    - docker build -t $TAG .
+    - docker push $TAG
 #    - aws ecs update-service --cluster $CLUSTER --service $ECS_SERVICE --force-new-deployment
