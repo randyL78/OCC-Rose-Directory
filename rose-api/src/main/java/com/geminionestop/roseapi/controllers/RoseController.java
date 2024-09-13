@@ -3,6 +3,8 @@ package com.geminionestop.roseapi.controllers;
 import com.geminionestop.roseapi.config.EnvironmentValues;
 import com.geminionestop.roseapi.dtos.RoseDetailDto;
 import com.geminionestop.roseapi.services.RoseService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,7 @@ import java.util.List;
 public class RoseController {
     private final RoseService roseService;
     private final EnvironmentValues environmentValues;
+    private final Logger logger = LoggerFactory.getLogger(RoseController.class);
 
     public RoseController(RoseService roseService, EnvironmentValues environmentValues) {
         this.roseService = roseService;
@@ -27,6 +30,8 @@ public class RoseController {
 
     @GetMapping("/{slug}")
     public ResponseEntity<RoseDetailDto> getRoseDetails(@PathVariable String slug) {
+        logger.info("Fetching {}", slug);
+
         RoseDetailDto roseDetailDto = roseService.getRoseDetails(slug);
 
         if (roseDetailDto == null) {
@@ -38,6 +43,8 @@ public class RoseController {
 
     @GetMapping
     public ResponseEntity<List<RoseDetailDto>> getAllRoses() {
+        logger.info("Fetching all roses");
+
         List<RoseDetailDto> roseDetailDtos = roseService.getAllRoses();
 
         return ResponseEntity.ok(roseDetailDtos);
@@ -45,6 +52,8 @@ public class RoseController {
 
     @PostMapping()
     public ResponseEntity<RoseDetailDto> createRose(@RequestBody RoseDetailDto roseDetailDto) {
+        logger.info("Creating rose {}", roseDetailDto.name());
+        
         roseService.createRose(roseDetailDto);
 
         return ResponseEntity.created(URI.create(environmentValues.getUrl() + "v1/roses/" + roseDetailDto.slug())).build();

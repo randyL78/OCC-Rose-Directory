@@ -51,10 +51,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(HttpMethod.GET, "/v1/roses").permitAll()
                         .requestMatchers(HttpMethod.GET,"/v1/roses/*").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/healthcheck").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/v1/healthcheck").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/").permitAll()
                         .anyRequest().authenticated()
                 )
                 .csrf((csrf) -> csrf
-                        .ignoringRequestMatchers("/login")
+                        .ignoringRequestMatchers("v1/login")
                         .ignoringRequestMatchers("/v1/roses")
                 )
                 .httpBasic(Customizer.withDefaults())

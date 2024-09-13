@@ -1,5 +1,7 @@
 package com.geminionestop.roseapi.controllers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
@@ -17,8 +19,12 @@ public class JwtController {
     @Autowired
     JwtEncoder encoder;
 
-    @PostMapping("/login")
+    private final Logger logger = LoggerFactory.getLogger(JwtController.class);
+
+    @PostMapping("/v1/login")
     public String login(Authentication authentication) {
+        logger.info("user {} attempting to login", authentication.getName());
+
         Instant now = Instant.now();
         long expiry = 36000L;
         // @formatter:off
