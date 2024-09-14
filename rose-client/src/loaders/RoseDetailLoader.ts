@@ -7,5 +7,5 @@ interface loaderParams {
 }
 
 export async function roseDetailLoader({params}: loaderParams) {
-  return getRose(params.roseSlug)
+  return await getRose(params.roseSlug)
 }
