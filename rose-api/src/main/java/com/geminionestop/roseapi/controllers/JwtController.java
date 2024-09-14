@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,10 @@ import java.time.Instant;
 import java.util.stream.Collectors;
 
 @RestController()
+@RequiredArgsConstructor
 public class JwtController {
-    @Autowired
-    JwtEncoder encoder;
 
+    private final JwtEncoder encoder;
     private final Logger logger = LoggerFactory.getLogger(JwtController.class);
 
     @PostMapping("/v1/login")
@@ -26,7 +27,7 @@ public class JwtController {
         logger.info("user {} attempting to login", authentication.getName());
 
         Instant now = Instant.now();
-        long expiry = 36000L;
+        long expiry = 3600L;
         String scope = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
