@@ -13,6 +13,13 @@ class SlugifyTest {
     }
 
     @Test
+    void slugify_replacesSpecialCharacterWithEmptyString() {
+        String response = Slugify.slugify("t'@#^s*t%8");
+
+        assertEquals("tst8", response);
+    }
+
+    @Test
     void slugify_shouldReturnTextInAllLowerCase() {
         String response = Slugify.slugify("TestUpperCaseConversion");
 
