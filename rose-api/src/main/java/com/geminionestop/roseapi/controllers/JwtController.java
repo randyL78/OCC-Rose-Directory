@@ -24,10 +24,9 @@ public class JwtController {
     @PostMapping("/v1/login")
     public String login(Authentication authentication) {
         logger.info("user {} attempting to login", authentication.getName());
-        logger.info(authentication.getDetails().toString());
+
         Instant now = Instant.now();
         long expiry = 36000L;
-        // @formatter:off
         String scope = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
@@ -38,7 +37,6 @@ public class JwtController {
                 .subject(authentication.getName())
                 .claim("scope", scope)
                 .build();
-        // @formatter:on
         return this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
 }
