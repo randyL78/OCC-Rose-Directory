@@ -35,6 +35,9 @@ public class RoseModel {
     @Column()
     private String thumbnailUrl;
 
+    @Column
+    private String qrCodeUrl;
+
     @Column(nullable = false)
     private String reblooms;
 

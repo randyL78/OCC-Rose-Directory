@@ -7,6 +7,7 @@ import lombok.Builder;
 public record RoseDetailDto(
         String imageUrl,
         String thumbnailUrl,
+        String qrCodeUrl,
         String name,
         String slug,
         String reblooms,
@@ -27,6 +28,7 @@ public record RoseDetailDto(
             return RoseDetailDto.builder()
                     .imageUrl(rose.getImageUrl())
                     .thumbnailUrl(rose.getThumbnailUrl())
+                    .qrCodeUrl(rose.getQrCodeUrl())
                     .name(rose.getName())
                     .slug(rose.getSlug())
                     .reblooms(rose.getReblooms())
@@ -48,6 +50,7 @@ public record RoseDetailDto(
             return RoseModel.builder()
                     .imageUrl(roseDetails.imageUrl)
                     .thumbnailUrl(roseDetails.thumbnailUrl)
+                    .qrCodeUrl(roseDetails.qrCodeUrl)
                     .name(roseDetails.name)
                     .slug(roseDetails.slug)
                     .reblooms(roseDetails.reblooms)

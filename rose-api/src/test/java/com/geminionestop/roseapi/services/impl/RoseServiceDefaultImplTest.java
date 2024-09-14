@@ -1,6 +1,7 @@
 package com.geminionestop.roseapi.services.impl;
 
 import com.geminionestop.roseapi.dto.RoseDetailDto;
+import com.geminionestop.roseapi.dto.RoseIndexItemDto;
 import com.geminionestop.roseapi.models.RoseModel;
 import com.geminionestop.roseapi.repository.RoseRepository;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,43 @@ public class RoseServiceDefaultImplTest {
         roseService.createRose(getRoseDetailDto());
 
         verify(roseRepository).save(getRoseModel());
+    }
+
+    @Test
+    void createRose_slugifiesName() {
+        RoseDetailDto roseDetailDto = RoseDetailDto
+                .builder()
+                .name("A Test Rose")
+                .build();
+
+        RoseModel roseModel = RoseModel
+                .builder()
+                .name("A Test Rose")
+                .slug("a-test-rose")
+                .build();
+
+        roseService.createRose(roseDetailDto);
+
+        verify(roseRepository).save(roseModel);
+    }
+
+    @Test
+    void createRose_overwritesExistingSlug() {
+        RoseDetailDto roseDetailDto = RoseDetailDto
+                .builder()
+                .name("A Test Rose")
+                .slug("wrong-slug")
+                .build();
+
+        RoseModel roseModel = RoseModel
+                .builder()
+                .name("A Test Rose")
+                .slug("a-test-rose")
+                .build();
+
+        roseService.createRose(roseDetailDto);
+
+        verify(roseRepository).save(roseModel);
     }
 
     @Test
@@ -69,7 +107,7 @@ public class RoseServiceDefaultImplTest {
         List<RoseModel> roses = new ArrayList<>();
         when(roseRepository.findAll()).thenReturn(roses);
 
-        List<RoseDetailDto> roseDetailList = roseService.getAllRoses();
+        List<RoseIndexItemDto> roseDetailList = roseService.getAllRoses();
 
         assertThat(roseDetailList)
                 .isNotNull()
@@ -82,7 +120,7 @@ public class RoseServiceDefaultImplTest {
         roses.add(getRoseModel());
         when(roseRepository.findAll()).thenReturn(roses);
 
-        List<RoseDetailDto> roseDetailList = roseService.getAllRoses();
+        List<RoseIndexItemDto> roseDetailList = roseService.getAllRoses();
 
         assertThat(roseDetailList)
                 .isNotNull()

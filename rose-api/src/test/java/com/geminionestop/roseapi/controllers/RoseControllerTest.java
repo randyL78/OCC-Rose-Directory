@@ -2,6 +2,7 @@ package com.geminionestop.roseapi.controllers;
 
 import com.geminionestop.roseapi.config.EnvironmentValues;
 import com.geminionestop.roseapi.dto.RoseDetailDto;
+import com.geminionestop.roseapi.dto.RoseIndexItemDto;
 import com.geminionestop.roseapi.services.RoseService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,11 +40,11 @@ public class RoseControllerTest {
 
     @Test
     void getAllRoses_shouldReturnListOfRoses() {
-        List<RoseDetailDto> storedRoses = new ArrayList<>();
-        storedRoses.add(getRoseDetailDto());
+        List<RoseIndexItemDto> storedRoses = new ArrayList<>();
+        storedRoses.add(getRoseIndexItemDto());
         when(service.getAllRoses()).thenReturn(storedRoses);
 
-        List<RoseDetailDto> roses = controller.getAllRoses().getBody();
+        List<RoseIndexItemDto> roses = controller.getAllRoses().getBody();
 
         assertThat(roses)
                 .isNotNull()
@@ -53,10 +54,10 @@ public class RoseControllerTest {
 
     @Test
     void getAllRoses_shouldReturnEmptyList_ifNoRosesAreStored() {
-        List<RoseDetailDto> storedRoses = new ArrayList<>();
+        List<RoseIndexItemDto> storedRoses = new ArrayList<>();
         when(service.getAllRoses()).thenReturn(storedRoses);
 
-        List<RoseDetailDto> roses = controller.getAllRoses().getBody();
+        List<RoseIndexItemDto> roses = controller.getAllRoses().getBody();
 
         assertThat(roses)
                 .isNotNull()
@@ -122,6 +123,15 @@ public class RoseControllerTest {
                 .history("Been around awhile")
                 .colorPrimary("white")
                 .fragranceIntensity(3)
+                .build();
+    }
+
+    private RoseIndexItemDto getRoseIndexItemDto() {
+        return RoseIndexItemDto
+                .builder()
+                .name("Test Rose")
+                .slug("test-rose")
+                .imageUrl("test.png")
                 .build();
     }
 }

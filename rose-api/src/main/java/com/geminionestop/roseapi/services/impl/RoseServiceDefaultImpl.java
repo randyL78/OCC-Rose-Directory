@@ -1,9 +1,11 @@
 package com.geminionestop.roseapi.services.impl;
 
 import com.geminionestop.roseapi.dto.RoseDetailDto;
+import com.geminionestop.roseapi.dto.RoseIndexItemDto;
 import com.geminionestop.roseapi.models.RoseModel;
 import com.geminionestop.roseapi.repository.RoseRepository;
 import com.geminionestop.roseapi.services.RoseService;
+import com.geminionestop.roseapi.utils.Slugify;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,13 +32,17 @@ public class RoseServiceDefaultImpl implements RoseService {
     public RoseDetailDto createRose(RoseDetailDto roseDetailDto) {
         RoseModel rose = RoseDetailDto.Mapper.toModel(roseDetailDto);
 
+        // Override slug that came from request to keep things standardized
+        String slug = Slugify.slugify(roseDetailDto.name());
+        rose.setSlug(slug);
+
         repository.save(rose);
 
         return roseDetailDto;
     }
 
     @Override
-    public List<RoseDetailDto> getAllRoses() {
-        return repository.findAll().stream().map(RoseDetailDto.Mapper::toDto).toList();
+    public List<RoseIndexItemDto> getAllRoses() {
+        return repository.findAll().stream().map(RoseIndexItemDto.Mapper::toDto).toList();
     }
 }
