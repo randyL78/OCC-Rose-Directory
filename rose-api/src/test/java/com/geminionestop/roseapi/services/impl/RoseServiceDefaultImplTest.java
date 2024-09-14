@@ -2,6 +2,7 @@ package com.geminionestop.roseapi.services.impl;
 
 import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.dto.RoseIndexItemDto;
+import com.geminionestop.roseapi.exceptions.ResourceNotFoundException;
 import com.geminionestop.roseapi.models.RoseModel;
 import com.geminionestop.roseapi.repository.RoseRepository;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -128,6 +130,78 @@ public class RoseServiceDefaultImplTest {
                 .hasSize(1);
     }
 
+    @Test
+    void updateRose_shouldSaveRose() {
+        RoseDetailDto roseDetailDto = getRoseDetailDto();
+
+        when(roseRepository.findBySlug(roseDetailDto.slug())).thenReturn(getRoseModel());
+
+        roseService.updateRose(roseDetailDto.slug(), roseDetailDto);
+
+        verify(roseRepository).save(getRoseModel());
+    }
+
+    @Test
+    void updateRose_shouldUpdateRoseWithNewValues() {
+        RoseDetailDto roseDetailDto = RoseDetailDto
+                .builder()
+                .slug("test-rose")
+                .description("Updated Description")
+                .build();
+
+        RoseModel updatedRoseModel = RoseModel.builder()
+                .name("Test Rose")
+                .slug("test-rose")
+                .reblooms("Yep")
+                .description("Updated Description")
+                .careInstructions("Plant it")
+                .history("Been around awhile")
+                .colorPrimary("white")
+                .fragranceIntensity(3)
+                .build();
+
+        when(roseRepository.findBySlug(roseDetailDto.slug())).thenReturn(getRoseModel());
+
+        roseService.updateRose(roseDetailDto.slug(), roseDetailDto);
+
+        verify(roseRepository).save(updatedRoseModel);
+    }
+
+    @Test
+    void updateRose_shouldUpdateTheSlugWithNewValue() {
+        RoseDetailDto roseDetailDto = RoseDetailDto
+                .builder()
+                .slug("new-slug")
+                .description("Updated Description")
+                .build();
+
+        RoseModel updatedRoseModel = RoseModel.builder()
+                .name("Test Rose")
+                .slug("new-slug")
+                .reblooms("Yep")
+                .description("Updated Description")
+                .careInstructions("Plant it")
+                .history("Been around awhile")
+                .colorPrimary("white")
+                .fragranceIntensity(3)
+                .build();
+
+        when(roseRepository.findBySlug("test-rose")).thenReturn(getRoseModel());
+
+        roseService.updateRose("test-rose", roseDetailDto);
+
+        verify(roseRepository).save(updatedRoseModel);
+    }
+
+    @Test
+    void updateRose_ThrowsExceptionIfOriginalRoseNotFound() {
+        when(roseRepository.findBySlug("test-rose")).thenReturn(null);
+
+        assertThrows(ResourceNotFoundException.class, () -> {
+            roseService.updateRose("test-rose", getRoseDetailDto());
+        });
+    }
+
     private RoseDetailDto getRoseDetailDto() {
         return RoseDetailDto
                 .builder()
@@ -154,6 +228,4 @@ public class RoseServiceDefaultImplTest {
                 .fragranceIntensity(3)
                 .build();
     }
-
-
 }

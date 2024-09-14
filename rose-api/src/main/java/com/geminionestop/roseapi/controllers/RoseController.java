@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,5 +59,14 @@ public class RoseController {
         roseService.createRose(roseDetailDto);
 
         return ResponseEntity.created(URI.create(environmentValues.getUrl() + "v1/roses/" + roseDetailDto.slug())).build();
+    }
+
+    @PutMapping("/{slug}")
+    public ResponseEntity<RoseDetailDto> updateRose(@PathVariable String slug, @RequestBody RoseDetailDto roseDetailDto) {
+        logger.info("Updating rose {}", roseDetailDto.name());
+
+        RoseDetailDto updatedRoseDetail = roseService.updateRose(slug, roseDetailDto);
+
+        return ResponseEntity.ok(updatedRoseDetail);
     }
 }

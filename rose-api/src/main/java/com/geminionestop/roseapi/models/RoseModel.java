@@ -57,7 +57,7 @@ public class RoseModel {
     private String careInstructions;
 
     @Column(nullable = false)
-    private int fragranceIntensity;
+    private Integer fragranceIntensity;
 
     @Column()
     private String fragranceDescription;

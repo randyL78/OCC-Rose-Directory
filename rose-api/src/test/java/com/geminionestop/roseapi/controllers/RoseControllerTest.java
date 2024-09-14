@@ -112,6 +112,15 @@ public class RoseControllerTest {
         assertThat(roseDetail.slug()).isEqualTo("test-rose");
     }
 
+    @Test
+    void updateRose_shouldReturnOkStatus() {
+        when(service.updateRose("original-slug", getRoseDetailDto())).thenReturn(getRoseDetailDto());
+
+        ResponseEntity<?> response = controller.updateRose("original-slug", getRoseDetailDto());
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
     private RoseDetailDto getRoseDetailDto() {
         return RoseDetailDto
                 .builder()

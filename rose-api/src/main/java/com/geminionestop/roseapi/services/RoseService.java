@@ -11,4 +11,6 @@ public interface RoseService {
     public RoseDetailDto createRose(RoseDetailDto roseDetailDto);
 
     public List<RoseIndexItemDto> getAllRoses();
+
+    public RoseDetailDto updateRose(String slug,RoseDetailDto roseDetailDto);
 }

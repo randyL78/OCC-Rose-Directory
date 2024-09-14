@@ -11,7 +11,7 @@ public record RoseDetailDto(
         String name,
         String slug,
         String reblooms,
-        int fragranceIntensity,
+        Integer fragranceIntensity,
         String fragranceDescription,
         String description,
         String careInstructions,
