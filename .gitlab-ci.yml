@@ -41,6 +41,7 @@ CLIENT__BUILD:
   <<: *client_setup
   stage: commit
   script:
+    - export VITE_API_URL=https://apis.redeaglesoftware.com/v1/
     - npm run build
   artifacts:
     paths:
