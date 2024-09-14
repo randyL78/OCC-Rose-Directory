@@ -44,13 +44,13 @@ public class RoseModel {
     @Column()
     private String colorSecondary;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String description;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String history;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String careInstructions;
 
     @Column(nullable = false)
