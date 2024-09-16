@@ -5,12 +5,16 @@ export async function homeAction({ request }: LoaderFunctionArgs) {
   const data = await request.formData()
   const username = data.get('username') as string
   const password = data.get('password') as string
+  const from = data.get('from') as string | null
 
   const { status } = await signIn({username, password})
 
   if (status === 'error') {
-    return redirect("/?login=true")
+    const params = new URLSearchParams();
+    params.set("from", from || '/');
+    params.set("login", "true")
+    return redirect(`/?${params.toString()}`)
   }
 
-  return null
+  return redirect(from || '/')
 }

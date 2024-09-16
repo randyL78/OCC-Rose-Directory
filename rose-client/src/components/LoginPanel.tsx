@@ -2,7 +2,13 @@ import {Avatar, Box, Button, Drawer, Link, TextField, Typography} from "@mui/mat
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import {Form} from "react-router-dom";
 
-function LoginPanel({open, onClose}: {open: boolean, onClose: () => void}) {
+interface LoginPanelProps {
+  open: boolean;
+  onClose: () => void;
+  from: string;
+}
+
+function LoginPanel({open, onClose, from}: LoginPanelProps) {
   return (
     <Drawer open={open} onClose={onClose} anchor="right">
       <Box
@@ -43,6 +49,7 @@ function LoginPanel({open, onClose}: {open: boolean, onClose: () => void}) {
             id="password"
             autoComplete="current-password"
           />
+          <input type="hidden" value={from} id="from" name="from" />
           <Button
             type="submit"
             fullWidth

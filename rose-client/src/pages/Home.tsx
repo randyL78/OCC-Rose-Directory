@@ -10,7 +10,7 @@ import LoginPanel from "../components/LoginPanel.tsx";
 
   function Home() {
     const params = new URLSearchParams(useLocation().search);
-    // const from = params.get("from")
+    const from = params.get("from")
     const login = params.get("login")
     const navigate = useNavigate();
 
@@ -54,7 +54,7 @@ import LoginPanel from "../components/LoginPanel.tsx";
           <Typography variant="h1" color='#fff'>Old City Cemetery</Typography>
           <Link underline='none' component={RouterLink} to={routes.RoseIndex} color='#fff'>Rose Directory</Link>
         </Container>
-        <LoginPanel open={showLogin} onClose={handleCloseLogin} />
+        <LoginPanel open={showLogin} onClose={handleCloseLogin} from={from}/>
       </>
     )
 }
