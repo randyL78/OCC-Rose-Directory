@@ -13,7 +13,9 @@ export async function homeAction({ request }: LoaderFunctionArgs) {
     const params = new URLSearchParams();
     params.set("from", from || '/');
     params.set("login", "true")
-    return redirect(`/?${params.toString()}`)
+    return {
+      error: "Invalid username or password",
+    }
   }
 
   return redirect(from || '/')

@@ -1,5 +1,5 @@
 import {routes} from "../constants/routes";
-import {Link as RouterLink, useLocation, useNavigate} from "react-router-dom";
+import {Link as RouterLink, useActionData, useLocation, useNavigate} from "react-router-dom";
 import {Container, IconButton, Link, Typography} from "@mui/material";
 import Backdrop from "../components/Backdrop";
 import HeroImage from "../components/HeroImage";
@@ -10,8 +10,10 @@ import LoginPanel from "../components/LoginPanel.tsx";
 
   function Home() {
     const params = new URLSearchParams(useLocation().search);
-    const from = params.get("from")
+    const from = params.get("from") || '/'
     const login = params.get("login")
+    const actionData = useActionData() as { error: string } | undefined
+
     const navigate = useNavigate();
 
     const [showLogin, setShowLogin] = useState(!!login);
@@ -54,7 +56,7 @@ import LoginPanel from "../components/LoginPanel.tsx";
           <Typography variant="h1" color='#fff'>Old City Cemetery</Typography>
           <Link underline='none' component={RouterLink} to={routes.RoseIndex} color='#fff'>Rose Directory</Link>
         </Container>
-        <LoginPanel open={showLogin} onClose={handleCloseLogin} from={from}/>
+        <LoginPanel open={showLogin} onClose={handleCloseLogin} from={from} errorData={actionData}/>
       </>
     )
 }

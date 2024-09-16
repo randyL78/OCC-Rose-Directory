@@ -6,9 +6,11 @@ interface LoginPanelProps {
   open: boolean;
   onClose: () => void;
   from: string;
+  errorData: { error: string } | undefined;
 }
 
-function LoginPanel({open, onClose, from}: LoginPanelProps) {
+function LoginPanel({open, onClose, from, errorData}: LoginPanelProps) {
+  const validationMessage = errorData && errorData.error ? errorData.error : '';
   return (
     <Drawer open={open} onClose={onClose} anchor="right">
       <Box
@@ -50,6 +52,7 @@ function LoginPanel({open, onClose, from}: LoginPanelProps) {
             autoComplete="current-password"
           />
           <input type="hidden" value={from} id="from" name="from" />
+            <Typography color="#c25" component="p">{validationMessage}</Typography>
           <Button
             type="submit"
             fullWidth
