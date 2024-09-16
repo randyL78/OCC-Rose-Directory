@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.services.impl;
 
+import com.geminionestop.roseapi.dto.AdminRoseIndexDto;
 import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.dto.RoseIndexItemDto;
 import com.geminionestop.roseapi.exceptions.ResourceNotFoundException;
@@ -66,6 +67,16 @@ public class RoseServiceDefaultImpl implements RoseService {
         repository.save(rose);
 
         return RoseDetailDto.Mapper.toDto(rose);
+    }
+
+    @Override
+    public List<AdminRoseIndexDto> getAllAdminRoses() {
+        return repository
+                .findAll()
+                .stream()
+                .map(AdminRoseIndexDto.Mapper::toDto)
+                .sorted(Comparator.comparing(AdminRoseIndexDto::getName))
+                .toList();
     }
 
     private void updateFields(RoseModel rose, RoseDetailDto updatedRose) {

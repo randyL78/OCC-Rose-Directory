@@ -13,10 +13,11 @@ import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
 import AdminRoseBreadcrumbs from "../components/breadcrumbs/AdminRoseBreadcrumbs.tsx";
 import {useFetcher, useLoaderData} from "react-router-dom";
-import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
 import RoseListQr from "../components/RoseListQr.tsx";
 import {useState} from "react";
 import {Download} from "@mui/icons-material";
+import { RoseResponse} from "../interfaces/Response.ts";
+import {RoseQrItem} from "../interfaces/RoseQrItem.ts";
 
 
 interface qrModalInfo {
@@ -25,7 +26,13 @@ interface qrModalInfo {
 }
 
 function RoseAdminIndex() {
-  const roses = useLoaderData() as RoseIndexItem[]
+  const rosesResponse = useLoaderData() as RoseResponse
+  let roses: RoseQrItem[] = []
+
+  if(rosesResponse.data) {
+    roses = rosesResponse.data as RoseQrItem[]
+  }
+
   const fetcher = useFetcher()
 
   const [ qrOpen, setQrOpen ] = useState<boolean>(false)

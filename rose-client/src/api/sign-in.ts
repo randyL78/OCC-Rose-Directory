@@ -17,9 +17,9 @@ export async function signIn({ username, password }: signInParams) {
     });
 
     if(response.status === 200){
-      const { token } = response.data
+      const token = response.data
+
       setToken(token);
-      api.defaults.headers.common.Authorization = `Bearer ${token}`
       return { status: "success" };
     }
   } catch (e) {

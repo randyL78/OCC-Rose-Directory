@@ -2,7 +2,6 @@ package com.geminionestop.roseapi.config;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
-import java.util.Arrays;
 import java.util.List;
 
 import com.geminionestop.roseapi.auth.BasicAuthEntryPoint;
@@ -71,7 +70,9 @@ public class SecurityConfig {
                 .cors(c -> c.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(HttpMethod.POST, "v1/roses").authenticated()
-                        .requestMatchers(HttpMethod.PATCH, "v1/roses*").authenticated()
+                        .requestMatchers(HttpMethod.PATCH, "v1/roses/*").authenticated()
+                        .requestMatchers("v1/admin/*").authenticated()
+                        .requestMatchers("v1/admin/*/*").authenticated()
                         .anyRequest().permitAll()
                 )
                 .csrf((csrf) -> csrf

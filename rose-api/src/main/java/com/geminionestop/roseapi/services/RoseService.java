@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.services;
 
+import com.geminionestop.roseapi.dto.AdminRoseIndexDto;
 import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.dto.RoseIndexItemDto;
 
@@ -13,4 +14,6 @@ public interface RoseService {
     public List<RoseIndexItemDto> getAllRoses();
 
     public RoseDetailDto updateRose(String slug,RoseDetailDto roseDetailDto);
+
+    public List<AdminRoseIndexDto> getAllAdminRoses();
 }
