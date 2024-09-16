@@ -11,6 +11,8 @@ import Layout from "./components/Layout.tsx";
 import {RoseDetailItem} from "./interfaces/RoseDetailItem.ts";
 import RoseAdminIndex from "./pages/RoseAdminIndex.tsx";
 import {roseAdminIndexLoader} from "./loaders/RoseAdminIndexLoader.ts";
+import {homeAction} from "./actions/HomeAction.ts";
+import {logOut} from "./actions/LogoutAction.ts";
 
 const router = createBrowserRouter([
   {
@@ -19,30 +21,35 @@ const router = createBrowserRouter([
     children: [
       {
         path: routes.Home,
-        element: <Home />,
+        Component: Home,
+        action: homeAction,
       },
       {
         path: routes.RoseIndex,
-        element: <RoseIndex />,
+        Component: RoseIndex,
         loader: roseIndexLoader,
       },
       {
         path: routes.RoseDetails,
-        element: <RoseDetails />,
+        Component: RoseDetails,
         loader: roseDetailLoader as unknown as LoaderFunction<RoseDetailItem>,
       },
+      {
+        path: "admin",
+        element: <Layout />,
+        children: [
+          {
+            path: routes.RoseAdmin,
+            element: <RoseAdminIndex />,
+            loader: roseAdminIndexLoader,
+          },
+        ]
+      }
     ]
   },
   {
-    path: '/admin',
-    element: <Layout />,
-    children: [
-      {
-        path: routes.RoseAdmin,
-        element: <RoseAdminIndex />,
-        loader: roseAdminIndexLoader,
-      },
-    ]
+    path: "/logout",
+    action: logOut,
   }
 ])
 

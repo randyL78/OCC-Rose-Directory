@@ -1,13 +1,8 @@
 import {Avatar, Box, Button, Drawer, Link, TextField, Typography} from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import {FormEvent} from "react";
+import {Form} from "react-router-dom";
 
 function LoginPanel({open, onClose}: {open: boolean, onClose: () => void}) {
-  const submit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    onClose()
-  }
-
   return (
     <Drawer open={open} onClose={onClose} anchor="right">
       <Box
@@ -25,15 +20,17 @@ function LoginPanel({open, onClose}: {open: boolean, onClose: () => void}) {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" noValidate onSubmit={submit}>
+        <Box>
+          <Form method="post" replace>
+
           <TextField
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Username"
+            name="username"
+            autoComplete="username"
             autoFocus
           />
           <TextField
@@ -54,8 +51,9 @@ function LoginPanel({open, onClose}: {open: boolean, onClose: () => void}) {
           >
             Sign In
           </Button>
+          </Form>
           <Typography mt={4} align='center'>
-            Powered by <Link href="https://randylayne.com" underline="none">GeminiOneStop</Link>
+            Powered by <Link href="https://randylayne.com" underline="none">Red Eagle Software</Link>
           </Typography>
         </Box>
       </Box>

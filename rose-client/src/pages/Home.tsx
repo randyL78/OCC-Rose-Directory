@@ -1,12 +1,31 @@
 import {routes} from "../constants/routes";
-import {Link as RouterLink} from "react-router-dom";
+import {Link as RouterLink, useLocation, useNavigate} from "react-router-dom";
 import {Container, IconButton, Link, Typography} from "@mui/material";
 import Backdrop from "../components/Backdrop";
 import HeroImage from "../components/HeroImage";
 import {backdropImage} from "../constants/backdropImage";
 import {Login} from "@mui/icons-material";
+import {useEffect, useState} from "react";
+import LoginPanel from "../components/LoginPanel.tsx";
 
   function Home() {
+    const params = new URLSearchParams(useLocation().search);
+    // const from = params.get("from")
+    const login = params.get("login")
+    const navigate = useNavigate();
+
+    const [showLogin, setShowLogin] = useState(!!login);
+
+    useEffect(() => {
+      setShowLogin(!!login);
+    }, [login]);
+
+    const handleCloseLogin = () => {
+      params.delete("login");
+      setShowLogin(false);
+      navigate(`/?${params}`)
+    }
+
     return (
       <>
         <Backdrop imageUrl={backdropImage} />
@@ -35,6 +54,7 @@ import {Login} from "@mui/icons-material";
           <Typography variant="h1" color='#fff'>Old City Cemetery</Typography>
           <Link underline='none' component={RouterLink} to={routes.RoseIndex} color='#fff'>Rose Directory</Link>
         </Container>
+        <LoginPanel open={showLogin} onClose={handleCloseLogin} />
       </>
     )
 }

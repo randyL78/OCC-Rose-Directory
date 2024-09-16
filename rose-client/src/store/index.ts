@@ -1,9 +1,11 @@
 import {configureStore} from "@reduxjs/toolkit";
 import RoseIndexSlice from "./roseIndexSlice.ts";
+import AuthSlice from "./authSlice.ts";
 
 const store = configureStore({
   reducer: {
     roseIndex: RoseIndexSlice,
+    auth: AuthSlice,
   }
 })
 

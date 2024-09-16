@@ -3,6 +3,7 @@ package com.geminionestop.roseapi.config;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Arrays;
+import java.util.List;
 
 import com.geminionestop.roseapi.auth.BasicAuthEntryPoint;
 import com.nimbusds.jose.jwk.JWK;
@@ -53,9 +54,11 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("*");
-        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"));
-
+        configuration.setAllowedOriginPatterns(List.of("*"));
+        configuration.setAllowedMethods(List.of("*"));
+        configuration.setAllowedHeaders(List.of("*"));
+        configuration.setAllowCredentials(true);
+        configuration.setExposedHeaders(List.of("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
 
@@ -68,13 +71,12 @@ public class SecurityConfig {
                 .cors(c -> c.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(HttpMethod.POST, "v1/roses").authenticated()
-                        .requestMatchers(HttpMethod.POST, "v1/login").authenticated()
                         .requestMatchers(HttpMethod.PATCH, "v1/roses*").authenticated()
                         .anyRequest().permitAll()
                 )
                 .csrf((csrf) -> csrf
                         .ignoringRequestMatchers("v1/login")
-                        .ignoringRequestMatchers("/v1/roses")
+                        .ignoringRequestMatchers("v1/roses")
                 )
                 .httpBasic(httpSecurityHttpBasicConfigurer -> {
                     httpSecurityHttpBasicConfigurer.authenticationEntryPoint(new BasicAuthEntryPoint());

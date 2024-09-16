@@ -1,12 +1,23 @@
-import {Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, Paper, Typography} from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Paper,
+  Typography
+} from "@mui/material";
 import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
 import AdminRoseBreadcrumbs from "../components/breadcrumbs/AdminRoseBreadcrumbs.tsx";
-import {useLoaderData} from "react-router-dom";
+import {useFetcher, useLoaderData} from "react-router-dom";
 import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
 import RoseListQr from "../components/RoseListQr.tsx";
 import {useState} from "react";
 import {Download} from "@mui/icons-material";
+
 
 interface qrModalInfo {
   qrCodeUrl: string;
@@ -15,6 +26,7 @@ interface qrModalInfo {
 
 function RoseAdminIndex() {
   const roses = useLoaderData() as RoseIndexItem[]
+  const fetcher = useFetcher()
 
   const [ qrOpen, setQrOpen ] = useState<boolean>(false)
   const [ modalInfo, setModalInfo ] = useState<qrModalInfo>({ qrCodeUrl: '', name: '' })
@@ -49,7 +61,12 @@ function RoseAdminIndex() {
           pb: 1,
         }}
       >
-        <AdminRoseBreadcrumbs />
+        <Box display="flex" justifyContent="space-between">
+          <AdminRoseBreadcrumbs />
+          <fetcher.Form method="POST" action="/logout">
+            <Button type="submit" sx={{ color: '#fff'}} >Log Out</Button>
+          </fetcher.Form>
+        </Box>
         <Typography variant="h1" color='#fff'>Admin Rose Index</Typography>
         <Paper>
           <RoseListQr roses={roses} onButtonClick={handleOpenModal} />
