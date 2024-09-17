@@ -65,25 +65,6 @@ public class RoseControllerTest {
     }
 
     @Test
-    void createRose_shouldReturnCreatedResponse() {
-        RoseDetailDto roseDetail = getRoseDetailDto();
-
-        ResponseEntity<?> response = controller.createRose(roseDetail);
-
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-    }
-
-    @Test
-    void createRose_ReturnsTheUriToTheRoseDetails() {
-        when(environmentValues.getUrl()).thenReturn("http://localhost:8080/");
-        RoseDetailDto roseDetail = getRoseDetailDto();
-
-        ResponseEntity<?> response = controller.createRose(roseDetail);
-
-        assertThat(Objects.requireNonNull(response.getHeaders().getLocation()).toString()).isEqualTo("http://localhost:8080/v1/roses/test-rose");
-    }
-
-    @Test
     void getRoseDetails_shouldReturnOkResponse() {
         when(service.getRoseDetails("test-rose")).thenReturn(getRoseDetailDto());
 

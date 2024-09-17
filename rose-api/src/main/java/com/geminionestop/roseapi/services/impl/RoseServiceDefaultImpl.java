@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.services.impl;
 
+import com.geminionestop.roseapi.dto.AdminRoseDetailDto;
 import com.geminionestop.roseapi.dto.AdminRoseIndexDto;
 import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.dto.RoseIndexItemDto;
@@ -32,11 +33,11 @@ public class RoseServiceDefaultImpl implements RoseService {
     }
 
     @Override
-    public RoseDetailDto createRose(RoseDetailDto roseDetailDto) {
-        RoseModel rose = RoseDetailDto.Mapper.toModel(roseDetailDto);
+    public AdminRoseDetailDto createRose(AdminRoseDetailDto roseDetailDto) {
+        RoseModel rose = AdminRoseDetailDto.Mapper.toModel(roseDetailDto);
 
         // Override slug that came from request to keep things standardized
-        String slug = Slugify.slugify(roseDetailDto.name());
+        String slug = Slugify.slugify(roseDetailDto.getName());
         rose.setSlug(slug);
 
         repository.save(rose);

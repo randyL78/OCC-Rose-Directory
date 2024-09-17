@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.services.impl;
 
+import com.geminionestop.roseapi.dto.AdminRoseDetailDto;
 import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.dto.RoseIndexItemDto;
 import com.geminionestop.roseapi.exceptions.ResourceNotFoundException;
@@ -29,14 +30,14 @@ public class RoseServiceDefaultImplTest {
 
     @Test
     void createRose_shouldPersistTheRose() {
-        roseService.createRose(getRoseDetailDto());
+        roseService.createRose(getAdminRoseDetailDto());
 
         verify(roseRepository).save(getRoseModel());
     }
 
     @Test
     void createRose_slugifiesName() {
-        RoseDetailDto roseDetailDto = RoseDetailDto
+        AdminRoseDetailDto roseDetailDto = AdminRoseDetailDto
                 .builder()
                 .name("A Test Rose")
                 .build();
@@ -54,7 +55,7 @@ public class RoseServiceDefaultImplTest {
 
     @Test
     void createRose_overwritesExistingSlug() {
-        RoseDetailDto roseDetailDto = RoseDetailDto
+        AdminRoseDetailDto roseDetailDto = AdminRoseDetailDto
                 .builder()
                 .name("A Test Rose")
                 .slug("wrong-slug")
@@ -73,7 +74,7 @@ public class RoseServiceDefaultImplTest {
 
     @Test
     void createRose_shouldReturnTheDto() {
-        RoseDetailDto response = roseService.createRose(getRoseDetailDto());
+        AdminRoseDetailDto response = roseService.createRose(getAdminRoseDetailDto());
 
         assertThat(response).isNotNull();
     }
@@ -204,6 +205,20 @@ public class RoseServiceDefaultImplTest {
 
     private RoseDetailDto getRoseDetailDto() {
         return RoseDetailDto
+                .builder()
+                .name("Test Rose")
+                .slug("test-rose")
+                .reblooms("Yep")
+                .description("Test description")
+                .careInstructions("Plant it")
+                .history("Been around awhile")
+                .colorPrimary("white")
+                .fragranceIntensity(3)
+                .build();
+    }
+
+    private AdminRoseDetailDto getAdminRoseDetailDto() {
+        return AdminRoseDetailDto
                 .builder()
                 .name("Test Rose")
                 .slug("test-rose")

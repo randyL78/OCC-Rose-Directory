@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.integration;
 
+import com.geminionestop.roseapi.dto.AdminRoseDetailDto;
 import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.services.RoseService;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,8 +37,8 @@ class GetRoseDetailsTest {
                 .andExpect(status().isOk());
     }
 
-    private RoseDetailDto getRoseDetailDto() {
-        return RoseDetailDto
+    private AdminRoseDetailDto getRoseDetailDto() {
+        return AdminRoseDetailDto
                 .builder()
                 .imageUrl("https://example.com/image.jpg")
                 .name("Test Rose")

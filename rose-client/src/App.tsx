@@ -13,6 +13,9 @@ import RoseAdminIndex from "./pages/RoseAdminIndex.tsx";
 import {roseAdminIndexLoader} from "./loaders/RoseAdminIndexLoader.ts";
 import {homeAction} from "./actions/HomeAction.ts";
 import {logOut} from "./actions/LogoutAction.ts";
+import ErrorBoundary from "./pages/ErrorBoundary.tsx";
+import RoseCreate from "./components/RoseCreate.tsx";
+import {createRoseAction} from "./actions/CreateRoseAction.ts";
 
 const router = createBrowserRouter([
   {
@@ -42,10 +45,18 @@ const router = createBrowserRouter([
             path: routes.RoseAdmin,
             element: <RoseAdminIndex />,
             loader: roseAdminIndexLoader,
+            children: [
+              {
+                path: 'create',
+                action: createRoseAction,
+                element: <RoseCreate />
+              }
+            ]
           },
         ]
       }
-    ]
+    ],
+    errorElement: <ErrorBoundary />,
   },
   {
     path: "/logout",

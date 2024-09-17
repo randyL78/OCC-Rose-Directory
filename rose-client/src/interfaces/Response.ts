@@ -6,6 +6,7 @@ export enum ResponseStatusType {
   'unauthorized' = 'unauthorized',
   'success' = 'success',
   'bad_request' = 'bad_request',
+  'unkown' = 'unkown',
 }
 
 type RoseType = RoseQrItem | RoseQrItem[] | RoseDetailItem | RoseDetailItem[] | RoseIndexItem | RoseIndexItem[];
