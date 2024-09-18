@@ -18,6 +18,7 @@ import {useState} from "react";
 import {Download} from "@mui/icons-material";
 import { RoseResponse} from "../interfaces/Response.ts";
 import {RoseQrItem} from "../interfaces/RoseQrItem.ts";
+import {RoseAdminContext} from "../constants/adminRoseContext.tsx";
 
 
 interface qrModalInfo {
@@ -62,7 +63,7 @@ function RoseAdminIndex() {
           >Download</Button>
         </DialogActions>
       </Dialog>
-      <Outlet />
+      <Outlet context={{roses} satisfies RoseAdminContext } />
       <Container
         sx={{
           pt: 1,

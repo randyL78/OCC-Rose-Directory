@@ -1,15 +1,20 @@
 import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
 import {Link, useFetcher, useParams} from "react-router-dom";
+import {useAdminRoses} from "../constants/adminRoseContext.tsx";
+
 
 export default function DeleteRose() {
   const fetcher = useFetcher();
   const { roseSlug } = useParams()
+  const { roses } = useAdminRoses()
+
+  const name = roses.filter(rose => rose.slug === roseSlug)[0].name
 
   return (
     <Dialog open={true} onClose={() => {}}>
       <DialogTitle>Delete Rose</DialogTitle>
       <DialogContent>
-        Are you sure you want to delete { roseSlug }?
+        Are you sure you want to delete { name }?
       </DialogContent>
       <DialogActions>
         <Button variant='outlined' component={Link} to='/admin/roses' color='secondary' >Cancel</Button>

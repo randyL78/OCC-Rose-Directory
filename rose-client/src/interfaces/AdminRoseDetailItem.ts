@@ -1,7 +1,7 @@
 export interface AdminRoseDetailItem {
   id?: number;
   name: string;
-  slug: string;
+  slug: string ;
   imageUrl: string;
   qrCodeUrl?: string;
   thumbnailUrl?: string;

@@ -19,6 +19,7 @@ import {createRoseAction} from "./actions/CreateRoseAction.ts";
 import AdminErrorBoundary from "./pages/AdminErrorBoundary.tsx";
 import DeleteRose from "./pages/DeleteRose.tsx";
 import {deleteRoseAction} from "./actions/DeleteRoseAction.ts";
+import {createRoseLoader} from "./loaders/CreateRoseLoader.ts";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
               {
                 path: 'create',
                 action: createRoseAction,
+                loader: createRoseLoader,
                 element: <RoseCreate />
               },
               {
