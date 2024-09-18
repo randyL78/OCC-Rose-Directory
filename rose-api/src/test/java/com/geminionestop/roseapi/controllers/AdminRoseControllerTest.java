@@ -2,7 +2,6 @@ package com.geminionestop.roseapi.controllers;
 
 import com.geminionestop.roseapi.config.EnvironmentValues;
 import com.geminionestop.roseapi.dto.AdminRoseDetailDto;
-import com.geminionestop.roseapi.dto.RoseDetailDto;
 import com.geminionestop.roseapi.services.RoseService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -47,6 +46,15 @@ public class AdminRoseControllerTest {
         ResponseEntity<?> response = controller.createRose(roseDetail);
 
         assertThat(Objects.requireNonNull(response.getHeaders().getLocation()).toString()).isEqualTo("http://localhost:8080/v1/roses/test-rose");
+    }
+
+    @Test
+    void updateRose_shouldReturnOkStatus() {
+        when(service.updateRose("original-slug", getRoseDetailDto())).thenReturn(getRoseDetailDto());
+
+        ResponseEntity<?> response = controller.updateRose("original-slug", getRoseDetailDto());
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 
     private AdminRoseDetailDto getRoseDetailDto() {

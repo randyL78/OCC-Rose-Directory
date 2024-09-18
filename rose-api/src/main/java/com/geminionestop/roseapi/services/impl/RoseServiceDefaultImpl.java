@@ -56,18 +56,18 @@ public class RoseServiceDefaultImpl implements RoseService {
     }
 
     @Override
-    public RoseDetailDto updateRose(String slug, RoseDetailDto roseDetailDto) {
+    public AdminRoseDetailDto updateRose(String slug, AdminRoseDetailDto roseDetailDto) {
         RoseModel rose = repository.findBySlug(slug);
 
         if(rose == null) {
             throw new ResourceNotFoundException("Rose", "slug", slug);
         }
-
-        updateFields(rose, roseDetailDto);
+        roseDetailDto.setSlug(Slugify.slugify(roseDetailDto.getName()));
+        AdminRoseDetailDto.Mapper.toModel(roseDetailDto, rose);
 
         repository.save(rose);
 
-        return RoseDetailDto.Mapper.toDto(rose);
+        return AdminRoseDetailDto.Mapper.toDto(rose);
     }
 
     @Override
@@ -93,57 +93,14 @@ public class RoseServiceDefaultImpl implements RoseService {
         return slug;
     }
 
-    private void updateFields(RoseModel rose, RoseDetailDto updatedRose) {
-        if(updatedRose.name() != null) {
-            rose.setName(updatedRose.name());
+    @Override
+    public AdminRoseDetailDto getAdminRose(String slug) {
+        RoseModel rose = repository.findBySlug(slug);
+
+        if(rose == null) {
+            throw new ResourceNotFoundException("Rose", "slug", slug);
         }
 
-        if(updatedRose.imageUrl() != null) {
-            rose.setImageUrl(updatedRose.imageUrl());
-        }
-
-        if(updatedRose.thumbnailUrl() != null) {
-            rose.setThumbnailUrl(updatedRose.thumbnailUrl());
-        }
-
-        if(updatedRose.qrCodeUrl() != null) {
-            rose.setQrCodeUrl(updatedRose.qrCodeUrl());
-        }
-
-        if(updatedRose.description() != null) {
-            rose.setDescription(updatedRose.description());
-        }
-
-        if(updatedRose.slug() != null) {
-            rose.setSlug(updatedRose.slug());
-        }
-
-        if(updatedRose.reblooms() != null) {
-            rose.setReblooms(updatedRose.reblooms());
-        }
-
-        if(updatedRose.fragranceIntensity() != null) {
-            rose.setFragranceIntensity(updatedRose.fragranceIntensity());
-        }
-
-        if(updatedRose.fragranceDescription() != null) {
-            rose.setFragranceDescription(updatedRose.fragranceDescription());
-        }
-
-        if(updatedRose.careInstructions() != null) {
-            rose.setCareInstructions(updatedRose.careInstructions());
-        }
-
-        if(updatedRose.history() != null) {
-            rose.setHistory(updatedRose.history());
-        }
-
-        if(updatedRose.colorPrimary() != null) {
-            rose.setColorPrimary(updatedRose.colorPrimary());
-        }
-
-        if(updatedRose.colorSecondary() != null) {
-            rose.setColorSecondary(updatedRose.colorSecondary());
-        }
+        return AdminRoseDetailDto.Mapper.toDto(rose);
     }
 }

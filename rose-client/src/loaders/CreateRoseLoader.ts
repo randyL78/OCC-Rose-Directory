@@ -1,7 +1,8 @@
 import {AdminRoseDetailItem} from "../interfaces/AdminRoseDetailItem.ts";
+import {ResponseStatusType, RoseResponse} from "../interfaces/Response.ts";
 
 export async function createRoseLoader() {
-  return {
+  const rose = {
     name: '',
     slug: 'Auto configured',
     imageUrl: '',
@@ -11,9 +12,14 @@ export async function createRoseLoader() {
     history: '',
     careInstructions: '',
     reblooms: '',
-    fragranceIntensity: 0,
+    fragranceIntensity: null,
     fragranceDescription: '',
     colorPrimary: '',
     colorSecondary: '',
   } as AdminRoseDetailItem
+
+  return {
+    status: ResponseStatusType.success,
+    data: rose
+  } as RoseResponse
 }

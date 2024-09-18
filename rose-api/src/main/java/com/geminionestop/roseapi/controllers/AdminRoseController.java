@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +38,15 @@ public class AdminRoseController {
         return ResponseEntity.ok(adminRoseIndexDtos);
     }
 
+    @GetMapping("/{slug}")
+    public ResponseEntity<AdminRoseDetailDto> getAdminRose(@PathVariable String slug) {
+        logger.info("Fetching admin rose details for {}", slug);
+
+        AdminRoseDetailDto roseDetailDto = roseService.getAdminRose(slug);
+
+        return ResponseEntity.ok(roseDetailDto);
+    }
+
     @PostMapping()
     public ResponseEntity<RoseDetailDto> createRose(@RequestBody AdminRoseDetailDto roseDetailDto) {
         logger.info("Creating rose {}", roseDetailDto.getName());
@@ -44,6 +54,15 @@ public class AdminRoseController {
         AdminRoseDetailDto response = roseService.createRose(roseDetailDto);
 
         return ResponseEntity.created(URI.create(environmentValues.getUrl() + "v1/roses/" + response.getSlug())).build();
+    }
+
+    @PutMapping("/{slug}")
+    public ResponseEntity<AdminRoseDetailDto> updateRose(@PathVariable String slug, @RequestBody AdminRoseDetailDto roseDetailDto) {
+        logger.info("Updating rose {}", roseDetailDto.getName());
+
+        AdminRoseDetailDto updatedRoseDetail = roseService.updateRose(slug, roseDetailDto);
+
+        return ResponseEntity.ok(updatedRoseDetail);
     }
 
     @DeleteMapping("/{slug}")

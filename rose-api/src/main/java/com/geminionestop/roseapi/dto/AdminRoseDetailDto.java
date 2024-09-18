@@ -62,5 +62,23 @@ public class AdminRoseDetailDto {
                     .fragranceDescription(roseDetailDto.getFragranceDescription())
                     .build();
         }
+
+        public static RoseModel toModel(AdminRoseDetailDto roseDetailDto, RoseModel roseModel) {
+            roseModel.setSlug(roseDetailDto.getSlug());
+            roseModel.setName(roseDetailDto.getName());
+            roseModel.setImageUrl(roseDetailDto.getImageUrl());
+            roseModel.setThumbnailUrl(roseDetailDto.getThumbnailUrl());
+            roseModel.setQrCodeUrl(roseDetailDto.getQrCodeUrl());
+            roseModel.setReblooms(roseDetailDto.getReblooms());
+            roseModel.setColorPrimary(roseDetailDto.getColorPrimary());
+            roseModel.setColorSecondary(roseDetailDto.getColorSecondary());
+            roseModel.setDescription(roseDetailDto.getDescription());
+            roseModel.setHistory(roseDetailDto.getHistory());
+            roseModel.setCareInstructions(roseDetailDto.getCareInstructions());
+            roseModel.setFragranceIntensity(roseDetailDto.getFragranceIntensity());
+            roseModel.setFragranceDescription(roseDetailDto.getFragranceDescription());
+
+            return roseModel;
+        }
     }
 }

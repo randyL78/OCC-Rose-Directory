@@ -20,12 +20,10 @@ import java.util.List;
 @RequestMapping("/v1/roses")
 public class RoseController {
     private final RoseService roseService;
-    private final EnvironmentValues environmentValues;
     private final Logger logger = LoggerFactory.getLogger(RoseController.class);
 
     public RoseController(RoseService roseService, EnvironmentValues environmentValues) {
         this.roseService = roseService;
-        this.environmentValues = environmentValues;
     }
 
     @GetMapping("/{slug}")
@@ -48,15 +46,5 @@ public class RoseController {
         List<RoseIndexItemDto> roseDetailDtos = roseService.getAllRoses();
 
         return ResponseEntity.ok(roseDetailDtos);
-    }
-
-
-    @PutMapping("/{slug}")
-    public ResponseEntity<RoseDetailDto> updateRose(@PathVariable String slug, @RequestBody RoseDetailDto roseDetailDto) {
-        logger.info("Updating rose {}", roseDetailDto.name());
-
-        RoseDetailDto updatedRoseDetail = roseService.updateRose(slug, roseDetailDto);
-
-        return ResponseEntity.ok(updatedRoseDetail);
     }
 }

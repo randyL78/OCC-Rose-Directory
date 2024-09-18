@@ -9,7 +9,7 @@ export interface AdminRoseDetailItem {
   history: string;
   careInstructions: string;
   reblooms: string;
-  fragranceIntensity: number;
+  fragranceIntensity: number | null;
   fragranceDescription?: string;
   colorPrimary: string;
   colorSecondary?: string;

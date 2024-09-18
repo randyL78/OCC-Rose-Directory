@@ -15,11 +15,12 @@ import {homeAction} from "./actions/HomeAction.ts";
 import {logOut} from "./actions/LogoutAction.ts";
 import GlobalErrorBoundary from "./pages/GlobalErrorBoundary.tsx";
 import RoseCreate from "./components/RoseCreate.tsx";
-import {createRoseAction} from "./actions/CreateRoseAction.ts";
+import {createOrUpdateRoseAction} from "./actions/CreateOrUpdateRoseAction.ts";
 import AdminErrorBoundary from "./pages/AdminErrorBoundary.tsx";
 import DeleteRose from "./pages/DeleteRose.tsx";
 import {deleteRoseAction} from "./actions/DeleteRoseAction.ts";
 import {createRoseLoader} from "./loaders/CreateRoseLoader.ts";
+import {roseAdminDetailLoader} from "./loaders/RoseAdminDetailLoader.ts";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
             children: [
               {
                 path: 'create',
-                action: createRoseAction,
+                action: createOrUpdateRoseAction,
                 loader: createRoseLoader,
                 element: <RoseCreate />
               },
@@ -61,6 +62,12 @@ const router = createBrowserRouter([
                 path: ':roseSlug/delete',
                 element: <DeleteRose />,
                 action: deleteRoseAction
+              },
+              {
+                path: ':roseSlug/edit',
+                action: createOrUpdateRoseAction,
+                element: <RoseCreate />,
+                loader: roseAdminDetailLoader,
               }
             ]
           },
