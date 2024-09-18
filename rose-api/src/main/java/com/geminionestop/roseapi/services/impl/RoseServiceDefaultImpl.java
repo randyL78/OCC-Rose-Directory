@@ -51,7 +51,7 @@ public class RoseServiceDefaultImpl implements RoseService {
                 .findAll()
                 .stream()
                 .map(RoseIndexItemDto.Mapper::toDto)
-                .sorted(Comparator.comparing(RoseIndexItemDto::name))
+                .sorted(Comparator.comparing(RoseIndexItemDto::slug))
                 .toList();
     }
 
@@ -76,8 +76,21 @@ public class RoseServiceDefaultImpl implements RoseService {
                 .findAll()
                 .stream()
                 .map(AdminRoseIndexDto.Mapper::toDto)
-                .sorted(Comparator.comparing(AdminRoseIndexDto::getName))
+                .sorted(Comparator.comparing(AdminRoseIndexDto::getSlug))
                 .toList();
+    }
+
+    @Override
+    public String deleteRose(String slug) {
+        RoseModel rose = repository.findBySlug(slug);
+
+        if(rose == null) {
+            throw new ResourceNotFoundException("Rose", "slug", slug);
+        }
+
+        repository.delete(rose);
+
+        return slug;
     }
 
     private void updateFields(RoseModel rose, RoseDetailDto updatedRose) {

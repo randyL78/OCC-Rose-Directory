@@ -15,7 +15,7 @@ import {Link as RouterLink, useNavigate} from "react-router-dom";
 import {routes} from "../constants/routes.ts";
 import HeroImage from "../components/HeroImage.tsx";
 
-export default function ErrorBoundary() {
+export default function GlobalErrorBoundary() {
   const navigate = useNavigate();
 
   return (<>

@@ -1,12 +1,11 @@
 import {Box, Button, Dialog, DialogContent, DialogTitle, TextField, Typography} from "@mui/material";
-import {useFetcher, useNavigate} from "react-router-dom";
+import {Link as RouterLink, useFetcher} from "react-router-dom";
 
 export default function RoseCreate() {
-  const navigate = useNavigate()
   const fetcher = useFetcher()
 
   return (
-    <Dialog open={true} onClose={() => navigate('/admin/roses')}>
+    <Dialog open={true}>
       <DialogTitle>
         <Typography variant="h5" component="p" pl={2} color="textPrimary">
           Add A New Rose
@@ -114,6 +113,8 @@ export default function RoseCreate() {
           </Box>
           <Box display="flex" justifyContent="flex-end" p={2}>
             <Button
+              component={RouterLink}
+              to='/admin/roses'
               color="secondary"
               sx={{ mr: 2 }}
               variant="outlined">

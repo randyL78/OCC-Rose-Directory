@@ -17,4 +17,6 @@ public interface RoseService {
     public RoseDetailDto updateRose(String slug,RoseDetailDto roseDetailDto);
 
     public List<AdminRoseIndexDto> getAllAdminRoses();
+
+    public String deleteRose(String slug);
 }

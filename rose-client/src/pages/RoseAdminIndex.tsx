@@ -12,10 +12,10 @@ import {
 import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
 import AdminRoseBreadcrumbs from "../components/breadcrumbs/AdminRoseBreadcrumbs.tsx";
-import {Outlet, useFetcher, useLoaderData, useNavigate} from "react-router-dom";
+import {Outlet, useFetcher, useLoaderData} from "react-router-dom";
 import RoseListQr from "../components/RoseListQr.tsx";
 import {useState} from "react";
-import {Create, Download} from "@mui/icons-material";
+import {Download} from "@mui/icons-material";
 import { RoseResponse} from "../interfaces/Response.ts";
 import {RoseQrItem} from "../interfaces/RoseQrItem.ts";
 
@@ -34,7 +34,6 @@ function RoseAdminIndex() {
   }
 
   const fetcher = useFetcher()
-  const navigate = useNavigate()
 
   const [ qrOpen, setQrOpen ] = useState<boolean>(false)
   const [ modalInfo, setModalInfo ] = useState<qrModalInfo>({ qrCodeUrl: '', name: '' })
@@ -42,10 +41,6 @@ function RoseAdminIndex() {
   const handleOpenModal = (qrCodeUrl: string, name: string) => {
     setModalInfo({ qrCodeUrl, name })
     setQrOpen(true)
-  }
-
-  const handleCreate = () => {
-    navigate('/admin/roses/create')
   }
 
   return (
@@ -82,18 +77,6 @@ function RoseAdminIndex() {
         </Box>
         <Typography variant="h1" color='#fff'>Admin Rose Index</Typography>
         <Paper>
-          <Box display="flex" justifyContent="end">
-            <Button
-              startIcon={<Create />}
-              type="submit"
-              variant="contained"
-              color="primary"
-              sx={{ mt: 2, mr: 2}}
-              onClick={handleCreate}
-            >
-              Create
-            </Button>
-          </Box>
           <RoseListQr roses={roses} onButtonClick={handleOpenModal} />
         </Paper>
       </Container>
