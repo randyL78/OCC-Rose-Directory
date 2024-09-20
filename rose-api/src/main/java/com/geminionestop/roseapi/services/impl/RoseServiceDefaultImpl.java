@@ -19,6 +19,10 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import software.amazon.awssdk.core.async.AsyncRequestBody;
+import software.amazon.awssdk.services.s3.S3AsyncClient;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.transfer.s3.S3TransferManager;
 import software.amazon.awssdk.transfer.s3.model.CompletedFileUpload;
 import software.amazon.awssdk.transfer.s3.model.FileUpload;
@@ -28,6 +32,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -42,6 +47,7 @@ public class RoseServiceDefaultImpl implements RoseService {
     private final RoseRepository repository;
     private final EnvironmentValues environmentValues;
     private final S3TransferManager transferManager;
+    private final S3AsyncClient s3Client;
 
     @Override
     public RoseDetailDto getRoseDetails(String slug) {
@@ -141,25 +147,19 @@ public class RoseServiceDefaultImpl implements RoseService {
 
         BufferedImage image = createQRCode(qrCodeText);
 
-        Date date  = new Date();
-
-        Path fileNameAndPath = Paths.get("src/main/resources/static", "qrcode-" + date.getTime() + ".png");
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ImageIO.write(image, "png", baos);
-        Files.write(fileNameAndPath, baos.toByteArray());
-        logger.info("Saved locally");
 
-        UploadFileRequest uploadFileRequest = UploadFileRequest
+        PutObjectRequest objectRequest = PutObjectRequest
                 .builder()
-                .putObjectRequest(b -> b.bucket(environmentValues.getS3bucket()).key("qr-" + slug + ".png"))
-                .source(fileNameAndPath)
+                .bucket(environmentValues.getS3bucket())
+                .key("qr-" + slug + ".png")
                 .build();
 
-        FileUpload fileUpload = transferManager.uploadFile(uploadFileRequest);
+        AsyncRequestBody requestBody = AsyncRequestBody.fromByteBuffer(ByteBuffer.wrap(baos.toByteArray()));
 
-        CompletedFileUpload uploadResult = fileUpload.completionFuture().join();
-
-        Files.delete(fileNameAndPath);
+        logger.info("Uploading qr code to S3");
+        s3Client.putObject(objectRequest, requestBody);
 
         return environmentValues.getImageurl() + "qr-" + slug + ".png";
     }

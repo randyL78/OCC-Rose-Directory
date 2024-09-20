@@ -10,15 +10,18 @@ import software.amazon.awssdk.transfer.s3.S3TransferManager;
 @Configuration
 public class AwsConfig {
     @Bean
-    public S3TransferManager s3TransferManager() {
-        S3AsyncClient s3AsyncClient = S3AsyncClient.builder()
+    public S3AsyncClient s3AsyncClient() {
+        return S3AsyncClient.builder()
                 .multipartEnabled(true)
                 .credentialsProvider(DefaultCredentialsProvider.create())
                 .region(Region.US_EAST_1)
                 .build();
+    }
 
+    @Bean
+    public S3TransferManager s3TransferManager() {
         return S3TransferManager.builder()
-                .s3Client(s3AsyncClient)
+                .s3Client(s3AsyncClient())
                 .build();
     }
 }
