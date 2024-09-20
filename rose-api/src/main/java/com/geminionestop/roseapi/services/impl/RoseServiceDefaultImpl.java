@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.services.impl;
 
+import com.geminionestop.roseapi.config.EnvironmentValues;
 import com.geminionestop.roseapi.dto.AdminRoseDetailDto;
 import com.geminionestop.roseapi.dto.AdminRoseIndexDto;
 import com.geminionestop.roseapi.dto.RoseDetailDto;
@@ -9,18 +10,38 @@ import com.geminionestop.roseapi.models.RoseModel;
 import com.geminionestop.roseapi.repository.RoseRepository;
 import com.geminionestop.roseapi.services.RoseService;
 import com.geminionestop.roseapi.utils.Slugify;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import software.amazon.awssdk.transfer.s3.S3TransferManager;
+import software.amazon.awssdk.transfer.s3.model.CompletedFileUpload;
+import software.amazon.awssdk.transfer.s3.model.FileUpload;
+import software.amazon.awssdk.transfer.s3.model.UploadFileRequest;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class RoseServiceDefaultImpl implements RoseService {
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final RoseRepository repository;
-
-    public RoseServiceDefaultImpl(RoseRepository repository) {
-        this.repository = repository;
-    }
+    private final EnvironmentValues environmentValues;
+    private final S3TransferManager transferManager;
 
     @Override
     public RoseDetailDto getRoseDetails(String slug) {
@@ -39,6 +60,9 @@ public class RoseServiceDefaultImpl implements RoseService {
         // Override slug that came from request to keep things standardized
         String slug = Slugify.slugify(roseDetailDto.getName());
         rose.setSlug(slug);
+
+        // Calculate QR Code Url
+        rose.setQrCodeUrl(environmentValues.getImageurl() + "qr-" + slug + ".png");;
 
         repository.save(rose);
 
@@ -63,6 +87,12 @@ public class RoseServiceDefaultImpl implements RoseService {
             throw new ResourceNotFoundException("Rose", "slug", slug);
         }
         roseDetailDto.setSlug(Slugify.slugify(roseDetailDto.getName()));
+        try {
+            roseDetailDto.setQrCodeUrl(generateQrCode(roseDetailDto.getSlug()));
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+        }
+
         AdminRoseDetailDto.Mapper.toModel(roseDetailDto, rose);
 
         repository.save(rose);
@@ -102,5 +132,42 @@ public class RoseServiceDefaultImpl implements RoseService {
         }
 
         return AdminRoseDetailDto.Mapper.toDto(rose);
+    }
+
+    private String generateQrCode(String slug) throws IOException, WriterException {
+        logger.info("Generating QR Code for {}", slug);
+
+        String qrCodeText = environmentValues.getClienturl() + "roses/" + slug;
+
+        BufferedImage image = createQRCode(qrCodeText);
+
+        Date date  = new Date();
+
+        Path fileNameAndPath = Paths.get("src/main/resources/static", "qrcode-" + date.getTime() + ".png");
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(image, "png", baos);
+        Files.write(fileNameAndPath, baos.toByteArray());
+        logger.info("Saved locally");
+
+        UploadFileRequest uploadFileRequest = UploadFileRequest
+                .builder()
+                .putObjectRequest(b -> b.bucket(environmentValues.getS3bucket()).key("qr-" + slug + ".png"))
+                .source(fileNameAndPath)
+                .build();
+
+        FileUpload fileUpload = transferManager.uploadFile(uploadFileRequest);
+
+        CompletedFileUpload uploadResult = fileUpload.completionFuture().join();
+
+        Files.delete(fileNameAndPath);
+
+        return environmentValues.getImageurl() + "qr-" + slug + ".png";
+    }
+
+    private static BufferedImage createQRCode(String text) throws WriterException {
+        QRCodeWriter codeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = codeWriter.encode(text, BarcodeFormat.QR_CODE, 200, 200);
+
+        return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
 }
