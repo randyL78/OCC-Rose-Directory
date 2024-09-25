@@ -161,13 +161,13 @@ public class RoseServiceDefaultImpl implements RoseService {
 
             s3Client.listBuckets().whenComplete(((listBucketsResponse, throwable) -> {
                 if (!listBucketsResponse.buckets().isEmpty()) {
-                    logger.info("Buckets found");
+                    logger.info("Buckets found, putting object");
+                    s3Client.putObject(objectRequest, requestBody);
                 } else {
                     logger.error(throwable.getMessage());
                 }
             }));
 
-            s3Client.putObject(objectRequest, requestBody);
         } catch (Exception e) {
             logger.error("Error uploading qr code to S3");
             logger.error(e.getMessage());
