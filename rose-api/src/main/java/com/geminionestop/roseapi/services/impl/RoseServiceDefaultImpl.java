@@ -93,11 +93,8 @@ public class RoseServiceDefaultImpl implements RoseService {
             throw new ResourceNotFoundException("Rose", "slug", slug);
         }
         roseDetailDto.setSlug(Slugify.slugify(roseDetailDto.getName()));
-        try {
-            roseDetailDto.setQrCodeUrl(generateQrCode(roseDetailDto.getSlug()));
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-        }
+
+        roseDetailDto.setQrCodeUrl(generateQrCode(roseDetailDto.getSlug()));
 
         AdminRoseDetailDto.Mapper.toModel(roseDetailDto, rose);
 
@@ -140,26 +137,45 @@ public class RoseServiceDefaultImpl implements RoseService {
         return AdminRoseDetailDto.Mapper.toDto(rose);
     }
 
-    private String generateQrCode(String slug) throws IOException, WriterException {
+    private String generateQrCode(String slug) {
         logger.info("Generating QR Code for {}", slug);
 
         String qrCodeText = environmentValues.getClienturl() + "roses/" + slug;
 
-        BufferedImage image = createQRCode(qrCodeText);
-
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(image, "png", baos);
+        PutObjectRequest objectRequest;
 
-        PutObjectRequest objectRequest = PutObjectRequest
-                .builder()
-                .bucket(environmentValues.getS3bucket())
-                .key("qr-" + slug + ".png")
-                .build();
+        try {
 
-        AsyncRequestBody requestBody = AsyncRequestBody.fromByteBuffer(ByteBuffer.wrap(baos.toByteArray()));
+            BufferedImage image = createQRCode(qrCodeText);
 
-        logger.info("Uploading qr code to S3");
-        s3Client.putObject(objectRequest, requestBody);
+
+            ImageIO.write(image, "png", baos);
+
+            objectRequest = PutObjectRequest
+                    .builder()
+                    .bucket(environmentValues.getS3bucket())
+                    .key("qr-" + slug + ".png")
+                    .build();
+        } catch (IOException ioException) {
+            logger.error("Error creating QR Code");
+            logger.error(ioException.getMessage());
+            return null;
+        } catch (WriterException writerException) {
+            logger.error("Error formatting QR Code to PNG");
+            return null;
+        }
+
+        try {
+            logger.info("Uploading qr code to S3");
+            AsyncRequestBody requestBody = AsyncRequestBody.fromByteBuffer(ByteBuffer.wrap(baos.toByteArray()));
+
+            s3Client.putObject(objectRequest, requestBody);
+        } catch (Exception e) {
+            logger.error("Error uploading qr code to S3");
+            logger.error(e.getMessage());
+            return null;
+        }
 
         return environmentValues.getImageurl() + "qr-" + slug + ".png";
     }
