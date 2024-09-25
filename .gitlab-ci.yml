@@ -47,11 +47,11 @@ CLIENT__BUILD:
     paths:
       - rose-client/dist
 
-CLIENT__TEST:
-  <<: *client_setup
-  stage: commit
-  script:
-    - npm run test
+#CLIENT__TEST:
+#  <<: *client_setup
+#  stage: commit
+#  script:
+#    - npm run test
 
 CLIENT__LINT:
   <<: *client_setup

@@ -70,7 +70,7 @@ export default function RoseCreate() {
               fullWidth
             />
           </Box>
-          <Box display="flex" justifyContent="space-between" p={2} pb={0}>
+          <Box display="flex" justifyContent="space-between" p={2}>
             <MuiColorInput
               format='hex'
               label='Primary Color'
