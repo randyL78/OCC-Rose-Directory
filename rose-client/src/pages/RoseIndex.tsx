@@ -1,5 +1,5 @@
 import {useLoaderData} from "react-router-dom";
-import {Box, Collapse, Container, Divider, Pagination, Paper, Tab, Tabs, Typography} from "@mui/material";
+import {Box, Button, Collapse, Container, Divider, Pagination, Paper, Tab, Tabs, Typography} from "@mui/material";
 import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
 import RoseBreadcrumbs from "../components/breadcrumbs/RoseBreadcrumbs.tsx";
@@ -64,6 +64,10 @@ function RoseIndex() {
     dispatch(updatePageIndex(value))
   }
 
+  const handleBackToTop = () => {
+    window.scrollTo({top: 0, left: 0})
+  }
+
   return (
     <>
       <Backdrop imageUrl={backdropImage} />
@@ -101,6 +105,9 @@ function RoseIndex() {
                 showLastButton
                 variant="outlined"
                 color="primary" />
+            </Box>
+            <Box pb={2} px={2} display="flex" justifyContent="center">
+              <Button onClick={handleBackToTop}>Back To Top</Button>
             </Box>
           </Box>
         </Paper>
