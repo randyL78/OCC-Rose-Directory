@@ -159,6 +159,14 @@ public class RoseServiceDefaultImpl implements RoseService {
             logger.info("Uploading qr code to S3");
             AsyncRequestBody requestBody = AsyncRequestBody.fromByteBuffer(ByteBuffer.wrap(baos.toByteArray()));
 
+            s3Client.listBuckets().whenComplete(((listBucketsResponse, throwable) -> {
+                if (!listBucketsResponse.buckets().isEmpty()) {
+                    logger.info("Buckets found");
+                } else {
+                    logger.error(throwable.getMessage());
+                }
+            }));
+
             s3Client.putObject(objectRequest, requestBody);
         } catch (Exception e) {
             logger.error("Error uploading qr code to S3");
