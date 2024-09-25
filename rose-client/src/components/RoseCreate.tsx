@@ -2,16 +2,21 @@ import {Box, Button, Dialog, DialogContent, DialogTitle, TextField, Typography} 
 import {Link as RouterLink, useFetcher, useLoaderData} from "react-router-dom";
 import {AdminRoseDetailItem} from "../interfaces/AdminRoseDetailItem.ts";
 import {RoseResponse} from "../interfaces/Response.ts";
+import {useState} from "react";
+import {MuiColorInput} from "mui-color-input";
 
 export default function RoseCreate() {
   const fetcher = useFetcher()
   const rose = (useLoaderData() as RoseResponse).data as AdminRoseDetailItem
 
+  const [primaryColor, setPrimaryColor] = useState(rose.colorPrimary)
+  const [secondaryColor, setSecondaryColor] = useState(rose.colorSecondary)
+
   return (
     <Dialog open={true}>
       <DialogTitle>
         <Typography variant="h5" component="p" pl={2} color="textPrimary">
-          Add A New Rose
+          { rose.name ?  `Edit ${rose.name}` : 'Add A New Rose' }
         </Typography>
       </DialogTitle>
       <DialogContent>
@@ -26,9 +31,8 @@ export default function RoseCreate() {
             <TextField
               label="Slug"
               name="slug"
-              value={rose.slug}
+              value={rose.slug || "Auto configured"}
               disabled
-              defaultValue="Auto configured"
             />
           </Box>
           <Box display="flex" justifyContent="space-between" p={2}>
@@ -52,7 +56,8 @@ export default function RoseCreate() {
             <TextField
               label="QR Code Url"
               name="qrCodeUrl"
-              defaultValue={rose.qrCodeUrl}
+              disabled
+              value={rose.qrCodeUrl || "Auto configured"}
               fullWidth
             />
           </Box>
@@ -65,17 +70,21 @@ export default function RoseCreate() {
               fullWidth
             />
           </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              label="Primary Color"
-              name="colorPrimary"
-              defaultValue={rose.colorPrimary}
-              required
+          <Box display="flex" justifyContent="space-between" p={2} pb={0}>
+            <MuiColorInput
+              format='hex'
+              label='Primary Color'
+              value={primaryColor}
+              name='colorPrimary'
+              sx={{ mr: 2}}
+              onChange={(value) => setPrimaryColor(value)}
             />
-            <TextField
-              label="Secondary Color"
-              name="colorSecondary"
-              defaultValue={rose.colorSecondary}
+            <MuiColorInput
+              format='hex'
+              label='Secondary Color'
+              name='colorSecondary'
+              value={secondaryColor || ''}
+              onChange={(value) => setSecondaryColor(value)}
             />
           </Box>
           <Box display="flex" justifyContent="space-between" p={2}>
