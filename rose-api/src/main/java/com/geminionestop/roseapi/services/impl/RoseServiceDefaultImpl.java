@@ -21,23 +21,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.core.async.AsyncRequestBody;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
-import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
-import software.amazon.awssdk.transfer.s3.S3TransferManager;
-import software.amazon.awssdk.transfer.s3.model.CompletedFileUpload;
-import software.amazon.awssdk.transfer.s3.model.FileUpload;
-import software.amazon.awssdk.transfer.s3.model.UploadFileRequest;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -46,7 +37,6 @@ public class RoseServiceDefaultImpl implements RoseService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final RoseRepository repository;
     private final EnvironmentValues environmentValues;
-    private final S3TransferManager transferManager;
     private final S3AsyncClient s3Client;
 
     @Override
@@ -68,7 +58,7 @@ public class RoseServiceDefaultImpl implements RoseService {
         rose.setSlug(slug);
 
         // Calculate QR Code Url
-        rose.setQrCodeUrl(environmentValues.getImageurl() + "qr-" + slug + ".png");;
+        rose.setQrCodeUrl(generateQrCode(roseDetailDto.getSlug()));
 
         repository.save(rose);
 
@@ -92,12 +82,11 @@ public class RoseServiceDefaultImpl implements RoseService {
         if(rose == null) {
             throw new ResourceNotFoundException("Rose", "slug", slug);
         }
-        roseDetailDto.setSlug(Slugify.slugify(roseDetailDto.getName()));
 
+        roseDetailDto.setSlug(Slugify.slugify(roseDetailDto.getName()));
         roseDetailDto.setQrCodeUrl(generateQrCode(roseDetailDto.getSlug()));
 
         AdminRoseDetailDto.Mapper.toModel(roseDetailDto, rose);
-
         repository.save(rose);
 
         return AdminRoseDetailDto.Mapper.toDto(rose);
@@ -177,7 +166,10 @@ public class RoseServiceDefaultImpl implements RoseService {
             return null;
         }
 
-        return environmentValues.getImageurl() + "qr-" + slug + ".png";
+        String qrCodeUrl = environmentValues.getImageurl() + "qr-" + slug + ".png";
+        logger.info("QR Code Url: {}", qrCodeUrl);
+
+        return qrCodeUrl;
     }
 
     private static BufferedImage createQRCode(String text) throws WriterException {
