@@ -1,16 +1,62 @@
-import {Box, Button, Dialog, DialogContent, DialogTitle, TextField, Typography} from "@mui/material";
+import {
+  Autocomplete,
+  Box,
+  Button, createFilterOptions,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  FilterOptionsState,
+  TextField,
+  Typography
+} from "@mui/material";
 import {Link as RouterLink, useFetcher, useLoaderData} from "react-router-dom";
 import {AdminRoseDetailItem} from "../interfaces/AdminRoseDetailItem.ts";
 import {RoseResponse} from "../interfaces/Response.ts";
-import {useState} from "react";
+import {SyntheticEvent, useState} from "react";
 import {MuiColorInput} from "mui-color-input";
+
+const filter = createFilterOptions<rebloomTypes>()
+interface rebloomTypes {
+  value?: string,
+  title: string
+}
 
 export default function RoseCreate() {
   const fetcher = useFetcher()
-  const rose = (useLoaderData() as RoseResponse).data as AdminRoseDetailItem
+  const { rose, rebloomTypes } = (useLoaderData() as RoseResponse).data as { rose: AdminRoseDetailItem, rebloomTypes: string[] }
 
   const [primaryColor, setPrimaryColor] = useState(rose.colorPrimary)
   const [secondaryColor, setSecondaryColor] = useState(rose.colorSecondary)
+  const [reblooms, setReblooms] = useState<rebloomTypes | null>({ title: rose.reblooms || ''})
+
+  const rebloomOptions = rebloomTypes.map(rebloomType => ({ title: rebloomType }))
+
+  const handleRebloomsChange = (_event: SyntheticEvent<Element, Event>, value: string | rebloomTypes | null) => {
+    if(typeof value === 'string') {
+      setReblooms({ title: value})
+    } else if (value && value.value) {
+      // Create a new value from the user input
+      setReblooms({
+        title: value.value,
+      });
+    } else {
+      setReblooms(value)
+    }
+  }
+
+  const handleFilterOptions = (options: rebloomTypes[], params: FilterOptionsState<rebloomTypes>) => {
+    const filtered = filter(options, params);
+    const { inputValue } = params;
+    const isExisting = options.some((option: rebloomTypes) => inputValue.toLowerCase() === option.title.toLowerCase());
+    if (inputValue !== '' && !isExisting) {
+      filtered.push({
+        value: inputValue,
+        title: `Add "${inputValue}"`
+      });
+    }
+
+    return filtered;
+  }
 
   return (
     <Dialog open={true}>
@@ -62,11 +108,33 @@ export default function RoseCreate() {
             />
           </Box>
           <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              label="Reblooms"
-              name="reblooms"
-              defaultValue={rose.reblooms}
-              required
+            <Autocomplete
+              renderInput={(params) => <TextField name="reblooms" required {...params} label='Reblooms' />}
+              onChange={handleRebloomsChange}
+              filterOptions={handleFilterOptions}
+              renderOption={(props, option) => {
+                const { key, ...optionProps } = props;
+                return (
+                  <li key={key} {...optionProps}>
+                    {option.title}
+                  </li>
+                );
+              }}
+              getOptionLabel={(option) => {
+                if (typeof option === 'string') {
+                  return option;
+                }
+                if (option.value) {
+                  return option.value;
+                }
+                return option.title;
+              }}
+              value={reblooms}
+              freeSolo
+              selectOnFocus
+              clearOnBlur
+              handleHomeEndKeys
+              options={rebloomOptions}
               fullWidth
             />
           </Box>

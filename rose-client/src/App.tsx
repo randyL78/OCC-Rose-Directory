@@ -48,6 +48,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: routes.RoseAdmin,
+            id: routes.RoseAdmin,
             element: <RoseAdminIndex />,
             loader: roseAdminIndexLoader,
             errorElement: <AdminErrorBoundary />,

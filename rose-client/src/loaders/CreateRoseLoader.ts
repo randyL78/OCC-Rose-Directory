@@ -1,5 +1,6 @@
 import {AdminRoseDetailItem} from "../interfaces/AdminRoseDetailItem.ts";
 import {ResponseStatusType, RoseResponse} from "../interfaces/Response.ts";
+import {getRebloomTypes} from "../api/get-rebloom-types.ts";
 
 export async function createRoseLoader() {
   const rose = {
@@ -18,8 +19,13 @@ export async function createRoseLoader() {
     colorSecondary: '',
   } as AdminRoseDetailItem
 
+  const rebloomTypes = await getRebloomTypes()
+  if(rebloomTypes.status !== ResponseStatusType.success) {
+    rebloomTypes.data = []
+  }
+
   return {
     status: ResponseStatusType.success,
-    data: rose
+    data: { rose, rebloomTypes: rebloomTypes.data as string[] },
   } as RoseResponse
 }
