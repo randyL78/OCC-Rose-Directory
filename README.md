@@ -30,14 +30,19 @@ for that specific plant.
 - [X] Add static rose detail endpoint to API
 - [X] Make Gallery Images route to Detail page
 - [X] Have breadcrumbs go back to list or gallery based off of what was previously viewed
-- [ ] Add static rose list endpoint to API
-- [ ] Add an in-app data repository to API and connect resources to it
-- [ ] Convert in-app data to a file store to facilitate building out Admin functionality
-- [ ] Add login page to client for Admins
-- [ ] Add login, logout, and authenticated endpoints to API
-- [ ] Convert file store to NoSql DB
+- [X] Add static rose list endpoint to API
+- [X] Add an in-app data repository to API and connect resources to it
+- [X] Add login page to client for Admins
+- [X] Add login, logout, and authenticated endpoints to API
+- [X] Add external DB
 - [ ] Shuffle feature for gallery
-- [ ] Generate QR codes
-- [ ] Add search and filter features to list
+- [X] Generate QR codes
+- [X] Add search and filter features to list
 - [ ] Tag system
-
+- [ ] Add Companion plant index
+- [ ] Add Companion plant detail
+- [X] Add Admin rose index page
+- [X] Add Rose create page in Admin
+- [X] Add ability to delete Roses in Admin
+- [X] Add Rose edit page in Admin
+- [ ] Make create and edit pages more user-friendly
