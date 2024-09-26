@@ -54,7 +54,8 @@ import LoginPanel from "../components/LoginPanel.tsx";
           </IconButton>
           <HeroImage imageUrl={backdropImage} />
           <Typography variant="h1" color='#fff'>Old City Cemetery</Typography>
-          <Link underline='none' variant='h2' component={RouterLink} to={routes.RoseIndex} color='#fff'>Rose Directory</Link>
+          <p><Link component={RouterLink} to={routes.RoseIndex} color='#fff'>Rose Directory</Link></p>
+          <p><Link component={RouterLink} to={routes.RoseIndex} color='#fff'>Companion Plant Directory</Link></p>
         </Container>
         <LoginPanel open={showLogin} onClose={handleCloseLogin} from={from} errorData={actionData}/>
       </>
