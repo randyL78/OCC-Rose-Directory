@@ -31,7 +31,16 @@ export async function roseAdminDetailLoader({ request, params }: LoaderFunctionA
     return redirectToLogin(request)
   }
 
-  rosesResponse.data = { rose: rosesResponse.data as RoseDetailItem, rebloomTypes: rebloomTypes.data as string[] }
+  const roseData = rosesResponse.data as RoseDetailItem
+
+  let key: keyof RoseDetailItem
+
+  for(key in roseData) {
+    // @ts-expect-error we know this is a key of RoseDetailItem
+    roseData[key] = roseData[key] || ''
+  }
+
+  rosesResponse.data = { rose: roseData, rebloomTypes: rebloomTypes.data as string[] }
 
   return rosesResponse
 }

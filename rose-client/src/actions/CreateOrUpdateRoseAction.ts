@@ -8,6 +8,8 @@ export async function createOrUpdateRoseAction({ request, params }: LoaderFuncti
 
   const { roseSlug } = params;
 
+  console.log(data.get('thumbnailUrl') as string)
+
   const newRose: AdminRoseDetailItem = {
     name: data.get("name") as string,
     slug: '',
@@ -25,6 +27,7 @@ export async function createOrUpdateRoseAction({ request, params }: LoaderFuncti
   }
 
   if(roseSlug) {
+    newRose.slug = roseSlug
     await updateRose(newRose);
   } else {
     await createRose(newRose)
