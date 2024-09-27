@@ -26,6 +26,6 @@ export async function createRoseLoader() {
 
   return {
     status: ResponseStatusType.success,
-    data: { rose, rebloomTypes: rebloomTypes.data as string[] },
+    data: { rose, rebloomTypes: rebloomTypes.data as string[], step: 0 },
   } as RoseResponse
 }

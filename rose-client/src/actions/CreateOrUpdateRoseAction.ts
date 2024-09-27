@@ -5,11 +5,12 @@ import {updateRose} from "../api/update-rose.ts";
 
 export async function createOrUpdateRoseAction({ request, params }: LoaderFunctionArgs) {
   const data = await request.formData()
+
   const { roseSlug } = params;
 
   const newRose: AdminRoseDetailItem = {
     name: data.get("name") as string,
-    slug: data.get("slug") as string,
+    slug: '',
     imageUrl: data.get("imageUrl") as string,
     thumbnailUrl: data.get("thumbnailUrl") as string || undefined,
     qrCodeUrl: data.get("qrCodeUrl") as string || undefined,
@@ -24,7 +25,6 @@ export async function createOrUpdateRoseAction({ request, params }: LoaderFuncti
   }
 
   if(roseSlug) {
-    newRose.slug = roseSlug
     await updateRose(newRose);
   } else {
     await createRose(newRose)

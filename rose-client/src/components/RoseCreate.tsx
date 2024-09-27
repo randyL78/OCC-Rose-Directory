@@ -1,61 +1,42 @@
 import {
-  Autocomplete,
   Box,
-  Button, createFilterOptions,
+  Button,
   Dialog,
   DialogContent,
   DialogTitle,
-  FilterOptionsState,
-  TextField,
+  Step, StepButton, Stepper,
   Typography
 } from "@mui/material";
-import {Link as RouterLink, useFetcher, useLoaderData} from "react-router-dom";
+import {Link as RouterLink, useFetcher, useLoaderData, useSubmit} from "react-router-dom";
 import {AdminRoseDetailItem} from "../interfaces/AdminRoseDetailItem.ts";
 import {RoseResponse} from "../interfaces/Response.ts";
-import {SyntheticEvent, useState} from "react";
-import {MuiColorInput} from "mui-color-input";
+import {ChangeEvent, useState} from "react";
+import {RoseCreateFirstStep} from "./RoseCreateFirstStep.tsx";
+import {RoseCreateThirdStep} from "./RoseCreateThirdStep.tsx";
+import {RoseCreateSecondStep} from "./RoseCreateSecondStep.tsx";
 
-const filter = createFilterOptions<rebloomTypes>()
-interface rebloomTypes {
-  value?: string,
-  title: string
-}
+const steps = ['Basic Info', 'Indicators', 'Description']
 
 export default function RoseCreate() {
   const fetcher = useFetcher()
-  const { rose, rebloomTypes } = (useLoaderData() as RoseResponse).data as { rose: AdminRoseDetailItem, rebloomTypes: string[] }
+  const { rose } = (useLoaderData() as RoseResponse).data as { rose: AdminRoseDetailItem }
+  const [roseData, setRoseData] = useState<AdminRoseDetailItem>(rose)
+  const [activeStep, setActiveStep] = useState<number>(0)
+  const submit = useSubmit()
 
-  const [primaryColor, setPrimaryColor] = useState(rose.colorPrimary)
-  const [secondaryColor, setSecondaryColor] = useState(rose.colorSecondary)
-  const [reblooms, setReblooms] = useState<rebloomTypes | null>({ title: rose.reblooms || ''})
-
-  const rebloomOptions = rebloomTypes.map(rebloomType => ({ title: rebloomType }))
-
-  const handleRebloomsChange = (_event: SyntheticEvent<Element, Event>, value: string | rebloomTypes | null) => {
-    if(typeof value === 'string') {
-      setReblooms({ title: value})
-    } else if (value && value.value) {
-      // Create a new value from the user input
-      setReblooms({
-        title: value.value,
-      });
-    } else {
-      setReblooms(value)
-    }
+  const handleStep = (index: number) => {
+    setActiveStep(index)
   }
 
-  const handleFilterOptions = (options: rebloomTypes[], params: FilterOptionsState<rebloomTypes>) => {
-    const filtered = filter(options, params);
-    const { inputValue } = params;
-    const isExisting = options.some((option: rebloomTypes) => inputValue.toLowerCase() === option.title.toLowerCase());
-    if (inputValue !== '' && !isExisting) {
-      filtered.push({
-        value: inputValue,
-        title: `Add "${inputValue}"`
-      });
-    }
+  const handleFieldChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setRoseData(prevState => ({
+      ...prevState,
+      [event.target.name]: event.target.value
+    }))
+  }
 
-    return filtered;
+  const handleSubmit = () => {
+    submit({ ...roseData }, { method: 'post' })
   }
 
   return (
@@ -66,158 +47,63 @@ export default function RoseCreate() {
         </Typography>
       </DialogTitle>
       <DialogContent>
-        <fetcher.Form method='post'>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              label="Name"
-              name="name"
-              defaultValue={rose.name}
-              required
-            />
-            <TextField
-              label="Slug"
-              name="slug"
-              value={rose.slug || "Auto configured"}
-              disabled
-            />
-          </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              label="Image Url"
-              name="imageUrl"
-              defaultValue={rose.imageUrl}
-              required
-              fullWidth
-            />
-          </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              label="Thumbnail Url"
-              name="thumbnailUrl"
-              defaultValue={rose.thumbnailUrl}
-              fullWidth
-            />
-          </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              label="QR Code Url"
-              name="qrCodeUrl"
-              disabled
-              value={rose.qrCodeUrl || "Auto configured"}
-              fullWidth
-            />
-          </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <Autocomplete
-              renderInput={(params) => <TextField name="reblooms" required {...params} label='Reblooms' />}
-              onChange={handleRebloomsChange}
-              filterOptions={handleFilterOptions}
-              renderOption={(props, option) => {
-                const { key, ...optionProps } = props;
-                return (
-                  <li key={key} {...optionProps}>
-                    {option.title}
-                  </li>
-                );
-              }}
-              getOptionLabel={(option) => {
-                if (typeof option === 'string') {
-                  return option;
+        <Stepper nonLinear activeStep={activeStep} sx={{mt: 3, mb: 3}}>
+          {
+            steps.map((label, index) => (
+              <Step key={label}>
+                <StepButton color='inherit' onClick={() => handleStep(index)}>
+                  {label}
+                </StepButton>
+              </Step>
+            ))
+          }
+        </Stepper>
+        <fetcher.Form onSubmit={handleSubmit}>
+          <Box display='flex' justifyContent='space-between' flexDirection='column' sx={{ minHeight: '45vh'}}>
+            <Box>
+              { activeStep === 0 && <RoseCreateFirstStep rose={roseData} handleFieldChange={handleFieldChange} /> }
+              { activeStep === 1 && <RoseCreateSecondStep rose={roseData} handleFieldChange={handleFieldChange} setRose={setRoseData} />}
+              { activeStep === 2 && <RoseCreateThirdStep rose={roseData} handleFieldChange={handleFieldChange} /> }
+            </Box>
+            <Box display="flex" justifyContent="space-between" p={2}>
+              <Button
+                component={RouterLink}
+                to='/admin/roses'
+                color="secondary"
+                sx={{ mr: 2 }}
+                variant="outlined">
+                Cancel
+              </Button>
+              <Box display="flex" justifyContent="flex-end">
+
+                { activeStep > 0 && (<Button
+                  sx={{ mr: 2 }}
+                  color="primary"
+                  onClick={() => handleStep(activeStep - 1)}
+                  variant='outlined'
+                >
+                  Prev Section
+                </Button>)
                 }
-                if (option.value) {
-                  return option.value;
+                { activeStep < steps.length - 1 && (<Button
+                  color="primary"
+                  onClick={() => handleStep(activeStep + 1)}
+                  variant='contained'
+                >
+                  Next Section
+                </Button>)
                 }
-                return option.title;
-              }}
-              value={reblooms}
-              freeSolo
-              selectOnFocus
-              clearOnBlur
-              handleHomeEndKeys
-              options={rebloomOptions}
-              fullWidth
-            />
-          </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <MuiColorInput
-              format='hex'
-              label='Primary Color'
-              value={primaryColor}
-              name='colorPrimary'
-              sx={{ mr: 2}}
-              onChange={(value) => setPrimaryColor(value)}
-            />
-            <MuiColorInput
-              format='hex'
-              label='Secondary Color'
-              name='colorSecondary'
-              value={secondaryColor || ''}
-              onChange={(value) => setSecondaryColor(value)}
-            />
-          </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              type="number"
-              label="Intensity"
-              name="fragranceIntensity"
-              defaultValue={rose.fragranceIntensity}
-              required
-            />
-            <TextField
-              sx={{ ml: 2 }}
-              label="Fragrance Description"
-              name="fragranceDescription"
-              defaultValue={rose.fragranceDescription}
-              fullWidth
-            />
-          </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              multiline
-              required
-              rows={3}
-              label="Description"
-              name="description"
-              defaultValue={rose.description}
-              fullWidth
-            />
-          </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              multiline
-              required
-              rows={3}
-              label="Care Instructions"
-              name="careInstructions"
-              defaultValue={rose.careInstructions}
-              fullWidth
-            />
-          </Box>
-          <Box display="flex" justifyContent="space-between" p={2}>
-            <TextField
-              multiline
-              required
-              rows={3}
-              label="History"
-              name="history"
-              defaultValue={rose.history}
-              fullWidth
-            />
-          </Box>
-          <Box display="flex" justifyContent="flex-end" p={2}>
-            <Button
-              component={RouterLink}
-              to='/admin/roses'
-              color="secondary"
-              sx={{ mr: 2 }}
-              variant="outlined">
-              Cancel
-            </Button>
-            <Button
-              type='submit'
-              variant="contained">
-              Submit
-            </Button>
+                { activeStep === steps.length - 1 && (
+                  <Button
+                    color="primary"
+                    type='submit'
+                    variant='contained'
+                  >
+                    Submit
+                  </Button>
+                )}
+              </Box>
+            </Box>
           </Box>
         </fetcher.Form>
       </DialogContent>
