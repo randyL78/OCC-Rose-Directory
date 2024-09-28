@@ -26,6 +26,7 @@ import {CompanionIndex} from "./pages/CompanionIndex.tsx";
 import {companionIndexLoader} from "./loaders/CompanionIndexLoader.ts";
 import {companionDetailLoader} from "./loaders/CompanionDetailLoader.ts";
 import {CompanionDetails} from "./pages/CompanionDetails.tsx";
+import {CompanionDetailItem} from "./interfaces/CompanionDetailItem.ts";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: routes.CompanionDetails,
         Component: CompanionDetails,
-        loader: companionDetailLoader,
+        loader: companionDetailLoader as unknown as LoaderFunction<CompanionDetailItem>,
       },
       {
         path: routes.RoseIndex,
