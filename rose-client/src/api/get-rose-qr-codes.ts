@@ -1,60 +1,23 @@
-import api from "../services/api.ts";
-import {getToken} from "../utilities/token.ts";
 import {ResponseStatusType, RoseResponse} from "../interfaces/Response.ts";
+import {authenticatedRequests} from "./authenticated-request.ts";
 import {RoseQrItem} from "../interfaces/RoseQrItem.ts";
-import axios from "axios";
 
 async function getRoseQrCodes(): Promise<RoseResponse> {
-  try {
-    const token = getToken();
-    if(!token) {
-      return {
-        status: ResponseStatusType.unauthorized,
-        errorMessage: "User is not logged in",
-      }
-    }
+  const response = await authenticatedRequests.get('admin/roses')
 
-    const response = await api.get('admin/roses', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    })
-
-    if(response.status === 401) {
-      return {
-        status: ResponseStatusType.unauthorized,
-        errorMessage: "User is not logged in",
-      }
-    }
-
-    if(response.status === 200) {
-      return {
-        status: ResponseStatusType.success,
-        data: response.data as RoseQrItem[],
-      }
-    }
-
-  } catch (e) {
-    console.error("Error fetching Admin Roses")
-    console.error(e);
-
-    if(axios.isAxiosError(e) && e.request.status === 401) {
-      return {
-        status: ResponseStatusType.unauthorized,
-        errorMessage: "User is not logged in",
-      }
-    }
-
+  if(response.status === ResponseStatusType.success) {
     return {
-      status: ResponseStatusType.bad_request,
-      errorMessage: e as string
+      status: ResponseStatusType.success,
+      data: response.data as RoseQrItem[],
     }
   }
 
-  return {
-    status: ResponseStatusType.bad_request,
-    errorMessage: 'unknown error occurred'
+  if(response.status !== ResponseStatusType.unauthorized) {
+    console.error("Error fetching Admin Roses")
+    console.error(response.errorMessage)
   }
+
+  return response
 }
 
 export default getRoseQrCodes;

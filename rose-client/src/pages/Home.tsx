@@ -39,7 +39,7 @@ import LoginPanel from "../components/LoginPanel.tsx";
         >
           <IconButton
             component={RouterLink}
-            to={routes.RoseAdmin}
+            to={routes.Admin}
             aria-label='admin access'
             size="large"
             color="success"

@@ -14,10 +14,10 @@ interface roseAdminDetailData {
   rebloomTypes: string[]
 }
 
-type RoseType = RoseQrItem | RoseQrItem[] | RoseDetailItem | RoseDetailItem[] | RoseIndexItem | RoseIndexItem[] | string | string[] | roseAdminDetailData;
+export type ResponseDataType = RoseQrItem | RoseQrItem[] | RoseDetailItem | RoseDetailItem[] | RoseIndexItem | RoseIndexItem[] | string | string[] | roseAdminDetailData;
 
 export interface RoseResponse {
   status: ResponseStatusType;
-  data?: RoseType;
+  data?: ResponseDataType;
   errorMessage?: string;
 }

@@ -11,8 +11,8 @@ import {
 } from "@mui/material";
 import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
-import AdminRoseBreadcrumbs from "../components/breadcrumbs/AdminRoseBreadcrumbs.tsx";
-import {Outlet, useFetcher, useLoaderData} from "react-router-dom";
+import AdminBreadcrumbs from "../components/breadcrumbs/AdminBreadcrumbs.tsx";
+import {Form, Outlet, useLoaderData} from "react-router-dom";
 import RoseListQr from "../components/RoseListQr.tsx";
 import {useState} from "react";
 import {Download} from "@mui/icons-material";
@@ -33,8 +33,6 @@ function RoseAdminIndex() {
   if(rosesResponse.data) {
     roses = rosesResponse.data as RoseQrItem[]
   }
-
-  const fetcher = useFetcher()
 
   const [ qrOpen, setQrOpen ] = useState<boolean>(false)
   const [ modalInfo, setModalInfo ] = useState<qrModalInfo>({ qrCodeUrl: '', name: '' })
@@ -71,10 +69,10 @@ function RoseAdminIndex() {
         }}
       >
         <Box display="flex" justifyContent="space-between">
-          <AdminRoseBreadcrumbs />
-          <fetcher.Form method="POST" action="/logout">
+          <AdminBreadcrumbs path='rose' />
+          <Form method="POST" action="/logout">
             <Button type="submit" sx={{ color: '#fff'}} >Log Out</Button>
-          </fetcher.Form>
+          </Form>
         </Box>
         <Typography variant="h1" color='#fff'>Admin Rose Index</Typography>
         <Paper>

@@ -13,7 +13,7 @@ export async function createRoseLoader() {
     history: '',
     careInstructions: '',
     reblooms: '',
-    fragranceIntensity: null,
+    fragranceIntensity: 0,
     fragranceDescription: '',
     colorPrimary: '',
     colorSecondary: '',

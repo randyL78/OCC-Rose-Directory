@@ -1,4 +1,4 @@
-import {getToken} from "../utilities/token.ts";
+import {getToken, setToken} from "../utilities/token.ts";
 import {ResponseStatusType, RoseResponse} from "../interfaces/Response.ts";
 import api from "../services/api.ts";
 import axios from "axios";
@@ -27,6 +27,7 @@ export async function getRebloomTypes(): Promise<RoseResponse> {
     }
 
     if(response.status === 200) {
+      setToken(token)
       return {
         status: ResponseStatusType.success,
         data: response.data as string[],

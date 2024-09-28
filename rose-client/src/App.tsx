@@ -21,6 +21,7 @@ import DeleteRose from "./pages/DeleteRose.tsx";
 import {deleteRoseAction} from "./actions/DeleteRoseAction.ts";
 import {createRoseLoader} from "./loaders/CreateRoseLoader.ts";
 import {roseAdminDetailLoader} from "./loaders/RoseAdminDetailLoader.ts";
+import {Admin} from "./pages/Admin.tsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path: "admin",
         element: <Layout />,
         children: [
+          {
+            path: '',
+            element: <Admin />
+          },
           {
             path: routes.RoseAdmin,
             id: routes.RoseAdmin,

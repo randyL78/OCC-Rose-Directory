@@ -13,7 +13,7 @@ import {
   Typography
 } from "@mui/material";
 
-import AdminRoseBreadcrumbs from "../components/breadcrumbs/AdminRoseBreadcrumbs.tsx";
+import AdminBreadcrumbs from "../components/breadcrumbs/AdminBreadcrumbs.tsx";
 import RoseListQr from "../components/RoseListQr.tsx";
 
 export default function AdminErrorBoundary() {
@@ -44,7 +44,7 @@ export default function AdminErrorBoundary() {
         }}
       >
         <Box display="flex" justifyContent="space-between">
-          <AdminRoseBreadcrumbs />
+          <AdminBreadcrumbs />
           <fetcher.Form method="POST" action="/logout">
             <Button type="submit" sx={{ color: '#fff'}} >Log Out</Button>
           </fetcher.Form>
