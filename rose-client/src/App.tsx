@@ -27,6 +27,7 @@ import {companionIndexLoader} from "./loaders/CompanionIndexLoader.ts";
 import {companionDetailLoader} from "./loaders/CompanionDetailLoader.ts";
 import {CompanionDetails} from "./pages/CompanionDetails.tsx";
 import {CompanionDetailItem} from "./interfaces/CompanionDetailItem.ts";
+import {adminLoader} from "./loaders/AdminLoader.ts";
 
 const router = createBrowserRouter([
   {
@@ -64,7 +65,8 @@ const router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: <Admin />
+            element: <Admin />,
+            loader: adminLoader,
           },
           {
             path: routes.RoseAdmin,
