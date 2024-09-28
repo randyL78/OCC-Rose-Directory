@@ -2,13 +2,12 @@ import {LoaderFunctionArgs, redirect} from "react-router-dom";
 import {createRose} from "../api/create-rose.ts";
 import {AdminRoseDetailItem} from "../interfaces/AdminRoseDetailItem.ts";
 import {updateRose} from "../api/update-rose.ts";
+import {routes} from "../constants/routes.ts";
 
 export async function createOrUpdateRoseAction({ request, params }: LoaderFunctionArgs) {
   const data = await request.formData()
 
   const { roseSlug } = params;
-
-  console.log(data.get('thumbnailUrl') as string)
 
   const newRose: AdminRoseDetailItem = {
     name: data.get("name") as string,
@@ -33,5 +32,5 @@ export async function createOrUpdateRoseAction({ request, params }: LoaderFuncti
     await createRose(newRose)
   }
 
-  return redirect('/admin/roses')
+  return redirect(routes.RoseAdmin)
 }

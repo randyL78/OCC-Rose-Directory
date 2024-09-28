@@ -6,5 +6,5 @@ export enum routes {
   RoseDetails = '/roses/:roseSlug',
   Admin = '/admin',
   RoseAdmin = '/admin/roses',
-  CompanionAdmin = '/admin/companion',
+  CompanionAdmin = '/admin/companions',
 }

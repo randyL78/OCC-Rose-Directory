@@ -30,6 +30,9 @@ import {CompanionDetailItem} from "./interfaces/CompanionDetailItem.ts";
 import {adminLoader} from "./loaders/AdminLoader.ts";
 import CompanionAdminIndex from "./pages/CompanionAdminIndex.tsx";
 import {companionAdminIndexLoader} from "./loaders/CompanionAdminIndexLoader.ts";
+import {CompanionCreate} from "./components/CompanionCreate.tsx";
+import {createCompanionLoader} from "./loaders/CreateCompanionLoader.ts";
+import {createOrUpdateCompanionAction} from "./actions/CreateOrUpdateCompanionAction.ts";
 
 const router = createBrowserRouter([
   {
@@ -76,7 +79,14 @@ const router = createBrowserRouter([
             Component: CompanionAdminIndex,
             loader: companionAdminIndexLoader,
             errorElement: <AdminErrorBoundary />,
-            children: [],
+            children: [
+              {
+                path: 'create',
+                action: createOrUpdateCompanionAction,
+                loader: createCompanionLoader,
+                Component: CompanionCreate,
+              },
+            ],
           },
           {
             path: routes.RoseAdmin,

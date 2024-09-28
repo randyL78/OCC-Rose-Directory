@@ -18,7 +18,7 @@ import {useState} from "react";
 import {Download} from "@mui/icons-material";
 import {RoseResponse} from "../interfaces/Response.ts";
 import {AdminIndexItem} from "../interfaces/AdminIndexItem.ts";
-import {RoseAdminContext} from "../constants/adminRoseContext.tsx";
+import {AdminIndexContext} from "../constants/adminRoseContext.tsx";
 import {PlantTypes} from "../interfaces/PlantTypes.ts";
 
 
@@ -62,7 +62,7 @@ function RoseAdminIndex() {
           >Download</Button>
         </DialogActions>
       </Dialog>
-      <Outlet context={{roses: plants} satisfies RoseAdminContext } />
+      <Outlet context={{plants: plants} satisfies AdminIndexContext } />
       <Container
         sx={{
           pt: 1,

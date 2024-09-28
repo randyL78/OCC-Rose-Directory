@@ -3,7 +3,7 @@ import {ResponseStatusType, RoseResponse} from "../interfaces/Response.ts";
 import {getRebloomTypes} from "../api/get-rebloom-types.ts";
 
 export async function createRoseLoader() {
-  const rose = {
+  const rose: AdminRoseDetailItem = {
     name: '',
     slug: 'Auto configured',
     imageUrl: '',
@@ -17,7 +17,7 @@ export async function createRoseLoader() {
     fragranceDescription: '',
     colorPrimary: '',
     colorSecondary: '',
-  } as AdminRoseDetailItem
+  }
 
   const rebloomTypes = await getRebloomTypes()
   if(rebloomTypes.status !== ResponseStatusType.success) {

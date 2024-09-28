@@ -15,6 +15,7 @@ import {
 
 import AdminBreadcrumbs from "../components/breadcrumbs/AdminBreadcrumbs.tsx";
 import PlantListQr from "../components/PlantListQr.tsx";
+import {PlantTypes} from "../interfaces/PlantTypes.ts";
 
 export default function AdminErrorBoundary() {
   const navigate = useNavigate()
@@ -51,7 +52,7 @@ export default function AdminErrorBoundary() {
         </Box>
         <Typography variant="h1" color='#fff'>Admin Rose Index</Typography>
         <Paper>
-          <PlantListQr plants={[]} onButtonClick={() => {}} />
+          <PlantListQr plants={[]} onButtonClick={() => {}} plantType={PlantTypes.ROSE} />
         </Paper>
       </Container>
     </>
