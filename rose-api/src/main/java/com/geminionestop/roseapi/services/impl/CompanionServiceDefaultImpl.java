@@ -6,9 +6,9 @@ import com.geminionestop.roseapi.dto.CompanionIndexDto;
 import com.geminionestop.roseapi.models.CompanionModel;
 import com.geminionestop.roseapi.repository.CompanionRepository;
 import com.geminionestop.roseapi.services.CompanionService;
+import com.geminionestop.roseapi.services.QRCodeCreator;
+import com.geminionestop.roseapi.utils.Slugify;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
@@ -18,6 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CompanionServiceDefaultImpl implements CompanionService {
     private final CompanionRepository repository;
+    private final QRCodeCreator qrCodeCreator;
 
     @Override
     public CompanionDetailDto getCompanion(String slug) {
@@ -48,5 +49,16 @@ public class CompanionServiceDefaultImpl implements CompanionService {
                 .map(AdminCompanionIndexDto.Mapper::toDto)
                 .sorted(Comparator.comparing(AdminCompanionIndexDto::getSlug))
                 .toList();
+    }
+
+    @Override
+    public CompanionDetailDto createCompanion(CompanionDetailDto companionDetailDto) {
+        companionDetailDto.setSlug(Slugify.slugify(companionDetailDto.getName()));
+        CompanionModel companion = CompanionDetailDto.Mapper.toModel(companionDetailDto);
+        companion.setQrCodeUrl(qrCodeCreator.createAndUploadQRCode(companion.getSlug(), "companions"));
+
+        repository.save(companion);
+
+        return companionDetailDto;
     }
 }

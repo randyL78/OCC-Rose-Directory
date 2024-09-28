@@ -12,4 +12,6 @@ public interface CompanionService {
     List<CompanionIndexDto> getCompanions();
 
     List<AdminCompanionIndexDto> getAdminCompanions();
+
+    CompanionDetailDto createCompanion(CompanionDetailDto adminCompanionDetailDto);
 }

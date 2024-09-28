@@ -2,15 +2,15 @@ package com.geminionestop.roseapi.dto;
 
 import com.geminionestop.roseapi.models.CompanionModel;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
 @Builder
-@Getter
+@Data
 public class CompanionDetailDto {
-    private final String name;
-    private final String slug;
-    private final String imageUrl;
-    private final String description;
+    private String name;
+    private String slug;
+    private String imageUrl;
+    private String description;
 
     public static class Mapper {
         public static CompanionDetailDto toDto(CompanionModel companionModel) {
@@ -20,6 +20,16 @@ public class CompanionDetailDto {
                     .slug(companionModel.getSlug())
                     .imageUrl(companionModel.getImageUrl())
                     .description(companionModel.getDescription())
+                    .build();
+        }
+
+        public static CompanionModel toModel(CompanionDetailDto dto) {
+            return CompanionModel
+                    .builder()
+                    .name(dto.getName())
+                    .slug(dto.getSlug())
+                    .imageUrl(dto.getImageUrl())
+                    .description(dto.getDescription())
                     .build();
         }
     }
