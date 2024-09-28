@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.services.impl;
 
+import com.geminionestop.roseapi.dto.AdminCompanionIndexDto;
 import com.geminionestop.roseapi.dto.CompanionDetailDto;
 import com.geminionestop.roseapi.dto.CompanionIndexDto;
 import com.geminionestop.roseapi.models.CompanionModel;
@@ -16,7 +17,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CompanionServiceDefaultImpl implements CompanionService {
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final CompanionRepository repository;
 
     @Override
@@ -37,6 +37,16 @@ public class CompanionServiceDefaultImpl implements CompanionService {
                 .stream()
                 .map(CompanionIndexDto.Mapper::toDto)
                 .sorted(Comparator.comparing(CompanionIndexDto::getSlug))
+                .toList();
+    }
+
+    @Override
+    public List<AdminCompanionIndexDto> getAdminCompanions() {
+        return repository
+                .findAll()
+                .stream()
+                .map(AdminCompanionIndexDto.Mapper::toDto)
+                .sorted(Comparator.comparing(AdminCompanionIndexDto::getSlug))
                 .toList();
     }
 }

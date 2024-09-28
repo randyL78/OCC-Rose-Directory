@@ -28,6 +28,8 @@ import {companionDetailLoader} from "./loaders/CompanionDetailLoader.ts";
 import {CompanionDetails} from "./pages/CompanionDetails.tsx";
 import {CompanionDetailItem} from "./interfaces/CompanionDetailItem.ts";
 import {adminLoader} from "./loaders/AdminLoader.ts";
+import CompanionAdminIndex from "./pages/CompanionAdminIndex.tsx";
+import {companionAdminIndexLoader} from "./loaders/CompanionAdminIndexLoader.ts";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +69,14 @@ const router = createBrowserRouter([
             path: '',
             element: <Admin />,
             loader: adminLoader,
+          },
+          {
+            path: routes.CompanionAdmin,
+            id: routes.CompanionAdmin,
+            Component: CompanionAdminIndex,
+            loader: companionAdminIndexLoader,
+            errorElement: <AdminErrorBoundary />,
+            children: [],
           },
           {
             path: routes.RoseAdmin,

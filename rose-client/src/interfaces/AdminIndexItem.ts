@@ -1,4 +1,4 @@
-export interface RoseQrItem {
+export interface AdminIndexItem {
   id?: number;
   name: string;
   slug: string;

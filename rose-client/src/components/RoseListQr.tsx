@@ -8,13 +8,13 @@ import {
   ListItemButton,
   ListItemText
 } from "@mui/material";
-import {RoseQrItem} from "../interfaces/RoseQrItem.ts";
+import {AdminIndexItem} from "../interfaces/AdminIndexItem.ts";
 import {Create, Delete, Download, Edit, QrCode, Visibility} from "@mui/icons-material";
 import {Link as RouterLink, useNavigate} from "react-router-dom";
 import {routes} from "../constants/routes.ts";
 
 interface Props {
-  roses: RoseQrItem[];
+  roses: AdminIndexItem[];
   onButtonClick: (qrCodeUrl: string, name: string) => void;
 }
 

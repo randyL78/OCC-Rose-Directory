@@ -28,10 +28,10 @@ interface qrModalInfo {
 
 function RoseAdminIndex() {
   const rosesResponse = useLoaderData() as RoseResponse
-  let roses: AdminIndexItem[] = []
+  let plants: AdminIndexItem[] = []
 
   if(rosesResponse.data) {
-    roses = rosesResponse.data as AdminIndexItem[]
+    plants = rosesResponse.data as AdminIndexItem[]
   }
 
   const [ qrOpen, setQrOpen ] = useState<boolean>(false)
@@ -61,7 +61,7 @@ function RoseAdminIndex() {
           >Download</Button>
         </DialogActions>
       </Dialog>
-      <Outlet context={{roses} satisfies RoseAdminContext } />
+      <Outlet context={{roses: plants} satisfies RoseAdminContext } />
       <Container
         sx={{
           pt: 1,
@@ -69,14 +69,14 @@ function RoseAdminIndex() {
         }}
       >
         <Box display="flex" justifyContent="space-between">
-          <AdminBreadcrumbs path='rose' />
+          <AdminBreadcrumbs path='companion' />
           <Form method="POST" action="/logout">
             <Button type="submit" sx={{ color: '#fff'}} >Log Out</Button>
           </Form>
         </Box>
-        <Typography variant="h1" color='#fff'>Admin Rose Index</Typography>
+        <Typography variant="h1" color='#fff'>Admin Companion Index</Typography>
         <Paper>
-          <RoseListQr roses={roses} onButtonClick={handleOpenModal} />
+          <RoseListQr roses={plants} onButtonClick={handleOpenModal} />
         </Paper>
       </Container>
     </>

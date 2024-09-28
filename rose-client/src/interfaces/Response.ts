@@ -1,4 +1,4 @@
-import {RoseQrItem} from "./RoseQrItem.ts";
+import {AdminIndexItem} from "./AdminIndexItem.ts";
 import {RoseDetailItem} from "./RoseDetailItem.ts";
 import {PlantIndexItem} from "./PlantIndexItem.ts";
 import {RebloomType} from "./RebloomTypes.ts";
@@ -16,8 +16,8 @@ interface roseAdminDetailData {
 }
 
 export type ResponseDataType =
-  RoseQrItem |
-  RoseQrItem[] |
+  AdminIndexItem |
+  AdminIndexItem[] |
   RoseDetailItem |
   RoseDetailItem[] |
   PlantIndexItem |
