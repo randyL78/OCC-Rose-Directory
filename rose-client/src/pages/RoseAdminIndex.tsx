@@ -13,12 +13,13 @@ import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
 import AdminBreadcrumbs from "../components/breadcrumbs/AdminBreadcrumbs.tsx";
 import {Form, Outlet, useLoaderData} from "react-router-dom";
-import RoseListQr from "../components/RoseListQr.tsx";
+import PlantListQr from "../components/PlantListQr.tsx";
 import {useState} from "react";
 import {Download} from "@mui/icons-material";
-import { RoseResponse} from "../interfaces/Response.ts";
+import {RoseResponse} from "../interfaces/Response.ts";
 import {AdminIndexItem} from "../interfaces/AdminIndexItem.ts";
 import {RoseAdminContext} from "../constants/adminRoseContext.tsx";
+import {PlantTypes} from "../interfaces/PlantTypes.ts";
 
 
 interface qrModalInfo {
@@ -76,7 +77,7 @@ function RoseAdminIndex() {
         </Box>
         <Typography variant="h1" color='#fff'>Admin Rose Index</Typography>
         <Paper>
-          <RoseListQr roses={roses} onButtonClick={handleOpenModal} />
+          <PlantListQr plants={roses} onButtonClick={handleOpenModal} plantType={PlantTypes.ROSE} />
         </Paper>
       </Container>
     </>

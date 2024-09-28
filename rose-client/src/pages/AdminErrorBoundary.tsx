@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 
 import AdminBreadcrumbs from "../components/breadcrumbs/AdminBreadcrumbs.tsx";
-import RoseListQr from "../components/RoseListQr.tsx";
+import PlantListQr from "../components/PlantListQr.tsx";
 
 export default function AdminErrorBoundary() {
   const navigate = useNavigate()
@@ -51,7 +51,7 @@ export default function AdminErrorBoundary() {
         </Box>
         <Typography variant="h1" color='#fff'>Admin Rose Index</Typography>
         <Paper>
-          <RoseListQr roses={[]} onButtonClick={() => {}} />
+          <PlantListQr plants={[]} onButtonClick={() => {}} />
         </Paper>
       </Container>
     </>

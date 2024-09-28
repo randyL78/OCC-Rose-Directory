@@ -1,5 +1,6 @@
 import {
-  Avatar, Button,
+  Avatar,
+  Button,
   ButtonGroup,
   IconButton,
   List,
@@ -12,17 +13,22 @@ import {AdminIndexItem} from "../interfaces/AdminIndexItem.ts";
 import {Create, Delete, Download, Edit, QrCode, Visibility} from "@mui/icons-material";
 import {Link as RouterLink, useNavigate} from "react-router-dom";
 import {routes} from "../constants/routes.ts";
+import {PlantTypes} from "../interfaces/PlantTypes.ts";
 
 interface Props {
-  roses: AdminIndexItem[];
+  plants: AdminIndexItem[];
   onButtonClick: (qrCodeUrl: string, name: string) => void;
+  plantType: PlantTypes
 }
 
-function RoseListQr({ roses, onButtonClick }: Props) {
+function PlantListQr({ plants, onButtonClick, plantType }: Props) {
   const navigate = useNavigate()
 
+  const baseRoute = plantType===PlantTypes.ROSE ? routes.RoseAdmin : routes.CompanionAdmin
+  const path = plantType===PlantTypes.ROSE ? 'roses' : 'companions'
+
   const handleCreate = () => {
-    navigate('/admin/roses/create')
+    navigate( `/admin/${path}/create`)
   }
 
   return (
@@ -51,9 +57,9 @@ function RoseListQr({ roses, onButtonClick }: Props) {
         </ListItemButton>
       </ListItem>
       {
-        roses.map((rose) => (
+        plants.map((plant) => (
           <ListItem
-            key={rose.slug}
+            key={plant.slug}
 
             secondaryAction={
             <ButtonGroup>
@@ -62,7 +68,7 @@ function RoseListQr({ roses, onButtonClick }: Props) {
                 aria-label="view"
                 color="info"
                 component={RouterLink}
-                to={`${routes.RoseAdmin}/${rose.slug}`}
+                to={`${baseRoute}/${plant.slug}`}
               >
                 <Visibility />
               </IconButton>
@@ -71,7 +77,7 @@ function RoseListQr({ roses, onButtonClick }: Props) {
                 aria-label="edit"
                 color="primary"
                 component={RouterLink}
-                to={`/admin/roses/${rose.slug}/edit`}
+                to={`${baseRoute}/${plant.slug}/edit`}
               >
                 <Edit />
               </IconButton>
@@ -80,7 +86,7 @@ function RoseListQr({ roses, onButtonClick }: Props) {
                 edge="end"
                 aria-label="download"
                 component={RouterLink}
-                to={`/admin/roses/${rose.slug}/delete`}
+                to={`${baseRoute}/${plant.slug}/delete`}
               >
                 <Delete />
               </IconButton>
@@ -88,9 +94,9 @@ function RoseListQr({ roses, onButtonClick }: Props) {
                 edge="end"
                 aria-label="download"
                 color="secondary"
-                disabled={!rose.qrCodeUrl}
+                disabled={!plant.qrCodeUrl}
                 component="a"
-                href={rose.qrCodeUrl}
+                href={plant.qrCodeUrl}
                 download
               >
                 <Download />
@@ -99,13 +105,13 @@ function RoseListQr({ roses, onButtonClick }: Props) {
             }
           >
             <ListItemButton
-              disabled={!rose.qrCodeUrl}
-              onClick={ () => { rose.qrCodeUrl && onButtonClick(rose.qrCodeUrl, rose.name ) }}>
+              disabled={!plant.qrCodeUrl}
+              onClick={ () => { plant.qrCodeUrl && onButtonClick(plant.qrCodeUrl, plant.name ) }}>
               <ListItemAvatar>
-                <Avatar src={rose.qrCodeUrl} />
+                <Avatar src={plant.qrCodeUrl} />
               </ListItemAvatar>
-              <ListItemText primary={rose.name} />
-              <ListItemText primary={rose.slug} />
+              <ListItemText primary={plant.name} />
+              <ListItemText primary={plant.slug} />
             </ListItemButton>
          </ListItem>
         ))
@@ -114,4 +120,4 @@ function RoseListQr({ roses, onButtonClick }: Props) {
   )
 }
 
-export default RoseListQr;
+export default PlantListQr;
