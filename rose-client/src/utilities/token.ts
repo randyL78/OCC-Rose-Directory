@@ -1,4 +1,4 @@
-const COOKIE_EXPIRES_MINUTES = 60;
+const COOKIE_EXPIRES_MINUTES = 119;
 
 export function getToken() {
   const cookies = document.cookie.split('; ');

@@ -27,7 +27,7 @@ public class JwtController {
         logger.info("user {} attempting to login", authentication.getName());
 
         Instant now = Instant.now();
-        long expiry = 3600L;
+        long expiry = 7200L;
         String scope = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(" "));
