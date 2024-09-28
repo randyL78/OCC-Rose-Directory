@@ -12,7 +12,7 @@ export async function deleteRoseAction({params, request}: LoaderFunctionArgs) {
 
   const { status} = await deleteRose(roseSlug);
 
-  if (status === ResponseStatusType.unauthorized || status === ResponseStatusType.unkown) {
+  if (status === ResponseStatusType.unauthorized || status === ResponseStatusType.unknown) {
     return redirectToLogin(request)
   }
 

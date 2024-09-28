@@ -3,15 +3,16 @@ import {Box, Button, Collapse, Container, Divider, Pagination, Paper, Tab, Tabs,
 import Backdrop from "../components/Backdrop.tsx";
 import {backdropImage} from "../constants/backdropImage.ts";
 import RoseBreadcrumbs from "../components/breadcrumbs/RoseBreadcrumbs.tsx";
-import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
+import {PlantIndexItem} from "../interfaces/PlantIndexItem.ts";
 import RoseList from "../components/RoseList.tsx";
 import {ChangeEvent, SyntheticEvent, useEffect, useState} from "react";
-import RoseGallery from "../components/RoseGallery.tsx";
+import Gallery from "../components/Gallery.tsx";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../store";
 import {toggleSearchExpanded, updatePageIndex, updateSearchText, updateTabIndex} from "../store/roseIndexSlice.ts";
 import ExpandSearchButton from "../components/ExpandSearchButton.tsx";
 import SearchInput from "../components/SearchInput.tsx";
+import {routes} from "../constants/routes.ts";
 
 const PAGE_SIZE = 15;
 
@@ -21,14 +22,14 @@ function RoseIndex() {
   const searchText = useSelector((state: RootState) => state.roseIndex.searchText)
   const pageIndex = useSelector((state: RootState) => state.roseIndex.pageIndex)
   const dispatch = useDispatch();
-  const roses = useLoaderData() as RoseIndexItem[]
+  const roses = useLoaderData() as PlantIndexItem[]
 
-  const [filteredRoses, setFilteredRoses] = useState<RoseIndexItem[]>(roses)
+  const [filteredRoses, setFilteredRoses] = useState<PlantIndexItem[]>(roses)
   const [numberOfPages, setNumberOfPages] = useState<number>(1)
 
   useEffect(() => {
     const value = searchExpanded ? searchText : ''
-    const filteredRoses = roses.filter((rose: RoseIndexItem) => rose.name.toLowerCase().includes(value.toLowerCase()))
+    const filteredRoses = roses.filter((rose: PlantIndexItem) => rose.name.toLowerCase().includes(value.toLowerCase()))
 
     const pagesLength = Math.ceil(filteredRoses.length / PAGE_SIZE)
 
@@ -94,7 +95,7 @@ function RoseIndex() {
             </Box>
           </Collapse>
           <Box position='relative'>
-            <RoseGallery value={tabIndex} roses={filteredRoses}/>
+            <Gallery value={tabIndex} plants={filteredRoses} baseUrl={routes.RoseIndex}/>
             <RoseList roses={filteredRoses} value={tabIndex} />
             <Box pb={2} px={2} display="flex" justifyContent="center">
               <Pagination

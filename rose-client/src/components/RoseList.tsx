@@ -1,10 +1,10 @@
 import {List, ListItem, ListItemButton, ListItemText} from "@mui/material";
 import {Link} from "react-router-dom";
 import {routes} from "../constants/routes.ts";
-import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
+import {PlantIndexItem} from "../interfaces/PlantIndexItem.ts";
 
 interface RoseListProps {
-  roses: RoseIndexItem[];
+  roses: PlantIndexItem[];
   value: number;
 }
 

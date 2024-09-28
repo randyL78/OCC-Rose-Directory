@@ -1,58 +1,21 @@
-import {getToken, setToken} from "../utilities/token.ts";
 import {ResponseStatusType, RoseResponse} from "../interfaces/Response.ts";
-import api from "../services/api.ts";
-import axios from "axios";
+import {authenticatedRequests} from "./authenticated-request.ts";
+import {RebloomType} from "../interfaces/RebloomTypes.ts";
 
 export async function getRebloomTypes(): Promise<RoseResponse> {
-  try {
-    const token = getToken();
-    if(!token) {
-      return {
-        status: ResponseStatusType.unauthorized,
-        errorMessage: "User is not logged in",
-      }
-    }
+  const response = await authenticatedRequests.get('admin/reblooms')
 
-    const response = await api.get(`admin/reblooms`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      }
-    })
-
-    if(response.status === 401) {
-      return {
-        status: ResponseStatusType.unauthorized,
-        errorMessage: "User is not logged in",
-      }
-    }
-
-    if(response.status === 200) {
-      setToken(token)
-      return {
-        status: ResponseStatusType.success,
-        data: response.data as string[],
-      }
-    }
-
-  } catch (e) {
-    console.error("Error fetching rebloom types");
-    console.error(e);
-
-    if(axios.isAxiosError(e) && e.request.status === 401) {
-      return {
-        status: ResponseStatusType.unauthorized,
-        errorMessage: "User is not logged in",
-      }
-    }
-
+  if(response.status === ResponseStatusType.success) {
     return {
-      status: ResponseStatusType.bad_request,
-      errorMessage: e as string
+      status: ResponseStatusType.success,
+      data: response.data as RebloomType[],
     }
   }
 
-  return {
-    status: ResponseStatusType.bad_request,
-    errorMessage: 'unknown error occurred'
+  if(response.status !== ResponseStatusType.unauthorized) {
+    console.error("Error fetching rebloom types")
+    console.error(response.errorMessage)
   }
+
+  return response
 }

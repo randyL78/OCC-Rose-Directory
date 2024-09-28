@@ -1,6 +1,5 @@
-import {RoseIndexItem} from "../interfaces/RoseIndexItem.ts";
+import {PlantIndexItem} from "../interfaces/PlantIndexItem.ts";
 import {useNavigate} from "react-router-dom";
-import {routes} from "../constants/routes.ts";
 import {ImageListItem, ImageListItemBar} from "@mui/material";
 
 const imageSizeByIndex = [
@@ -30,26 +29,32 @@ function srcset(image: string, size: number, rows = 1, cols = 1) {
   };
 }
 
-function RoseListItem({rose, index}: {rose: RoseIndexItem, index: number}) {
+interface Props {
+  plant: PlantIndexItem
+  index: number
+  baseUrl: string
+}
+
+function PlantListItem({plant, index, baseUrl}: Props) {
   const navigate = useNavigate();
   const sizeIndex = index % imageSizeByIndex.length
   const imgRow = imageSizeByIndex[sizeIndex].row
   const imgCol = imageSizeByIndex[sizeIndex].col
 
   const imageClickHandler = () => {
-    navigate(`${routes.RoseIndex}/${rose.slug}`)
+    navigate(`${baseUrl}/${plant.slug}`)
   }
 
   return (
-    <ImageListItem cols={imgCol} rows={imgRow} key={rose.slug} onClick={imageClickHandler} sx={{ cursor: "pointer" }}>
+    <ImageListItem cols={imgCol} rows={imgRow} key={plant.slug} onClick={imageClickHandler} sx={{ cursor: "pointer" }}>
       <img
-        {...srcset(rose.imageUrl, 121, imgRow, imgCol)}
-        alt={rose.name}
+        {...srcset(plant.imageUrl, 121, imgRow, imgCol)}
+        alt={plant.name}
         loading="lazy"
       />
-      <ImageListItemBar title={rose.name} />
+      <ImageListItemBar title={plant.name} />
     </ImageListItem>
   )
 }
 
-export default RoseListItem;
+export default PlantListItem;

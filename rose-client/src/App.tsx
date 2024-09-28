@@ -22,6 +22,10 @@ import {deleteRoseAction} from "./actions/DeleteRoseAction.ts";
 import {createRoseLoader} from "./loaders/CreateRoseLoader.ts";
 import {roseAdminDetailLoader} from "./loaders/RoseAdminDetailLoader.ts";
 import {Admin} from "./pages/Admin.tsx";
+import {CompanionIndex} from "./pages/CompanionIndex.tsx";
+import {companionIndexLoader} from "./loaders/CompanionIndexLoader.ts";
+import {companionDetailLoader} from "./loaders/CompanionDetailLoader.ts";
+import {CompanionDetails} from "./pages/CompanionDetails.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +36,16 @@ const router = createBrowserRouter([
         path: routes.Home,
         Component: Home,
         action: homeAction,
+      },
+      {
+        path: routes.CompanionIndex,
+        Component: CompanionIndex,
+        loader: companionIndexLoader,
+      },
+      {
+        path: routes.CompanionDetails,
+        Component: CompanionDetails,
+        loader: companionDetailLoader,
       },
       {
         path: routes.RoseIndex,
@@ -54,7 +68,7 @@ const router = createBrowserRouter([
           {
             path: routes.RoseAdmin,
             id: routes.RoseAdmin,
-            element: <RoseAdminIndex />,
+            Component: RoseAdminIndex,
             loader: roseAdminIndexLoader,
             errorElement: <AdminErrorBoundary />,
             children: [
@@ -62,17 +76,17 @@ const router = createBrowserRouter([
                 path: 'create',
                 action: createOrUpdateRoseAction,
                 loader: createRoseLoader,
-                element: <RoseCreate />
+                Component: RoseCreate
               },
               {
                 path: ':roseSlug/delete',
-                element: <DeleteRose />,
+                Component: DeleteRose,
                 action: deleteRoseAction
               },
               {
                 path: ':roseSlug/edit',
                 action: createOrUpdateRoseAction,
-                element: <RoseCreate />,
+                Component: RoseCreate,
                 loader: roseAdminDetailLoader,
               }
             ]

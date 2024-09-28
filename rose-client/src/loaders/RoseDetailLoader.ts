@@ -1,4 +1,5 @@
 import getRose from "../api/get-rose.ts";
+import {RoseDetailItem} from "../interfaces/RoseDetailItem.ts";
 
 interface loaderParams {
   params: {
@@ -7,5 +8,11 @@ interface loaderParams {
 }
 
 export async function roseDetailLoader({params}: loaderParams) {
-  return await getRose(params.roseSlug)
+  const response = await getRose(params.roseSlug)
+
+  if(response) {
+    return response as RoseDetailItem
+  }
+
+  throw new Response("Rose not found", {status: 404});
 }

@@ -40,7 +40,7 @@ export async function signIn({ username, password }: signInParams) {
   removeToken()
   api.defaults.headers.common.Authorization = null
   return {
-    status: ResponseStatusType.unkown,
+    status: ResponseStatusType.unknown,
     errorMessage: 'Unknown error occurred, please try again later'
   };
 }

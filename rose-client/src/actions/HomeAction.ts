@@ -10,7 +10,7 @@ export async function homeAction({ request }: LoaderFunctionArgs) {
 
   const { status, errorMessage } = await signIn({username, password})
 
-  if (status === ResponseStatusType.unauthorized || status === ResponseStatusType.unkown) {
+  if (status === ResponseStatusType.unauthorized || status === ResponseStatusType.unknown) {
     const params = new URLSearchParams();
     params.set("from", from || '/');
     params.set("login", "true")
