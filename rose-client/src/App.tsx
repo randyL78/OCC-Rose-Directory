@@ -33,6 +33,7 @@ import {companionAdminIndexLoader} from "./loaders/CompanionAdminIndexLoader.ts"
 import {CompanionCreate} from "./components/CompanionCreate.tsx";
 import {createCompanionLoader} from "./loaders/CreateCompanionLoader.ts";
 import {createOrUpdateCompanionAction} from "./actions/CreateOrUpdateCompanionAction.ts";
+import {companionAdminDetailLoader} from "./loaders/CompanionAdminDetailLoader.ts";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,12 @@ const router = createBrowserRouter([
                 loader: createCompanionLoader,
                 Component: CompanionCreate,
               },
+              {
+                path: ':slug/edit',
+                action: createOrUpdateCompanionAction,
+                loader: companionAdminDetailLoader,
+                Component: CompanionCreate,
+              }
             ],
           },
           {

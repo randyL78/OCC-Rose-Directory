@@ -1,6 +1,7 @@
 import {Box, Button, Dialog, DialogContent, DialogTitle, TextField, Typography} from "@mui/material";
 import {Link as RouterLink, useFetcher, useLoaderData} from "react-router-dom";
 import {AdminCompanionDetailItem} from "../interfaces/AdminCompanionDetailItem.ts";
+import {routes} from "../constants/routes.ts";
 
 export function CompanionCreate() {
   const fetcher = useFetcher();
@@ -67,7 +68,7 @@ export function CompanionCreate() {
             <Box display="flex" justifyContent="space-between" p={2}>
               <Button
                 component={RouterLink}
-                to='/admin/roses'
+                to={routes.CompanionAdmin}
                 color="secondary"
                 sx={{ mr: 2 }}
                 variant="outlined">

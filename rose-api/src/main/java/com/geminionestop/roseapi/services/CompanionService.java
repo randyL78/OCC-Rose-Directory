@@ -1,5 +1,6 @@
 package com.geminionestop.roseapi.services;
 
+import com.geminionestop.roseapi.dto.AdminCompanionDetailDto;
 import com.geminionestop.roseapi.dto.AdminCompanionIndexDto;
 import com.geminionestop.roseapi.dto.CompanionDetailDto;
 import com.geminionestop.roseapi.dto.CompanionIndexDto;
@@ -14,4 +15,8 @@ public interface CompanionService {
     List<AdminCompanionIndexDto> getAdminCompanions();
 
     CompanionDetailDto createCompanion(CompanionDetailDto adminCompanionDetailDto);
+
+    AdminCompanionDetailDto updateCompanion(String slug, AdminCompanionDetailDto adminCompanionDetailDto);
+
+    AdminCompanionDetailDto getAdminCompanion(String slug);
 }
