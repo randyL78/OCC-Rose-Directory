@@ -12,27 +12,29 @@ import com.nimbusds.jose.jwk.source.ImmutableJWKSet;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
 import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -48,6 +50,9 @@ public class SecurityConfig {
 
     @Value("${superuser.password}")
     String adminPassword;
+
+    @Autowired
+    private DataSource dataSource;
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
@@ -78,9 +83,7 @@ public class SecurityConfig {
                         .ignoringRequestMatchers("v1/login")
                         .ignoringRequestMatchers("v1/roses")
                 )
-                .httpBasic(httpSecurityHttpBasicConfigurer -> {
-                    httpSecurityHttpBasicConfigurer.authenticationEntryPoint(new BasicAuthEntryPoint());
-                })
+                .httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.authenticationEntryPoint(new BasicAuthEntryPoint()))
                 .oauth2ResourceServer((oath2) -> oath2.jwt(Customizer.withDefaults()))
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .exceptionHandling((exceptions) -> exceptions
@@ -90,14 +93,12 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    UserDetailsService users() {
-        return new InMemoryUserDetailsManager(
-                User.withUsername(adminUsername)
-                        .password("{noop}" + adminPassword)
-                        .roles("ADMIN", "USER")
-                        .build()
-        );
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .withUser(adminUsername)
+                .password("{bcrypt}" + adminPassword)
+                .roles("ADMIN", "USER");
     }
 
     @Bean
@@ -112,4 +113,9 @@ public class SecurityConfig {
         return new NimbusJwtEncoder(jwks);
     }
 
+    @Qualifier("dataSource")
+    @Autowired
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 }
