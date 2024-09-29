@@ -36,6 +36,8 @@ import {createOrUpdateCompanionAction} from "./actions/CreateOrUpdateCompanionAc
 import {companionAdminDetailLoader} from "./loaders/CompanionAdminDetailLoader.ts";
 import {deleteCompanionAction} from "./actions/DeleteCompanionAction.ts";
 import {DeleteCompanion} from "./pages/DeleteCompanion.tsx";
+import {AdminRoseDetails} from "./pages/AdminRoseDetails.tsx";
+import {AdminCompanionDetails} from "./pages/AdminCompanionDetails.tsx";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +55,11 @@ const router = createBrowserRouter([
         loader: companionIndexLoader,
       },
       {
+        path: routes.AdminCompanionDetails,
+        Component: AdminCompanionDetails,
+        loader: companionDetailLoader as unknown as LoaderFunction<CompanionDetailItem>,
+      },
+      {
         path: routes.CompanionDetails,
         Component: CompanionDetails,
         loader: companionDetailLoader as unknown as LoaderFunction<CompanionDetailItem>,
@@ -61,6 +68,11 @@ const router = createBrowserRouter([
         path: routes.RoseIndex,
         Component: RoseIndex,
         loader: roseIndexLoader,
+      },
+      {
+        path: routes.AdminRoseDetails,
+        Component: AdminRoseDetails,
+        loader: roseDetailLoader as unknown as LoaderFunction<RoseDetailItem>,
       },
       {
         path: routes.RoseDetails,
