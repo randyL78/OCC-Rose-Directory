@@ -77,6 +77,8 @@ public class CompanionServiceDefaultImpl implements CompanionService {
             throw new ResourceNotFoundException("Companion", "slug", slug);
         }
 
+        companionDto.setQrCodeUrl(companionDto.getQrCodeUrl());
+
         companionDto.setSlug(Slugify.slugify(companionDto.getName()));
         if(!companionDto.getSlug().equals(companion.getSlug())) {
             logger.info("Creating new QR code for companion");

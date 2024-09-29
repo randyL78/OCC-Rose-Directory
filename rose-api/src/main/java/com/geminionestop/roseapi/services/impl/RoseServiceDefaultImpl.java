@@ -71,7 +71,7 @@ public class RoseServiceDefaultImpl implements RoseService {
         }
 
         roseDetailDto.setSlug(Slugify.slugify(roseDetailDto.getName()));
-
+        roseDetailDto.setQrCodeUrl(rose.getQrCodeUrl());
         if(!roseDetailDto.getSlug().equals(rose.getSlug())) {
             roseDetailDto.setQrCodeUrl(qrCodeCreator.createAndUploadQRCode(roseDetailDto.getSlug(), "roses"));
         }
