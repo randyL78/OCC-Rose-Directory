@@ -6,7 +6,7 @@ import {routes} from "../constants/routes.ts";
 export function AdminRoseDetails() {
   return (
     <>
-      <Container>
+      <Container sx={{ position: "sticky", top: 0, zIndex: 100 }}>
         <Alert
           severity="warning"
           action={

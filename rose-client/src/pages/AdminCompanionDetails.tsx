@@ -6,7 +6,7 @@ import {CompanionDetails} from "./CompanionDetails.tsx";
 export function AdminCompanionDetails() {
   return (
     <>
-      <Container>
+      <Container sx={{ position: "sticky", top: 0, zIndex: 100 }}>
         <Alert
           severity="warning"
           action={
