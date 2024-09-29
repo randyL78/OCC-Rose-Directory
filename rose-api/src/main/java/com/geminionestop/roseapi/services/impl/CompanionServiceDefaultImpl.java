@@ -101,4 +101,17 @@ public class CompanionServiceDefaultImpl implements CompanionService {
 
         return AdminCompanionDetailDto.Mapper.toDto(companion);
     }
+
+    @Override
+    public String deleteCompanion(String slug) {
+        CompanionModel companion = repository.findBySlug(slug);
+
+        if(companion == null) {
+            throw new ResourceNotFoundException("Companion", "slug", slug);
+        }
+
+        repository.delete(companion);
+
+        return slug;
+    }
 }

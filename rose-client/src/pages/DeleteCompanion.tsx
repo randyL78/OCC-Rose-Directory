@@ -1,23 +1,23 @@
-import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
 import {Link, useFetcher, useParams} from "react-router-dom";
 import {useAdminIndex} from "../constants/adminRoseContext.tsx";
+import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@mui/material";
+import {routes} from "../constants/routes.ts";
 
-
-export default function DeleteRose() {
+export function DeleteCompanion() {
   const fetcher = useFetcher();
-  const { roseSlug } = useParams()
+  const { slug } = useParams()
   const { plants } = useAdminIndex()
 
-  const name = plants.filter(plant => plant.slug === roseSlug)[0].name
+  const name = plants.filter(plant => plant.slug === slug)[0].name
 
   return (
     <Dialog open={true} onClose={() => {}}>
-      <DialogTitle>Delete Rose</DialogTitle>
+      <DialogTitle>Delete Companion Plant</DialogTitle>
       <DialogContent>
         Are you sure you want to delete { name }?
       </DialogContent>
       <DialogActions>
-        <Button variant='outlined' component={Link} to='/admin/roses' color='secondary' >Cancel</Button>
+        <Button variant='outlined' component={Link} to={routes.CompanionAdmin} color='secondary' >Cancel</Button>
 
         <fetcher.Form method="DELETE">
           <Button variant='contained' type='submit'>Confirm</Button>

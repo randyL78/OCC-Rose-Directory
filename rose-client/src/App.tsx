@@ -34,6 +34,8 @@ import {CompanionCreate} from "./components/CompanionCreate.tsx";
 import {createCompanionLoader} from "./loaders/CreateCompanionLoader.ts";
 import {createOrUpdateCompanionAction} from "./actions/CreateOrUpdateCompanionAction.ts";
 import {companionAdminDetailLoader} from "./loaders/CompanionAdminDetailLoader.ts";
+import {deleteCompanionAction} from "./actions/DeleteCompanionAction.ts";
+import {DeleteCompanion} from "./pages/DeleteCompanion.tsx";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +94,11 @@ const router = createBrowserRouter([
                 action: createOrUpdateCompanionAction,
                 loader: companionAdminDetailLoader,
                 Component: CompanionCreate,
+              },
+              {
+                path: ':slug/delete',
+                action: deleteCompanionAction,
+                Component: DeleteCompanion
               }
             ],
           },

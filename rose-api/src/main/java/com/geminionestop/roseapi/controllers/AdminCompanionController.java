@@ -68,7 +68,15 @@ public class AdminCompanionController {
 
     @DeleteMapping("/{slug}")
     public ResponseEntity<Void> deleteCompanion(@PathVariable("slug") String slug) {
-        return ResponseEntity.noContent().build();
+        logger.info("Deleting companion plant {}", slug);
+
+        String response = service.deleteCompanion(slug);
+
+        if(slug.equals(response)) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.badRequest().build();
     }
 }
 

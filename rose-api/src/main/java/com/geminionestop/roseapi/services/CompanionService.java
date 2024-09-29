@@ -19,4 +19,6 @@ public interface CompanionService {
     AdminCompanionDetailDto updateCompanion(String slug, AdminCompanionDetailDto adminCompanionDetailDto);
 
     AdminCompanionDetailDto getAdminCompanion(String slug);
+
+    String deleteCompanion(String slug);
 }
